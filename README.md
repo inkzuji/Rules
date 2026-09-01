@@ -120,3 +120,16 @@ rules:
 - 保护：上游全部拉取失败或规则数骤降超 40% 时构建中止不 push
 
 🟢 上游覆盖面变化（新增/移除某规则集）只需改 `scripts/build.py` 里的 `SOURCE_666OS` 配置表。
+
+## 参考链接
+
+本仓库构建与使用过程中参考/引用的项目：
+
+| 项目 | 说明 | 引用内容 |
+|---|---|---|
+| [666OS/rules](https://github.com/666OS/rules) | Surge 规则集，每日自动更新 | 主要规则来源，`surge/*.txt` 共 30+ 个规则文件 |
+| [viewer12/OverseasAI.list](https://github.com/viewer12/OverseasAI.list) | 海外 AI 服务聚合规则 | `AI/Others.list` 数据来源 |
+| [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) | 各分流工具规则合集 | 规则拆分思路与主题分类参考 |
+| [ACL4SSR/ACL4SSR](https://github.com/ACL4SSR/ACL4SSR) | 经典 Clash/Surge 分流规则 | 策略组设计与兜底方案参考 |
+| [Surge 官方文档](https://manual.nssurge.com/book/understanding-surge/rule.html) | Surge 规则语法说明 | `RULE-SET` / 规则类型语法依据 |
+| [mihomo (Clash.Meta) 文档](https://wiki.metacubex.one/config/rules/) | mihomo 规则语法说明 | Clash classical 规则集格式依据 |
