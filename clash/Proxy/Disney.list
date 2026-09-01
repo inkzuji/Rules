@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 213
+# 规则数: 208
 
 # DOMAIN
 DOMAIN,venmo.s3.amazonaws.com
@@ -19,7 +19,6 @@ DOMAIN-SUFFIX,24hbook.com
 DOMAIN-SUFFIX,adventuresbydisney.com
 DOMAIN-SUFFIX,aliassketchbook.com
 DOMAIN-SUFFIX,aliassketchbookpro.com
-DOMAIN-SUFFIX,alivevmax.com
 DOMAIN-SUFFIX,amazon-fashions.com
 DOMAIN-SUFFIX,amazon-jp-recruiting.com
 DOMAIN-SUFFIX,amazon-lantern.com
@@ -36,7 +35,6 @@ DOMAIN-SUFFIX,amazonianblog.com
 DOMAIN-SUFFIX,amazonimages.com
 DOMAIN-SUFFIX,amazonlaunchpad.com
 DOMAIN-SUFFIX,amazonliterarypartnership.com
-DOMAIN-SUFFIX,amazonlumberyard.wang
 DOMAIN-SUFFIX,amazonpay.com
 DOMAIN-SUFFIX,amazonpay.in
 DOMAIN-SUFFIX,amazonprimevideos.com
@@ -76,7 +74,6 @@ DOMAIN-SUFFIX,disneychannelonstage.com
 DOMAIN-SUFFIX,disneychannelroadtrip.com
 DOMAIN-SUFFIX,disneycruisebrasil.com
 DOMAIN-SUFFIX,disneyenconcert.com
-DOMAIN-SUFFIX,disneyhentai.com
 DOMAIN-SUFFIX,disneyiejobs.com
 DOMAIN-SUFFIX,disneyinflight.com
 DOMAIN-SUFFIX,disneyinternational.com
@@ -116,7 +113,6 @@ DOMAIN-SUFFIX,hbo-europe.com
 DOMAIN-SUFFIX,hbo.ba
 DOMAIN-SUFFIX,hbo.bg
 DOMAIN-SUFFIX,hbo.com
-DOMAIN-SUFFIX,hbo.com.c.footprint.net
 DOMAIN-SUFFIX,hbo.com.edgesuite.net
 DOMAIN-SUFFIX,hbo.cz
 DOMAIN-SUFFIX,hbo.eu
@@ -142,7 +138,6 @@ DOMAIN-SUFFIX,hbomax-images.warnermediacdn.com
 DOMAIN-SUFFIX,hbomax.com
 DOMAIN-SUFFIX,hbomax.eu
 DOMAIN-SUFFIX,hbomaxcdn.com
-DOMAIN-SUFFIX,hbomaxdash.s.llnwi.net
 DOMAIN-SUFFIX,hbomediarelations.com
 DOMAIN-SUFFIX,hbonordic.com
 DOMAIN-SUFFIX,hbonordic.tv

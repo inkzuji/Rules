@@ -1,5 +1,5 @@
 # 策略: 🤖️AI
-# 规则数: 629
+# 规则数: 623
 
 # DOMAIN
 DOMAIN,ai.azure.com
@@ -146,8 +146,6 @@ DOMAIN-SUFFIX,cohere.ai
 DOMAIN-SUFFIX,cohere.com
 DOMAIN-SUFFIX,colossyan.com
 DOMAIN-SUFFIX,comfy.org
-DOMAIN-SUFFIX,comfyci.org
-DOMAIN-SUFFIX,comfyregistry.org
 DOMAIN-SUFFIX,context7.com
 DOMAIN-SUFFIX,continue.dev
 DOMAIN-SUFFIX,copy.ai
@@ -251,7 +249,6 @@ DOMAIN-SUFFIX,jules.google.com
 DOMAIN-SUFFIX,kaiber.ai
 DOMAIN-SUFFIX,kilo.ai
 DOMAIN-SUFFIX,kilocode.ai
-DOMAIN-SUFFIX,kilocode.app
 DOMAIN-SUFFIX,kimi.ai
 DOMAIN-SUFFIX,kiro.dev
 DOMAIN-SUFFIX,krakenjs.com
@@ -409,7 +406,6 @@ DOMAIN-SUFFIX,paypal-proserv.com
 DOMAIN-SUFFIX,paypal-qrshopping.org
 DOMAIN-SUFFIX,paypal-recargacelular.com
 DOMAIN-SUFFIX,paypal-redeem.com
-DOMAIN-SUFFIX,paypal-referral.com
 DOMAIN-SUFFIX,paypal-retail.com
 DOMAIN-SUFFIX,paypal-scoop.com
 DOMAIN-SUFFIX,paypal-search.com
@@ -435,7 +431,6 @@ DOMAIN-SUFFIX,paypal.com.cn
 DOMAIN-SUFFIX,paypal.com.hk
 DOMAIN-SUFFIX,paypal.com.sg
 DOMAIN-SUFFIX,paypal.hk
-DOMAIN-SUFFIX,paypal.info
 DOMAIN-SUFFIX,paypal.jp
 DOMAIN-SUFFIX,paypal.me
 DOMAIN-SUFFIX,paypal.net.cn
@@ -587,7 +582,6 @@ DOMAIN-SUFFIX,v0.dev
 DOMAIN-SUFFIX,vast.ai
 DOMAIN-SUFFIX,venmo-touch.com
 DOMAIN-SUFFIX,venmo.com
-DOMAIN-SUFFIX,venmo.info
 DOMAIN-SUFFIX,venmo.net
 DOMAIN-SUFFIX,venmo.org
 DOMAIN-SUFFIX,venmo.s3.amazonaws.com

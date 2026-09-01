@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 44
+# 规则数: 43
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,cloudflare
@@ -20,7 +20,6 @@ DOMAIN-SUFFIX,cloudflareanycast.net
 DOMAIN-SUFFIX,cloudflareapps.com
 DOMAIN-SUFFIX,cloudflarebrowser.com
 DOMAIN-SUFFIX,cloudflarechallenge.com
-DOMAIN-SUFFIX,cloudflarechina.cn
 DOMAIN-SUFFIX,cloudflarecn.net
 DOMAIN-SUFFIX,cloudflarecp.com
 DOMAIN-SUFFIX,cloudflareglobal.net

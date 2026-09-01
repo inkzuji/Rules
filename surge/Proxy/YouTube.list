@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 25
+# 规则数: 24
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,youtube
@@ -12,7 +12,6 @@ DOMAIN-SUFFIX,findyoutube.com
 DOMAIN-SUFFIX,findyoutube.net
 DOMAIN-SUFFIX,googlevideo.com
 DOMAIN-SUFFIX,listentoyoutube.com
-DOMAIN-SUFFIX,nytimg.com
 DOMAIN-SUFFIX,onlineyoutube.com
 DOMAIN-SUFFIX,wide-youtube.l.google.com
 DOMAIN-SUFFIX,withyoutube.com

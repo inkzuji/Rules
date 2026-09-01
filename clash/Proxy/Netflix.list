@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 25
+# 规则数: 24
 
 # DOMAIN
 DOMAIN,netflix.com.edgesuite.net
@@ -10,7 +10,6 @@ DOMAIN-KEYWORD,netflixdnstest
 DOMAIN-SUFFIX,netflix.ca
 DOMAIN-SUFFIX,netflix.com
 DOMAIN-SUFFIX,netflix.net
-DOMAIN-SUFFIX,netflixdnstest0.com
 DOMAIN-SUFFIX,netflixdnstest1.com
 DOMAIN-SUFFIX,netflixdnstest10.com
 DOMAIN-SUFFIX,netflixdnstest2.com

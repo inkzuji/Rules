@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 19
+# 规则数: 18
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,-spotify-com
@@ -8,7 +8,6 @@ DOMAIN-KEYWORD,spotify.com
 # DOMAIN-SUFFIX
 DOMAIN-SUFFIX,byspotify.com
 DOMAIN-SUFFIX,dcs-spotify.megaphone.fm
-DOMAIN-SUFFIX,help.byspotify.com
 DOMAIN-SUFFIX,lifeatspotify.com
 DOMAIN-SUFFIX,spotify-everywhere.com
 DOMAIN-SUFFIX,spotify.com
