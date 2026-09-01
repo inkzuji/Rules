@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 137
+# 规则数: 135
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,atlassian
@@ -23,7 +23,6 @@ DOMAIN-SUFFIX,atlassian-dev.net
 DOMAIN-SUFFIX,atlassian.com
 DOMAIN-SUFFIX,atlassian.net
 DOMAIN-SUFFIX,beijingspring.com
-DOMAIN-SUFFIX,cdn.jetbrains.com
 DOMAIN-SUFFIX,chicagolandbmw.com
 DOMAIN-SUFFIX,clearlinux.org
 DOMAIN-SUFFIX,cnpmjs.org
@@ -66,7 +65,6 @@ DOMAIN-SUFFIX,linux.org.hk
 DOMAIN-SUFFIX,linuxfoundation.org
 DOMAIN-SUFFIX,linuxfromscratch.org
 DOMAIN-SUFFIX,maven.neoforged.net
-DOMAIN-SUFFIX,mecha-mozilla.org
 DOMAIN-SUFFIX,meridian-trust.org
 DOMAIN-SUFFIX,moomootrustee.com
 DOMAIN-SUFFIX,mozilla-europe.org

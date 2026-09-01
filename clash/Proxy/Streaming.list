@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 249
+# 规则数: 244
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,abematv.akamaized.net
@@ -14,7 +14,6 @@ DOMAIN-SUFFIX,abema.io
 DOMAIN-SUFFIX,abema.tv
 DOMAIN-SUFFIX,abematv.akamaized.net
 DOMAIN-SUFFIX,abematv.co.jp
-DOMAIN-SUFFIX,avfox.cc
 DOMAIN-SUFFIX,aznbcontent.cn
 DOMAIN-SUFFIX,bnbchain.org
 DOMAIN-SUFFIX,cbs.com
@@ -79,7 +78,6 @@ DOMAIN-SUFFIX,fox46charlotte.com
 DOMAIN-SUFFIX,fox47.com
 DOMAIN-SUFFIX,fox49.tv
 DOMAIN-SUFFIX,fox4news.com
-DOMAIN-SUFFIX,fox51tns.net
 DOMAIN-SUFFIX,fox5atlanta.com
 DOMAIN-SUFFIX,fox5dc.com
 DOMAIN-SUFFIX,fox5ny.com
@@ -121,7 +119,6 @@ DOMAIN-SUFFIX,foxkansas.com
 DOMAIN-SUFFIX,foxkeh.com
 DOMAIN-SUFFIX,foxkeh.jp
 DOMAIN-SUFFIX,foxla.com
-DOMAIN-SUFFIX,foxla.tv
 DOMAIN-SUFFIX,foxlexington.com
 DOMAIN-SUFFIX,foxmediacloud.com
 DOMAIN-SUFFIX,foxnation.com
@@ -199,7 +196,6 @@ DOMAIN-SUFFIX,justveryok.com
 DOMAIN-SUFFIX,linear-abematv.akamaized.net
 DOMAIN-SUFFIX,mangafox.me
 DOMAIN-SUFFIX,msnbc.com
-DOMAIN-SUFFIX,mulheresafoder.com
 DOMAIN-SUFFIX,myfoxatlanta.com
 DOMAIN-SUFFIX,myfoxaustin.com
 DOMAIN-SUFFIX,myfoxboston.com
@@ -217,7 +213,6 @@ DOMAIN-SUFFIX,myfoxny.com
 DOMAIN-SUFFIX,myfoxorlando.com
 DOMAIN-SUFFIX,myfoxphilly.com
 DOMAIN-SUFFIX,myfoxsanfran.com
-DOMAIN-SUFFIX,myfoxtampa.com
 DOMAIN-SUFFIX,myfoxtampabay.com
 DOMAIN-SUFFIX,myfoxtwincities.com
 DOMAIN-SUFFIX,myfoxzone.com

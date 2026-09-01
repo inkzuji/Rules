@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 127
+# 规则数: 125
 
 # DOMAIN
 DOMAIN,yt3.googleusercontent.com
@@ -122,12 +122,10 @@ DOMAIN-SUFFIX,igoogle.com
 DOMAIN-SUFFIX,issues.chromium.org
 DOMAIN-SUFFIX,mail-ads.google.com
 DOMAIN-SUFFIX,marketingplatform.google.com
-DOMAIN-SUFFIX,mobileads.google.com
 DOMAIN-SUFFIX,pagead.l.google.com
 DOMAIN-SUFFIX,partnerad.l.google.com
 DOMAIN-SUFFIX,scholar.google.com
 DOMAIN-SUFFIX,thegooglestore.com
 DOMAIN-SUFFIX,thinkwithgoogle.com
-DOMAIN-SUFFIX,twblogger.com
 DOMAIN-SUFFIX,wantblogger.com
 DOMAIN-SUFFIX,withgoogle.com

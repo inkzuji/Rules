@@ -1,10 +1,9 @@
 # 策略: 🤖️AI
-# 规则数: 18
+# 规则数: 17
 
 # DOMAIN
 DOMAIN,api.githubcopilot.com
 DOMAIN,copilot.microsoft.com
-DOMAIN,gateway.bingviz.microsoft.net
 DOMAIN,gateway.bingviz.microsoftapp.net
 DOMAIN,r.bing.com
 DOMAIN,services.bingapis.com
