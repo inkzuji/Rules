@@ -1,0 +1,43 @@
+name: 每日更新规则集
+
+on:
+  schedule:
+    - cron: '17 18 * * *'  # UTC 18:17 = 北京时间凌晨 2:17
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-rules
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 构建规则集
+        run: |
+          python3 scripts/build.py --validate
+          python3 scripts/convert_clash.py --check
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "无变更，跳过提交"
+            exit 0
+          fi
+          git add -A
+          git commit -m "chore(rules): auto update $(date -u +%F)"
+          git push
