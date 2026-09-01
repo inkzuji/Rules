@@ -1,0 +1,20 @@
+# 策略: 🚀节点选择
+# 规则数: 14
+
+# DOMAIN
+DOMAIN,bybit-exchange.github.io
+# DOMAIN-KEYWORD
+DOMAIN-KEYWORD,github
+# DOMAIN-SUFFIX
+DOMAIN-SUFFIX,collector.github.com
+DOMAIN-SUFFIX,github1s.com
+DOMAIN-SUFFIX,githubapp.com
+DOMAIN-SUFFIX,githubassets.com
+DOMAIN-SUFFIX,githubhackathon.com
+DOMAIN-SUFFIX,githubpreview.dev
+DOMAIN-SUFFIX,githubstatus.com
+DOMAIN-SUFFIX,githubsupport.com
+DOMAIN-SUFFIX,githubuniverse.com
+DOMAIN-SUFFIX,githubusercontent.com
+DOMAIN-SUFFIX,rawgithub.com
+DOMAIN-SUFFIX,thegithubshop.com

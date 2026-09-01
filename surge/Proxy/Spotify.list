@@ -1,0 +1,24 @@
+# 策略: 🚀节点选择
+# 规则数: 19
+
+# DOMAIN-KEYWORD
+DOMAIN-KEYWORD,-spotify-com
+DOMAIN-KEYWORD,spotify
+DOMAIN-KEYWORD,spotify.com
+# DOMAIN-SUFFIX
+DOMAIN-SUFFIX,byspotify.com
+DOMAIN-SUFFIX,dcs-spotify.megaphone.fm
+DOMAIN-SUFFIX,help.byspotify.com
+DOMAIN-SUFFIX,lifeatspotify.com
+DOMAIN-SUFFIX,spotify-everywhere.com
+DOMAIN-SUFFIX,spotify.com
+DOMAIN-SUFFIX,spotify.design
+DOMAIN-SUFFIX,spotify.link
+DOMAIN-SUFFIX,spotifycdn.com
+DOMAIN-SUFFIX,spotifycdn.net
+DOMAIN-SUFFIX,spotifycharts.com
+DOMAIN-SUFFIX,spotifycodes.com
+DOMAIN-SUFFIX,spotifyforbrands.com
+DOMAIN-SUFFIX,spotifyforvendors.com
+DOMAIN-SUFFIX,spotifyjobs.com
+DOMAIN-SUFFIX,tospotify.com

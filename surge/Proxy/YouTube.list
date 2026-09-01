@@ -1,0 +1,30 @@
+# 策略: 🚀节点选择
+# 规则数: 25
+
+# DOMAIN-KEYWORD
+DOMAIN-KEYWORD,youtube
+DOMAIN-KEYWORD,youtubego
+# DOMAIN-SUFFIX
+DOMAIN-SUFFIX,addyoutube.com
+DOMAIN-SUFFIX,ads.youtube.com
+DOMAIN-SUFFIX,dlyoutube.com
+DOMAIN-SUFFIX,findyoutube.com
+DOMAIN-SUFFIX,findyoutube.net
+DOMAIN-SUFFIX,googlevideo.com
+DOMAIN-SUFFIX,listentoyoutube.com
+DOMAIN-SUFFIX,nytimg.com
+DOMAIN-SUFFIX,onlineyoutube.com
+DOMAIN-SUFFIX,wide-youtube.l.google.com
+DOMAIN-SUFFIX,withyoutube.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,youtube-nocookie.com
+DOMAIN-SUFFIX,youtube-ui.l.google.com
+DOMAIN-SUFFIX,youtubecisco.com
+DOMAIN-SUFFIX,youtubeeducation.com
+DOMAIN-SUFFIX,youtubeembeddedplayer.googleapis.com
+DOMAIN-SUFFIX,youtubefanfest.com
+DOMAIN-SUFFIX,youtubegaming.com
+DOMAIN-SUFFIX,youtubei.googleapis.com
+DOMAIN-SUFFIX,youtubekids.com
+DOMAIN-SUFFIX,youtubemobilesupport.com
+DOMAIN-SUFFIX,ytimg.com
