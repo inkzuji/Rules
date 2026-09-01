@@ -1,5 +1,5 @@
 # 策略: 🎮游戏
-# 规则数: 910
+# 规则数: 908
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,garena
@@ -607,7 +607,6 @@ DOMAIN-SUFFIX,pvp.tv
 DOMAIN-SUFFIX,pvzgw2.com
 DOMAIN-SUFFIX,pvzheroes.com
 DOMAIN-SUFFIX,qq163.com
-DOMAIN-SUFFIX,qq163.net
 DOMAIN-SUFFIX,quiltmc.org
 DOMAIN-SUFFIX,quixel.com
 DOMAIN-SUFFIX,quixel.se
@@ -660,7 +659,6 @@ DOMAIN-SUFFIX,sccreator.cn
 DOMAIN-SUFFIX,sccreators.cn
 DOMAIN-SUFFIX,scescdn.cn
 DOMAIN-SUFFIX,scid.cn
-DOMAIN-SUFFIX,scsentry.cn
 DOMAIN-SUFFIX,sdo.com
 DOMAIN-SUFFIX,seagroup.com
 DOMAIN-SUFFIX,seaofsolitude.com

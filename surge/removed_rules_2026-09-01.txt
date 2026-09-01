@@ -1,4 +1,4 @@
-# 移除规则数: 1560（DoH NXDOMAIN 判定）
+# 移除规则数: 1557（DoH NXDOMAIN 判定）
 
 AI/Copilot.list	DOMAIN,gateway.bingviz.microsoft.net
 AI/Others.list	DOMAIN-SUFFIX,comfyci.org
@@ -142,7 +142,6 @@ Apple.list	DOMAIN-SUFFIX,wholesalediscountpurses.com
 Apple.list	DOMAIN-SUFFIX,wholesalefine.com
 Apple.list	DOMAIN-SUFFIX,wholesaleonlinemart.com
 Apple.list	DOMAIN-SUFFIX,xn--gtvz22d.wang
-Bilibili.list	DOMAIN,36-25-252-1.ksyungslb.com
 Game.list	DOMAIN-SUFFIX,4399api.net
 Game.list	DOMAIN-SUFFIX,battlecare.net
 Game.list	DOMAIN-SUFFIX,bcfmglobal.com
@@ -152,7 +151,9 @@ Game.list	DOMAIN-SUFFIX,dota2.wmsj.cn
 Game.list	DOMAIN-SUFFIX,flipnotestudio.com
 Game.list	DOMAIN-SUFFIX,gcloudcstest.com
 Game.list	DOMAIN-SUFFIX,pokemonwifi.net
+Game.list	DOMAIN-SUFFIX,qq163.net
 Game.list	DOMAIN-SUFFIX,qqgameapp.com
+Game.list	DOMAIN-SUFFIX,scsentry.cn
 Game.list	DOMAIN-SUFFIX,steampowered.com.8686c.com
 Game.list	DOMAIN-SUFFIX,steamstatic.com.8686c.com
 Game.list	DOMAIN-SUFFIX,tcfmglobal.com
@@ -256,7 +257,6 @@ Proxy/Others.list	DOMAIN-SUFFIX,acjj.net
 Proxy/Others.list	DOMAIN-SUFFIX,adpornu.xyz
 Proxy/Others.list	DOMAIN-SUFFIX,adult-web-site.net
 Proxy/Others.list	DOMAIN-SUFFIX,adulterfree.com
-Proxy/Others.list	DOMAIN-SUFFIX,adulters.org
 Proxy/Others.list	DOMAIN-SUFFIX,adultpornvideos.net
 Proxy/Others.list	DOMAIN-SUFFIX,aflamsex.net
 Proxy/Others.list	DOMAIN-SUFFIX,agan2.vip
@@ -558,6 +558,7 @@ Proxy/Others.list	DOMAIN-SUFFIX,fabuyemian.com
 Proxy/Others.list	DOMAIN-SUFFIX,faldgjalg.xyz
 Proxy/Others.list	DOMAIN-SUFFIX,fanhaodian.com
 Proxy/Others.list	DOMAIN-SUFFIX,fanhowab.buzz
+Proxy/Others.list	DOMAIN-SUFFIX,fapporn.me
 Proxy/Others.list	DOMAIN-SUFFIX,fapteencam.com
 Proxy/Others.list	DOMAIN-SUFFIX,favjapaneseporn.com
 Proxy/Others.list	DOMAIN-SUFFIX,feiniu.lol
@@ -841,7 +842,6 @@ Proxy/Others.list	DOMAIN-SUFFIX,laosijifuli9009.top
 Proxy/Others.list	DOMAIN-SUFFIX,latencytop.com
 Proxy/Others.list	DOMAIN-SUFFIX,lcgirls.com
 Proxy/Others.list	DOMAIN-SUFFIX,leafyvpn.net
-Proxy/Others.list	DOMAIN-SUFFIX,leliao1.com
 Proxy/Others.list	DOMAIN-SUFFIX,lesbianpics.org
 Proxy/Others.list	DOMAIN-SUFFIX,libsolutions.app
 Proxy/Others.list	DOMAIN-SUFFIX,libsolutions.domains
@@ -893,7 +893,6 @@ Proxy/Others.list	DOMAIN-SUFFIX,manhwa24h.com
 Proxy/Others.list	DOMAIN-SUFFIX,manoto1.tv
 Proxy/Others.list	DOMAIN-SUFFIX,maomiav.top
 Proxy/Others.list	DOMAIN-SUFFIX,maturepornonly.com
-Proxy/Others.list	DOMAIN-SUFFIX,maturewifeporn.cc
 Proxy/Others.list	DOMAIN-SUFFIX,maturewomenanal.com
 Proxy/Others.list	DOMAIN-SUFFIX,maturexxxvideos.cc
 Proxy/Others.list	DOMAIN-SUFFIX,mayijiejie.com
@@ -902,7 +901,6 @@ Proxy/Others.list	DOMAIN-SUFFIX,mdr-good.sbs
 Proxy/Others.list	DOMAIN-SUFFIX,mdr100ya.lat
 Proxy/Others.list	DOMAIN-SUFFIX,mdtt-tv.sbs
 Proxy/Others.list	DOMAIN-SUFFIX,meetyourdevices.com
-Proxy/Others.list	DOMAIN-SUFFIX,megalodon.jp
 Proxy/Others.list	DOMAIN-SUFFIX,meizhong.blog
 Proxy/Others.list	DOMAIN-SUFFIX,meizhong.report
 Proxy/Others.list	DOMAIN-SUFFIX,men18.net
@@ -1056,7 +1054,6 @@ Proxy/Others.list	DOMAIN-SUFFIX,pojiefuli9113.xyz
 Proxy/Others.list	DOMAIN-SUFFIX,pololine.ml
 Proxy/Others.list	DOMAIN-SUFFIX,popporn-world.com
 Proxy/Others.list	DOMAIN-SUFFIX,porn-list.site
-Proxy/Others.list	DOMAIN-SUFFIX,porn-sex-video.me
 Proxy/Others.list	DOMAIN-SUFFIX,porn3dgalleries.com
 Proxy/Others.list	DOMAIN-SUFFIX,pornaf.com
 Proxy/Others.list	DOMAIN-SUFFIX,pornbraze.com
