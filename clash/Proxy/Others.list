@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 26366
+# 规则数: 26364
 
 # DOMAIN
 DOMAIN,api.imem.app
@@ -3968,7 +3968,6 @@ DOMAIN-SUFFIX,crossborderexpansion.com
 DOMAIN-SUFFIX,crossfire.co.kr
 DOMAIN-SUFFIX,crossfitfirestone.com
 DOMAIN-SUFFIX,crossmediapanel.com
-DOMAIN-SUFFIX,crossvpn.net
 DOMAIN-SUFFIX,crosswall.org
 DOMAIN-SUFFIX,crowdtangle.com
 DOMAIN-SUFFIX,croxyproxy.com
@@ -6791,7 +6790,6 @@ DOMAIN-SUFFIX,greenlakeaas.com
 DOMAIN-SUFFIX,greenlakehybridcloud.com
 DOMAIN-SUFFIX,greenpeace.org
 DOMAIN-SUFFIX,greenplum.net
-DOMAIN-SUFFIX,greenvpn.net
 DOMAIN-SUFFIX,greginhollywood.com
 DOMAIN-SUFFIX,gridaware.app
 DOMAIN-SUFFIX,grindr.com

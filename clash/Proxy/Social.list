@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 1259
+# 规则数: 1260
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,discord
@@ -540,6 +540,7 @@ DOMAIN-SUFFIX,ft.com
 DOMAIN-SUFFIX,ftopx.com
 DOMAIN-SUFFIX,ftx.com
 DOMAIN-SUFFIX,fulanax.com
+DOMAIN-SUFFIX,fulldesisex.com
 DOMAIN-SUFFIX,fullhdxxx.com
 DOMAIN-SUFFIX,fundraisingwithfacebook.com
 DOMAIN-SUFFIX,fundsupermart.com
