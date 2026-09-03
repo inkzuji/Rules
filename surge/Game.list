@@ -1,5 +1,5 @@
 # 策略: 🎮游戏
-# 规则数: 908
+# 规则数: 909
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,garena
@@ -56,7 +56,6 @@ DOMAIN-SUFFIX,4399pk.com
 DOMAIN-SUFFIX,4399sj.cn
 DOMAIN-SUFFIX,4399sj.com
 DOMAIN-SUFFIX,4399swf.com
-DOMAIN-SUFFIX,4399wanju.com
 DOMAIN-SUFFIX,4399youpai.com
 DOMAIN-SUFFIX,4399youxi.com
 DOMAIN-SUFFIX,4399yyy.com
@@ -247,6 +246,7 @@ DOMAIN-SUFFIX,eastore.com
 DOMAIN-SUFFIX,easy.ac
 DOMAIN-SUFFIX,easyanticheat.net
 DOMAIN-SUFFIX,edge.steam-dns.top.comcast.net
+DOMAIN-SUFFIX,edu4399.com
 DOMAIN-SUFFIX,eft-store.com
 DOMAIN-SUFFIX,egdownload.fastly-edge.com
 DOMAIN-SUFFIX,elderscrolls.com
@@ -606,6 +606,7 @@ DOMAIN-SUFFIX,pvp.tv
 DOMAIN-SUFFIX,pvzgw2.com
 DOMAIN-SUFFIX,pvzheroes.com
 DOMAIN-SUFFIX,qq163.com
+DOMAIN-SUFFIX,qq163.net
 DOMAIN-SUFFIX,quiltmc.org
 DOMAIN-SUFFIX,quixel.com
 DOMAIN-SUFFIX,quixel.se

@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 26364
+# 规则数: 26363
 
 # DOMAIN
 DOMAIN,api.imem.app
@@ -3275,7 +3275,6 @@ DOMAIN-SUFFIX,cc18.biz
 DOMAIN-SUFFIX,cc18.tv
 DOMAIN-SUFFIX,cc18tv.com
 DOMAIN-SUFFIX,ccav69.info
-DOMAIN-SUFFIX,ccav69.me
 DOMAIN-SUFFIX,ccavb.tv
 DOMAIN-SUFFIX,cccat.cc
 DOMAIN-SUFFIX,ccfd.org.tw
@@ -3503,6 +3502,7 @@ DOMAIN-SUFFIX,chinesenews.net.au
 DOMAIN-SUFFIX,chineseradioseattle.com
 DOMAIN-SUFFIX,chinesespanking.com
 DOMAIN-SUFFIX,chineseupress.com
+DOMAIN-SUFFIX,chingcheong.com
 DOMAIN-SUFFIX,chipcore.com
 DOMAIN-SUFFIX,chipcore.ru
 DOMAIN-SUFFIX,chips.com
@@ -11018,7 +11018,6 @@ DOMAIN-SUFFIX,nudevietnam.com
 DOMAIN-SUFFIX,nudewifeporn.com
 DOMAIN-SUFFIX,nudewomenpics.net
 DOMAIN-SUFFIX,nudify.online
-DOMAIN-SUFFIX,nudistbeachporn.com
 DOMAIN-SUFFIX,nudistic.com
 DOMAIN-SUFFIX,nudistlog.com
 DOMAIN-SUFFIX,nudistsexvideos.com
@@ -13153,7 +13152,6 @@ DOMAIN-SUFFIX,secom.co.jp
 DOMAIN-SUFFIX,second-ns.com
 DOMAIN-SUFFIX,second-ns.de
 DOMAIN-SUFFIX,secondns.at
-DOMAIN-SUFFIX,secret-flirt-hub.com
 DOMAIN-SUFFIX,secretbabes.co.uk
 DOMAIN-SUFFIX,secretchina.com
 DOMAIN-SUFFIX,secretgarden.no
@@ -14478,6 +14476,7 @@ DOMAIN-SUFFIX,telesec.de
 DOMAIN-SUFFIX,telesell.com
 DOMAIN-SUFFIX,telex.cc
 DOMAIN-SUFFIX,tellme.pw
+DOMAIN-SUFFIX,temetube.xyz
 DOMAIN-SUFFIX,temp-mail.org
 DOMAIN-SUFFIX,templatemonster.com
 DOMAIN-SUFFIX,temu.com
@@ -17018,6 +17017,7 @@ DOMAIN-SUFFIX,yibei.org
 DOMAIN-SUFFIX,yigeni.com
 DOMAIN-SUFFIX,yimg.com
 DOMAIN-SUFFIX,yimg.jp
+DOMAIN-SUFFIX,yinac.xyz
 DOMAIN-SUFFIX,yinac5.top
 DOMAIN-SUFFIX,yingpianqu.com
 DOMAIN-SUFFIX,yinmh.com
@@ -17306,7 +17306,6 @@ DOMAIN-SUFFIX,ztrendlab.com
 DOMAIN-SUFFIX,zuckerberg.com
 DOMAIN-SUFFIX,zuckerberg.net
 DOMAIN-SUFFIX,zukunftswerkstatt.de
-DOMAIN-SUFFIX,zunked.com
 DOMAIN-SUFFIX,zuo.la
 DOMAIN-SUFFIX,zuobiao.me
 DOMAIN-SUFFIX,zuola.com
