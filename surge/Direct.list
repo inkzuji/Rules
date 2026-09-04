@@ -1,5 +1,5 @@
 # 策略: DIRECT
-# 规则数: 5850
+# 规则数: 5849
 
 # DOMAIN
 DOMAIN,00713915daab0be43def5c338c02c80b.dlied1.cdntips.net
@@ -299,7 +299,6 @@ DOMAIN-SUFFIX,cctvlibrary.com.cn
 DOMAIN-SUFFIX,cctvpic.com
 DOMAIN-SUFFIX,cctvpro.cn
 DOMAIN-SUFFIX,cctvpro.com.cn
-DOMAIN-SUFFIX,cdn.zampdsp.com
 DOMAIN-SUFFIX,chinalive.com
 DOMAIN-SUFFIX,cibntv.net
 DOMAIN-SUFFIX,citv.net.cn
