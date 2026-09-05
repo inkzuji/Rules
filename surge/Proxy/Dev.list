@@ -1,9 +1,10 @@
 # 策略: 🚀节点选择
-# 规则数: 135
+# 规则数: 136
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,atlassian
 DOMAIN-KEYWORD,jetbrains
+DOMAIN-KEYWORD,linux
 DOMAIN-KEYWORD,mozilla
 DOMAIN-KEYWORD,springer
 DOMAIN-KEYWORD,stackoverflow
