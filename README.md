@@ -115,7 +115,7 @@ rules:
 
 - Workflow：`.github/workflows/update-rules.yml`，每日 UTC 18:17（北京凌晨 2:17）自动构建，支持 Actions 页面手动触发
 - 构建脚本：`scripts/build.py`（上游列表与主题关键词表均在脚本内配置），末尾自动调用 `scripts/convert_clash.py` 同步生成 `clash/`
-- 失效校验：`scripts/validate.py`（DoH NXDOMAIN 判定，移除清单存档 `removed_rules_<date>.txt`）
+- 失效校验：`scripts/validate.py`（DoH NXDOMAIN 判定，仅输出移除数量，不生成移除清单文件）
 - Clash 转换：`scripts/convert_clash.py`（`--check` 校验 clash/ 与 surge/ 是否同步）
 - 保护：上游全部拉取失败或规则数骤降超 40% 时构建中止不 push
 
