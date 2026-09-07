@@ -3,10 +3,9 @@
 DoH 失效域名校验：对 surge/ 下所有 DOMAIN/DOMAIN-SUFFIX 规则做 NXDOMAIN 检测并清理
 
 判定标准（保守）：3 次查询中 >=2 次 NXDOMAIN 且无成功解析才移除；
-SERVFAIL/超时等异常保留。移除清单存档到 surge/removed_rules_<date>.txt
+SERVFAIL/超时等异常保留。仅输出移除数量，不生成移除清单文件。
 """
 import concurrent.futures
-import datetime
 import glob
 import json
 import os
@@ -65,8 +64,8 @@ def main():
     dead = set(res['dead'])
     print(f"alive={res['alive']} dead={len(dead)} error={res['error']}")
 
-    # 清理 + 存档
-    removed_log = []
+    # 清理 + 统计
+    removed = 0
     for f in sorted(glob.glob(os.path.join(RULES_DIR, '**', '*.list'), recursive=True)):
         lines = open(f, encoding='utf-8').read().splitlines()
         header_i = next((i for i, l in enumerate(lines) if l.startswith('# 规则数')), None)
@@ -77,7 +76,7 @@ def main():
         for s in body:
             parts = s.split(',')
             if parts[0] in ('DOMAIN', 'DOMAIN-SUFFIX') and parts[1].lower() in dead:
-                removed_log.append(f'{os.path.relpath(f, RULES_DIR)}\t{s}')
+                removed += 1
                 continue
             kept.append(s)
         if len(kept) == len(body):
@@ -95,13 +94,8 @@ def main():
                     out.write(f'# {typ}\n')
                 out.write(s + '\n')
 
-    if removed_log:
-        date = datetime.date.today().isoformat()
-        log_path = os.path.join(RULES_DIR, f'removed_rules_{date}.txt')
-        with open(log_path, 'w', encoding='utf-8') as log:
-            log.write(f'# 移除规则数: {len(removed_log)}（DoH NXDOMAIN 判定）\n\n')
-            log.write('\n'.join(removed_log) + '\n')
-        print(f'移除 {len(removed_log)} 条，清单: {log_path}')
+    if removed:
+        print(f'移除 {removed} 条')
     else:
         print('无失效规则')
 
