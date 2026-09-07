@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 1260
+# 规则数: 1261
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,discord
@@ -894,6 +894,7 @@ DOMAIN-SUFFIX,pittpatt.com
 DOMAIN-SUFFIX,pixel.facebook.com
 DOMAIN-SUFFIX,pixinsight.com.tw
 DOMAIN-SUFFIX,pixtronix.com
+DOMAIN-SUFFIX,placemix.com
 DOMAIN-SUFFIX,playbydurex.com
 DOMAIN-SUFFIX,plex.com
 DOMAIN-SUFFIX,pobl-content.com
