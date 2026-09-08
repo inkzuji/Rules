@@ -1,5 +1,5 @@
 # 策略: 🎮游戏
-# 规则数: 905
+# 规则数: 906
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,garena
@@ -56,6 +56,7 @@ DOMAIN-SUFFIX,4399pk.com
 DOMAIN-SUFFIX,4399sj.cn
 DOMAIN-SUFFIX,4399sj.com
 DOMAIN-SUFFIX,4399swf.com
+DOMAIN-SUFFIX,4399wanju.com
 DOMAIN-SUFFIX,4399youpai.com
 DOMAIN-SUFFIX,4399youxi.com
 DOMAIN-SUFFIX,4399yyy.com
@@ -140,6 +141,7 @@ DOMAIN-SUFFIX,brawlstars.cn
 DOMAIN-SUFFIX,brawlstars.com
 DOMAIN-SUFFIX,brawlstarsgame.com
 DOMAIN-SUFFIX,buke999.com
+DOMAIN-SUFFIX,bx1k.com
 DOMAIN-SUFFIX,callersbane.com
 DOMAIN-SUFFIX,callofduty.com
 DOMAIN-SUFFIX,callofdutyendowment.com
@@ -604,7 +606,6 @@ DOMAIN-SUFFIX,pvp.net
 DOMAIN-SUFFIX,pvp.tv
 DOMAIN-SUFFIX,pvzgw2.com
 DOMAIN-SUFFIX,pvzheroes.com
-DOMAIN-SUFFIX,qq163.com
 DOMAIN-SUFFIX,quiltmc.org
 DOMAIN-SUFFIX,quixel.com
 DOMAIN-SUFFIX,quixel.se
