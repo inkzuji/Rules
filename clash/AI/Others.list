@@ -1,9 +1,10 @@
 # 策略: 🤖️AI
-# 规则数: 623
+# 规则数: 666
 
 # DOMAIN
 DOMAIN,ai.azure.com
 DOMAIN,api.cloudflare.com
+DOMAIN,api.githubcopilot.com
 DOMAIN,api.jetbrains.ai
 DOMAIN,api.msn.com
 DOMAIN,api.ngc.nvidia.com
@@ -14,20 +15,26 @@ DOMAIN,aws-language-servers.us-east-1.amazonaws.com
 DOMAIN,aws-toolkit-language-servers.amazonaws.com
 DOMAIN,browser-intake-datadoghq.com
 DOMAIN,build.nvidia.com
-DOMAIN,cdn.usefathom.com
 DOMAIN,clau.de
 DOMAIN,client-telemetry.us-east-1.amazonaws.com
 DOMAIN,codewhisperer.us-east-1.amazonaws.com
 DOMAIN,desktop-release.codewhisperer.us-east-1.amazonaws.com
 DOMAIN,gateway.ai.cloudflare.com
+DOMAIN,gateway.bingviz.microsoft.net
+DOMAIN,gateway.bingviz.microsoftapp.net
 DOMAIN,idetoolkits-hostedfiles.amazonaws.com
 DOMAIN,idetoolkits.amazonwebservices.com
 DOMAIN,in.appcenter.ms
 DOMAIN,integrate.api.nvidia.com
 DOMAIN,location.microsoft.com
 DOMAIN,odc.officeapps.live.com
+DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+DOMAIN,openaicomproductionae4b.blob.core.windows.net
+DOMAIN,production-openaicom-storage.azureedge.net
 DOMAIN,q.us-east-1.amazonaws.com
 DOMAIN,self.events.data.microsoft.com
+DOMAIN,servd-anthropic-website.b-cdn.net
+DOMAIN,services.bingapis.com
 DOMAIN,specs.q.us-east-1.amazonaws.com
 DOMAIN,static.cloudflareinsights.com
 DOMAIN,telemetry.aws-language-servers.us-east-1.amazonaws.com
@@ -35,12 +42,15 @@ DOMAIN,telemetry.aws-language-servers.us-east-1.amazonaws.com
 DOMAIN-KEYWORD,antigravity
 DOMAIN-KEYWORD,bedrock
 DOMAIN-KEYWORD,bedrock-runtime
-DOMAIN-KEYWORD,colab
-DOMAIN-KEYWORD,developerprofiles
+DOMAIN-KEYWORD,chatgpt-async-webps
 DOMAIN-KEYWORD,diabrowser
 DOMAIN-KEYWORD,generativeai
 DOMAIN-KEYWORD,labs.google
 DOMAIN-KEYWORD,notebooklm.google
+DOMAIN-KEYWORD,openai-proxy
+DOMAIN-KEYWORD,openaiapi
+DOMAIN-KEYWORD,openaicom
+DOMAIN-KEYWORD,openaicom-api
 DOMAIN-KEYWORD,paypal
 DOMAIN-KEYWORD,stripe
 # DOMAIN-SUFFIX
@@ -51,7 +61,6 @@ DOMAIN-SUFFIX,accountpaypal.com
 DOMAIN-SUFFIX,accountpaypal.net
 DOMAIN-SUFFIX,accountpaypal.org
 DOMAIN-SUFFIX,agentclientprotocol.com
-DOMAIN-SUFFIX,ai.com
 DOMAIN-SUFFIX,ai.studio
 DOMAIN-SUFFIX,ai21.com
 DOMAIN-SUFFIX,ai21labs.com
@@ -75,7 +84,6 @@ DOMAIN-SUFFIX,api.microsoftapp.net
 DOMAIN-SUFFIX,api.nvidia.com
 DOMAIN-SUFFIX,api2d.com
 DOMAIN-SUFFIX,apify.com
-DOMAIN-SUFFIX,apis.google.com
 DOMAIN-SUFFIX,app-analytics-services.com
 DOMAIN-SUFFIX,apps.mzstatic.com
 DOMAIN-SUFFIX,arena.ai
@@ -84,8 +92,8 @@ DOMAIN-SUFFIX,artbreeder.com
 DOMAIN-SUFFIX,assemblyai.com
 DOMAIN-SUFFIX,augment.dev
 DOMAIN-SUFFIX,augmentcode.com
-DOMAIN-SUFFIX,auth0.com
 DOMAIN-SUFFIX,azuredatabricks.net
+DOMAIN-SUFFIX,bardeen.ai
 DOMAIN-SUFFIX,baseten.co
 DOMAIN-SUFFIX,beautiful.ai
 DOMAIN-SUFFIX,beibao.cn
@@ -96,6 +104,7 @@ DOMAIN-SUFFIX,bill-safe.com
 DOMAIN-SUFFIX,billmelater.com
 DOMAIN-SUFFIX,billmelater.info
 DOMAIN-SUFFIX,billmelater.net
+DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io
 DOMAIN-SUFFIX,blackforestlabs.ai
 DOMAIN-SUFFIX,bml.info
 DOMAIN-SUFFIX,bolt.new
@@ -132,10 +141,14 @@ DOMAIN-SUFFIX,ciciai.com
 DOMAIN-SUFFIX,ciciaicdn.com
 DOMAIN-SUFFIX,civitai.com
 DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claudemcpclient.com
+DOMAIN-SUFFIX,claudemcpcontent.com
+DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN-SUFFIX,clawhub.ai
 DOMAIN-SUFFIX,cline.bot
 DOMAIN-SUFFIX,clipdrop.co
 DOMAIN-SUFFIX,cloud.databricks.com
+DOMAIN-SUFFIX,cocopilot.org
 DOMAIN-SUFFIX,codeium.com
 DOMAIN-SUFFIX,codeiumdata.com
 DOMAIN-SUFFIX,codepilot.ai
@@ -146,8 +159,11 @@ DOMAIN-SUFFIX,cohere.ai
 DOMAIN-SUFFIX,cohere.com
 DOMAIN-SUFFIX,colossyan.com
 DOMAIN-SUFFIX,comfy.org
+DOMAIN-SUFFIX,comfyci.org
+DOMAIN-SUFFIX,comfyregistry.org
 DOMAIN-SUFFIX,context7.com
 DOMAIN-SUFFIX,continue.dev
+DOMAIN-SUFFIX,copilot-stg.com
 DOMAIN-SUFFIX,copy.ai
 DOMAIN-SUFFIX,coreweave.com
 DOMAIN-SUFFIX,cosine.sh
@@ -158,6 +174,7 @@ DOMAIN-SUFFIX,crusoe.ai
 DOMAIN-SUFFIX,cursor-cdn.com
 DOMAIN-SUFFIX,cursor.com
 DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursorapi.com
 DOMAIN-SUFFIX,d-id.com
 DOMAIN-SUFFIX,deepgram.com
 DOMAIN-SUFFIX,deepinfra.com
@@ -249,6 +266,7 @@ DOMAIN-SUFFIX,jules.google.com
 DOMAIN-SUFFIX,kaiber.ai
 DOMAIN-SUFFIX,kilo.ai
 DOMAIN-SUFFIX,kilocode.ai
+DOMAIN-SUFFIX,kilocode.app
 DOMAIN-SUFFIX,kimi.ai
 DOMAIN-SUFFIX,kiro.dev
 DOMAIN-SUFFIX,krakenjs.com
@@ -283,6 +301,7 @@ DOMAIN-SUFFIX,marscode.com
 DOMAIN-SUFFIX,meetgeek.ai
 DOMAIN-SUFFIX,mem.ai
 DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,microsoft-copilot.com
 DOMAIN-SUFFIX,midjourney.com
 DOMAIN-SUFFIX,milvus.io
 DOMAIN-SUFFIX,minimax.io
@@ -304,7 +323,8 @@ DOMAIN-SUFFIX,notebooklm.google.com
 DOMAIN-SUFFIX,notegpt.io
 DOMAIN-SUFFIX,nousresearch.com
 DOMAIN-SUFFIX,novelai.net
-DOMAIN-SUFFIX,observeit.net
+DOMAIN-SUFFIX,oaifree.com
+DOMAIN-SUFFIX,oaistatsig.com
 DOMAIN-SUFFIX,ollama.com
 DOMAIN-SUFFIX,opal.google
 DOMAIN-SUFFIX,opal.google.com
@@ -406,6 +426,7 @@ DOMAIN-SUFFIX,paypal-proserv.com
 DOMAIN-SUFFIX,paypal-qrshopping.org
 DOMAIN-SUFFIX,paypal-recargacelular.com
 DOMAIN-SUFFIX,paypal-redeem.com
+DOMAIN-SUFFIX,paypal-referral.com
 DOMAIN-SUFFIX,paypal-retail.com
 DOMAIN-SUFFIX,paypal-scoop.com
 DOMAIN-SUFFIX,paypal-search.com
@@ -431,6 +452,7 @@ DOMAIN-SUFFIX,paypal.com.cn
 DOMAIN-SUFFIX,paypal.com.hk
 DOMAIN-SUFFIX,paypal.com.sg
 DOMAIN-SUFFIX,paypal.hk
+DOMAIN-SUFFIX,paypal.info
 DOMAIN-SUFFIX,paypal.jp
 DOMAIN-SUFFIX,paypal.me
 DOMAIN-SUFFIX,paypal.net.cn
@@ -501,7 +523,6 @@ DOMAIN-SUFFIX,pp-soc.com
 DOMAIN-SUFFIX,ppaypal.com
 DOMAIN-SUFFIX,pplx.ai
 DOMAIN-SUFFIX,pppds.com
-DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,pypl.com
 DOMAIN-SUFFIX,pypl.info
 DOMAIN-SUFFIX,pypl.net
@@ -549,7 +570,6 @@ DOMAIN-SUFFIX,sslpaypal.org
 DOMAIN-SUFFIX,stability.ai
 DOMAIN-SUFFIX,stablediffusionweb.com
 DOMAIN-SUFFIX,stitch.withgoogle.com
-DOMAIN-SUFFIX,stripe.com
 DOMAIN-SUFFIX,sudowrite.com
 DOMAIN-SUFFIX,suno.ai
 DOMAIN-SUFFIX,supermaven.com
@@ -582,6 +602,7 @@ DOMAIN-SUFFIX,v0.dev
 DOMAIN-SUFFIX,vast.ai
 DOMAIN-SUFFIX,venmo-touch.com
 DOMAIN-SUFFIX,venmo.com
+DOMAIN-SUFFIX,venmo.info
 DOMAIN-SUFFIX,venmo.net
 DOMAIN-SUFFIX,venmo.org
 DOMAIN-SUFFIX,venmo.s3.amazonaws.com
@@ -627,5 +648,28 @@ IP-ASN,20473,no-resolve
 # IP-CIDR
 IP-CIDR,104.18.6.192/32,no-resolve
 IP-CIDR,104.18.7.192/32,no-resolve
-IP-CIDR,24.199.123.28/32,no-resolve
-IP-CIDR,64.23.132.171/32,no-resolve
+# PROCESS-NAME
+PROCESS-NAME,Antigravity Helper
+PROCESS-NAME,ChatGPT
+PROCESS-NAME,ChatGPTHelper
+PROCESS-NAME,Claude
+PROCESS-NAME,Code Helper
+PROCESS-NAME,Cursor
+PROCESS-NAME,DiffusionBee
+PROCESS-NAME,Gemini
+PROCESS-NAME,MicrosoftEdge
+PROCESS-NAME,Midjourney
+PROCESS-NAME,Perplexity
+PROCESS-NAME,VSCode
+PROCESS-NAME,antigravity helper
+PROCESS-NAME,chatgpt
+PROCESS-NAME,chatgpthelper
+PROCESS-NAME,claude
+PROCESS-NAME,code helper
+PROCESS-NAME,cursor
+PROCESS-NAME,diffusionbee
+PROCESS-NAME,gemini
+PROCESS-NAME,microsoftedge
+PROCESS-NAME,midjourney
+PROCESS-NAME,perplexity
+PROCESS-NAME,vscode

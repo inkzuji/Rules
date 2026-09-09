@@ -1,22 +1,20 @@
 # 策略: 🤖️AI
-# 规则数: 17
+# 规则数: 15
 
 # DOMAIN
-DOMAIN,api.githubcopilot.com
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,copilot-telemetry-service.githubusercontent.com
+DOMAIN,copilot-telemetry.githubusercontent.com
+DOMAIN,copilot-workspace.githubnext.com
 DOMAIN,copilot.microsoft.com
-DOMAIN,gateway.bingviz.microsoftapp.net
+DOMAIN,copilotprodattachments.blob.core.windows.net
 DOMAIN,r.bing.com
-DOMAIN,services.bingapis.com
 DOMAIN,sydney.bing.com
 DOMAIN,www.bing.com
 # DOMAIN-SUFFIX
-DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io
-DOMAIN-SUFFIX,cocopilot.org
-DOMAIN-SUFFIX,copilot-stg.com
 DOMAIN-SUFFIX,copilot.cloud.microsoft
 DOMAIN-SUFFIX,copilot.com
 DOMAIN-SUFFIX,copilot.microsoft.com
 DOMAIN-SUFFIX,edgeservices.bing.com
 DOMAIN-SUFFIX,githubcopilot.com
 DOMAIN-SUFFIX,githubnext.com
-DOMAIN-SUFFIX,microsoft-copilot.com

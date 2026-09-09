@@ -1,0 +1,173 @@
+# 合并到已有主配置；策略组名称须与主配置一致。
+rule-providers:
+  AI-Claude:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./AI/Claude.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/AI/Claude.list"
+    interval: 86400
+  AI-Copilot:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./AI/Copilot.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/AI/Copilot.list"
+    interval: 86400
+  AI-Gemini:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./AI/Gemini.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/AI/Gemini.list"
+    interval: 86400
+  AI-OpenAI:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./AI/OpenAI.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/AI/OpenAI.list"
+    interval: 86400
+  AI-Others:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./AI/Others.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/AI/Others.list"
+    interval: 86400
+  Apple:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Apple.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Apple.list"
+    interval: 86400
+  Game:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Game.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Game.list"
+    interval: 86400
+  Proxy-Cloudflare:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Cloudflare.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Cloudflare.list"
+    interval: 86400
+  Proxy-Dev:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Dev.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Dev.list"
+    interval: 86400
+  Proxy-Disney:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Disney.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Disney.list"
+    interval: 86400
+  Proxy-GitHub:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/GitHub.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/GitHub.list"
+    interval: 86400
+  Proxy-Google:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Google.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Google.list"
+    interval: 86400
+  Proxy-Microsoft:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Microsoft.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Microsoft.list"
+    interval: 86400
+  Proxy-Netflix:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Netflix.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Netflix.list"
+    interval: 86400
+  Proxy-Others:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Others.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Others.list"
+    interval: 86400
+  Proxy-Social:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Social.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Social.list"
+    interval: 86400
+  Proxy-Spotify:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Spotify.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Spotify.list"
+    interval: 86400
+  Proxy-Streaming:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Streaming.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Streaming.list"
+    interval: 86400
+  Proxy-YouTube:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/YouTube.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/YouTube.list"
+    interval: 86400
+  Bilibili:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Bilibili.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Bilibili.list"
+    interval: 86400
+  Direct:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Direct.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Direct.list"
+    interval: 86400
+
+rules:
+  - "RULE-SET,AI-Claude,🤖️AI"
+  - "RULE-SET,AI-Copilot,🤖️AI"
+  - "RULE-SET,AI-Gemini,🤖️AI"
+  - "RULE-SET,AI-OpenAI,🤖️AI"
+  - "RULE-SET,AI-Others,🤖️AI"
+  - "RULE-SET,Apple,🍎苹果"
+  - "RULE-SET,Game,🎮游戏"
+  - "RULE-SET,Proxy-Cloudflare,🚀节点选择"
+  - "RULE-SET,Proxy-Dev,🚀节点选择"
+  - "RULE-SET,Proxy-Disney,🚀节点选择"
+  - "RULE-SET,Proxy-GitHub,🚀节点选择"
+  - "RULE-SET,Proxy-Google,🚀节点选择"
+  - "RULE-SET,Proxy-Microsoft,🚀节点选择"
+  - "RULE-SET,Proxy-Netflix,🚀节点选择"
+  - "RULE-SET,Proxy-Others,🚀节点选择"
+  - "RULE-SET,Proxy-Social,🚀节点选择"
+  - "RULE-SET,Proxy-Spotify,🚀节点选择"
+  - "RULE-SET,Proxy-Streaming,🚀节点选择"
+  - "RULE-SET,Proxy-YouTube,🚀节点选择"
+  - "RULE-SET,Bilibili,📽哔哩"
+  - "RULE-SET,Direct,DIRECT"
+  - "MATCH,🐠 Final"

@@ -2,43 +2,81 @@ name: 每日更新规则集
 
 on:
   schedule:
-    - cron: '17 18 * * *'  # UTC 18:17 = 北京时间凌晨 2:17
+    - cron: '17 18 * * *'  # UTC 18:17 = 北京时间次日 02:17
   workflow_dispatch:
+  pull_request:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: update-rules
-  cancel-in-progress: true
+  contents: read
 
 jobs:
-  build:
+  check:
+    if: github.event_name == 'pull_request'
+    concurrency:
+      group: update-rules-check-${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
-      - name: 构建规则集
+      - name: Setup mihomo
         run: |
-          python3 scripts/build.py --validate
-          python3 scripts/convert_clash.py --check
+          bash scripts/setup_mihomo.sh "$RUNNER_TEMP/mihomo-bin"
+          echo "$RUNNER_TEMP/mihomo-bin" >> "$GITHUB_PATH"
+
+      - name: 测试与只读同步检查
+        run: |
+          python3 -B -m unittest discover -s scripts -p 'test_*.py'
+          python3 -B scripts/convert_clash.py --check
+
+  build:
+    if: github.event_name != 'pull_request'
+    concurrency:
+      group: update-rules-build-${{ github.ref }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Setup mihomo
+        run: |
+          bash scripts/setup_mihomo.sh "$RUNNER_TEMP/mihomo-bin"
+          echo "$RUNNER_TEMP/mihomo-bin" >> "$GITHUB_PATH"
+
+      - name: 构建与校验规则集
+        run: |
+          python3 -B -m unittest discover -s scripts -p 'test_*.py'
+          python3 -B scripts/build.py
+          python3 -B scripts/convert_clash.py --check
 
       - name: Commit & Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # 同时检测已跟踪文件的修改和新增的未跟踪文件
-          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
-            echo "无变更，跳过提交"
+          git add -- surge clash scripts/.last_count
+          if git diff --cached --quiet; then
+            echo "无产物变更，跳过提交"
             exit 0
           fi
-          git add -A
           git commit -m "chore(rules): auto update $(date -u +%F)"
           git push

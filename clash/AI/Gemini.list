@@ -1,5 +1,5 @@
 # 策略: 🤖️AI
-# 规则数: 18
+# 规则数: 21
 
 # DOMAIN
 DOMAIN,ai.google.dev
@@ -7,12 +7,14 @@ DOMAIN,alkalimakersuite-pa.clients6.google.com
 DOMAIN,generativelanguage.googleapis.com
 DOMAIN,makersuite.google.com
 # DOMAIN-KEYWORD
+DOMAIN-KEYWORD,colab
+DOMAIN-KEYWORD,developerprofiles
 DOMAIN-KEYWORD,generativelanguage
 DOMAIN-KEYWORD,generativelanguage.googleapis
 # DOMAIN-SUFFIX
 DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN-SUFFIX,apis.google.com
 DOMAIN-SUFFIX,bard.google.com
-DOMAIN-SUFFIX,bardeen.ai
 DOMAIN-SUFFIX,business.gemini.google
 DOMAIN-SUFFIX,deepmind.com
 DOMAIN-SUFFIX,deepmind.google
@@ -22,3 +24,4 @@ DOMAIN-SUFFIX,gemini.gstatic.com
 DOMAIN-SUFFIX,generativeai.google
 DOMAIN-SUFFIX,generativelanguage.googleapis.com
 DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com

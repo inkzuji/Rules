@@ -1,5 +1,5 @@
 # 策略: DIRECT
-# 规则数: 5849
+# 规则数: 5864
 
 # DOMAIN
 DOMAIN,00713915daab0be43def5c338c02c80b.dlied1.cdntips.net
@@ -262,6 +262,8 @@ DOMAIN-KEYWORD,61.241.47.
 DOMAIN-KEYWORD,61.241.49.
 DOMAIN-KEYWORD,bilibili
 DOMAIN-KEYWORD,qiyi
+DOMAIN-KEYWORD,quickconnect
+DOMAIN-KEYWORD,synology
 DOMAIN-KEYWORD,weibo
 # DOMAIN-SUFFIX
 DOMAIN-SUFFIX,0co3geye.cn
@@ -299,15 +301,20 @@ DOMAIN-SUFFIX,cctvlibrary.com.cn
 DOMAIN-SUFFIX,cctvpic.com
 DOMAIN-SUFFIX,cctvpro.cn
 DOMAIN-SUFFIX,cctvpro.com.cn
+DOMAIN-SUFFIX,checkip.dyndns.org
+DOMAIN-SUFFIX,checkip.synology.com
+DOMAIN-SUFFIX,checkipv6.dyndns.org
 DOMAIN-SUFFIX,chinalive.com
 DOMAIN-SUFFIX,cibntv.net
 DOMAIN-SUFFIX,citv.net.cn
+DOMAIN-SUFFIX,cloudstudio.work
 DOMAIN-SUFFIX,cm.fancyapi.com
 DOMAIN-SUFFIX,cmvideo.cn
 DOMAIN-SUFFIX,cnms.net.cn
 DOMAIN-SUFFIX,cntv.cn
 DOMAIN-SUFFIX,cntv.com.cn
 DOMAIN-SUFFIX,cntvwb.cn
+DOMAIN-SUFFIX,czzyvideo.com
 DOMAIN-SUFFIX,dmhmusic.com
 DOMAIN-SUFFIX,domesticmedia.com
 DOMAIN-SUFFIX,douyu.com
@@ -321,11 +328,13 @@ DOMAIN-SUFFIX,douyutv.com
 DOMAIN-SUFFIX,e8h2ty.tdum.alibaba.com
 DOMAIN-SUFFIX,edgesrv.com
 DOMAIN-SUFFIX,gamenow.club
+DOMAIN-SUFFIX,ghp.ci
 DOMAIN-SUFFIX,gitv.cn
 DOMAIN-SUFFIX,gitv.tv
 DOMAIN-SUFFIX,gjgbdszt.cn
 DOMAIN-SUFFIX,gjgbdszt.com.cn
 DOMAIN-SUFFIX,gjgbdszt.net.cn
+DOMAIN-SUFFIX,gradio.live
 DOMAIN-SUFFIX,guguyuyin.com
 DOMAIN-SUFFIX,hifuntv.com
 DOMAIN-SUFFIX,hitv.com
@@ -343,10 +352,13 @@ DOMAIN-SUFFIX,iqiyi.com
 DOMAIN-SUFFIX,iqiyiedge.com
 DOMAIN-SUFFIX,iqiyiedge.net
 DOMAIN-SUFFIX,iqiyipic.com
+DOMAIN-SUFFIX,iqiyis.com
+DOMAIN-SUFFIX,istoreos.com
 DOMAIN-SUFFIX,itc.cn
 DOMAIN-SUFFIX,ixigua.com
 DOMAIN-SUFFIX,jiangbing.cn
 DOMAIN-SUFFIX,jstucdn.com
+DOMAIN-SUFFIX,kelee.one
 DOMAIN-SUFFIX,koowo.com
 DOMAIN-SUFFIX,kugou.com
 DOMAIN-SUFFIX,kumiao.com
@@ -370,6 +382,7 @@ DOMAIN-SUFFIX,music.163.com
 DOMAIN-SUFFIX,music.qq.com
 DOMAIN-SUFFIX,music.tc.qq.com
 DOMAIN-SUFFIX,ns6mitkxo.cn
+DOMAIN-SUFFIX,ntp.org
 DOMAIN-SUFFIX,olympicchannelchina.cn
 DOMAIN-SUFFIX,oywtv.com
 DOMAIN-SUFFIX,p-bstarstatic.akamaized.net
@@ -400,6 +413,7 @@ DOMAIN-SUFFIX,sogoodtech1.cn
 DOMAIN-SUFFIX,sohu.com
 DOMAIN-SUFFIX,sohu.com.cn
 DOMAIN-SUFFIX,soku.com
+DOMAIN-SUFFIX,speedtest.cn
 DOMAIN-SUFFIX,suike.cn
 DOMAIN-SUFFIX,taihe.com
 DOMAIN-SUFFIX,tazai.com
@@ -5826,6 +5840,8 @@ IP-CIDR6,::ffff:58.58.0.90/128,no-resolve
 IP-CIDR6,::ffff:60.171.183.161/128,no-resolve
 IP-CIDR6,::ffff:60.171.183.186/128,no-resolve
 IP-CIDR6,::ffff:60.171.183.98/128,no-resolve
+# PROCESS-NAME
+PROCESS-NAME,zerotier-one
 # USER-AGENT
 USER-AGENT,%e4%bc%98%e9%85%b7*
 USER-AGENT,%e5%92%aa%e5%92%95%e8%a7%86%e9%a2%91

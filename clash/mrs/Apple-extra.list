@@ -1,0 +1,35 @@
+# 策略: 🍎苹果
+# 规则数: 30
+
+# DOMAIN-KEYWORD
+DOMAIN-KEYWORD,12diasderegalosdeitunes
+DOMAIN-KEYWORD,apple
+DOMAIN-KEYWORD,apple-dns
+DOMAIN-KEYWORD,applecare
+DOMAIN-KEYWORD,applecomputer
+DOMAIN-KEYWORD,appleid
+DOMAIN-KEYWORD,applemusic
+DOMAIN-KEYWORD,appleone
+DOMAIN-KEYWORD,applepay
+DOMAIN-KEYWORD,applepaycash
+DOMAIN-KEYWORD,applepaysupplies
+DOMAIN-KEYWORD,applestore
+DOMAIN-KEYWORD,applewatch
+DOMAIN-KEYWORD,appstore
+DOMAIN-KEYWORD,beats1
+DOMAIN-KEYWORD,dvdstudiopro
+DOMAIN-KEYWORD,ibook
+DOMAIN-KEYWORD,icloud
+DOMAIN-KEYWORD,ipadair
+DOMAIN-KEYWORD,iphoto
+DOMAIN-KEYWORD,itunesradio
+DOMAIN-KEYWORD,macbookair
+DOMAIN-KEYWORD,macbookpro
+DOMAIN-KEYWORD,quicktime
+DOMAIN-KEYWORD,researchkit
+DOMAIN-KEYWORD,tv.apple
+DOMAIN-KEYWORD,webobjects
+# PROCESS-NAME
+PROCESS-NAME,netbiosd
+PROCESS-NAME,storedownloadd
+PROCESS-NAME,trustd
