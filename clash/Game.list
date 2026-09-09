@@ -1,5 +1,5 @@
 # 策略: 🎮游戏
-# 规则数: 906
+# 规则数: 931
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,garena
@@ -45,6 +45,7 @@ DOMAIN-SUFFIX,4399.cn
 DOMAIN-SUFFIX,4399.com
 DOMAIN-SUFFIX,4399.net
 DOMAIN-SUFFIX,4399api.com
+DOMAIN-SUFFIX,4399api.net
 DOMAIN-SUFFIX,4399biule.com
 DOMAIN-SUFFIX,4399dmw.com
 DOMAIN-SUFFIX,4399er.com
@@ -97,6 +98,7 @@ DOMAIN-SUFFIX,awayoutgame.com
 DOMAIN-SUFFIX,ayudanintendo.com
 DOMAIN-SUFFIX,battle.net
 DOMAIN-SUFFIX,battlebreakers.com
+DOMAIN-SUFFIX,battlecare.net
 DOMAIN-SUFFIX,battlefield.com
 DOMAIN-SUFFIX,battlefield1943.com
 DOMAIN-SUFFIX,battlefield3.com
@@ -108,6 +110,7 @@ DOMAIN-SUFFIX,battlefieldv.com
 DOMAIN-SUFFIX,battlefront2.com
 DOMAIN-SUFFIX,battlefrontii.com
 DOMAIN-SUFFIX,battlelog.com
+DOMAIN-SUFFIX,bcfmglobal.com
 DOMAIN-SUFFIX,bejeweledstars.com
 DOMAIN-SUFFIX,bejewled-stars.com
 DOMAIN-SUFFIX,benefitsforeveryworld.com
@@ -157,6 +160,7 @@ DOMAIN-SUFFIX,capturingreality.com
 DOMAIN-SUFFIX,cbjq.com
 DOMAIN-SUFFIX,cdncl.net
 DOMAIN-SUFFIX,cgyouxi.com
+DOMAIN-SUFFIX,championshipseriesleague.com
 DOMAIN-SUFFIX,changyou.com
 DOMAIN-SUFFIX,chillingo.com
 DOMAIN-SUFFIX,chunkbase.com
@@ -177,6 +181,7 @@ DOMAIN-SUFFIX,crossout.net
 DOMAIN-SUFFIX,crsed.net
 DOMAIN-SUFFIX,crysis.jp
 DOMAIN-SUFFIX,csgo.com.cn
+DOMAIN-SUFFIX,csgo.wmsj.cn
 DOMAIN-SUFFIX,cubicmotion.com
 DOMAIN-SUFFIX,cubicodyssey.game
 DOMAIN-SUFFIX,curseforge.com
@@ -210,6 +215,7 @@ DOMAIN-SUFFIX,donkeykongcountryreturns.com
 DOMAIN-SUFFIX,doom.com
 DOMAIN-SUFFIX,dota2.com
 DOMAIN-SUFFIX,dota2.com.cn
+DOMAIN-SUFFIX,dota2.wmsj.cn
 DOMAIN-SUFFIX,dragonage.com
 DOMAIN-SUFFIX,dragonagekeep.com
 DOMAIN-SUFFIX,dragonagemovie.com
@@ -277,6 +283,7 @@ DOMAIN-SUFFIX,fireemblemawakening.com
 DOMAIN-SUFFIX,firesidegatherings.com
 DOMAIN-SUFFIX,fitgirl-repacks.site
 DOMAIN-SUFFIX,flightsimulator.com
+DOMAIN-SUFFIX,flipnotestudio.com
 DOMAIN-SUFFIX,forevernine.com
 DOMAIN-SUFFIX,forgecdn.net
 DOMAIN-SUFFIX,fortnite-vod.akamaized.net
@@ -304,6 +311,7 @@ DOMAIN-SUFFIX,gamesplanet.com
 DOMAIN-SUFFIX,gametap.com
 DOMAIN-SUFFIX,garenanow.com
 DOMAIN-SUFFIX,gcloudcs.com
+DOMAIN-SUFFIX,gcloudcstest.com
 DOMAIN-SUFFIX,gcloudcstestonly.com
 DOMAIN-SUFFIX,gclouddolphin.com
 DOMAIN-SUFFIX,gcloudsdk.com
@@ -592,6 +600,7 @@ DOMAIN-SUFFIX,pokemonsunmoon.com
 DOMAIN-SUFFIX,pokemonswordshield.com
 DOMAIN-SUFFIX,pokemonultrasunmoon.com
 DOMAIN-SUFFIX,pokemonvgc.com
+DOMAIN-SUFFIX,pokemonwifi.net
 DOMAIN-SUFFIX,popcap.com
 DOMAIN-SUFFIX,priconne-redive.jp
 DOMAIN-SUFFIX,prismlauncher.org
@@ -606,6 +615,9 @@ DOMAIN-SUFFIX,pvp.net
 DOMAIN-SUFFIX,pvp.tv
 DOMAIN-SUFFIX,pvzgw2.com
 DOMAIN-SUFFIX,pvzheroes.com
+DOMAIN-SUFFIX,qq163.com
+DOMAIN-SUFFIX,qq163.net
+DOMAIN-SUFFIX,qqgameapp.com
 DOMAIN-SUFFIX,quiltmc.org
 DOMAIN-SUFFIX,quixel.com
 DOMAIN-SUFFIX,quixel.se
@@ -658,6 +670,7 @@ DOMAIN-SUFFIX,sccreator.cn
 DOMAIN-SUFFIX,sccreators.cn
 DOMAIN-SUFFIX,scescdn.cn
 DOMAIN-SUFFIX,scid.cn
+DOMAIN-SUFFIX,scsentry.cn
 DOMAIN-SUFFIX,sdo.com
 DOMAIN-SUFFIX,seagroup.com
 DOMAIN-SUFFIX,seaofsolitude.com
@@ -699,6 +712,7 @@ DOMAIN-SUFFIX,squadbusters.com
 DOMAIN-SUFFIX,ssx3.com
 DOMAIN-SUFFIX,st.dl.bscstorage.net
 DOMAIN-SUFFIX,st.dl.eccdnx.com
+DOMAIN-SUFFIX,st.dl.pinyuncloud.com
 DOMAIN-SUFFIX,star-conflict.com
 DOMAIN-SUFFIX,starcraft.com
 DOMAIN-SUFFIX,starcraft2.com
@@ -720,8 +734,10 @@ DOMAIN-SUFFIX,steamdeck.com
 DOMAIN-SUFFIX,steamgames.com
 DOMAIN-SUFFIX,steaminventoryhelper.com
 DOMAIN-SUFFIX,steampowered.com
+DOMAIN-SUFFIX,steampowered.com.8686c.com
 DOMAIN-SUFFIX,steamserver.net
 DOMAIN-SUFFIX,steamstatic.com
+DOMAIN-SUFFIX,steamstatic.com.8686c.com
 DOMAIN-SUFFIX,steamunlocked.net
 DOMAIN-SUFFIX,steamusercontent.com
 DOMAIN-SUFFIX,stellasora.global
@@ -753,8 +769,10 @@ DOMAIN-SUFFIX,syxlgame.com
 DOMAIN-SUFFIX,take2games.com
 DOMAIN-SUFFIX,tanwan.com
 DOMAIN-SUFFIX,tarkov.com
+DOMAIN-SUFFIX,tcfmglobal.com
 DOMAIN-SUFFIX,teamneedforspeed.com
 DOMAIN-SUFFIX,tellmewhygame.com
+DOMAIN-SUFFIX,tencent-gcloud.com
 DOMAIN-SUFFIX,tencentstart.com
 DOMAIN-SUFFIX,testplus.cn
 DOMAIN-SUFFIX,texasholdemcup.cn
@@ -763,6 +781,7 @@ DOMAIN-SUFFIX,texasholdemcup.net
 DOMAIN-SUFFIX,tgpro.top
 DOMAIN-SUFFIX,tgprocs.net
 DOMAIN-SUFFIX,thedreadwolfrises.com
+DOMAIN-SUFFIX,thelegendarystarfy.com
 DOMAIN-SUFFIX,themisweeps.com
 DOMAIN-SUFFIX,thesims.com
 DOMAIN-SUFFIX,thesims3.com
@@ -787,8 +806,10 @@ DOMAIN-SUFFIX,twyxh.com
 DOMAIN-SUFFIX,ubi.com
 DOMAIN-SUFFIX,ubisoft.com
 DOMAIN-SUFFIX,ubisoftconnect.com
+DOMAIN-SUFFIX,ulol.com
 DOMAIN-SUFFIX,ultimaforever.com
 DOMAIN-SUFFIX,ultimaonline.com
+DOMAIN-SUFFIX,umamusume.akamaized.net
 DOMAIN-SUFFIX,underlords.com
 DOMAIN-SUFFIX,unravel2.com
 DOMAIN-SUFFIX,unraveltwo.com
@@ -810,11 +831,13 @@ DOMAIN-SUFFIX,wanwan4399.com
 DOMAIN-SUFFIX,wargaming.com
 DOMAIN-SUFFIX,wargaming.net
 DOMAIN-SUFFIX,wariolandshakeit.com
+DOMAIN-SUFFIX,wariowarediy.com
 DOMAIN-SUFFIX,warnerbrosgames.com
 DOMAIN-SUFFIX,warthunder.com
 DOMAIN-SUFFIX,wbagora.com
 DOMAIN-SUFFIX,wbgames.com
 DOMAIN-SUFFIX,wbinsights.com
+DOMAIN-SUFFIX,wcbygame.com
 DOMAIN-SUFFIX,we4399.com
 DOMAIN-SUFFIX,webgame163.com
 DOMAIN-SUFFIX,wegame.com
@@ -825,6 +848,7 @@ DOMAIN-SUFFIX,wgcdn.co
 DOMAIN-SUFFIX,wgcrowd.io
 DOMAIN-SUFFIX,wii-u.com
 DOMAIN-SUFFIX,wiifit.com
+DOMAIN-SUFFIX,wiifitu.com
 DOMAIN-SUFFIX,wiipartyu.com
 DOMAIN-SUFFIX,wiisports.com
 DOMAIN-SUFFIX,wiisportsresort.com
@@ -835,6 +859,7 @@ DOMAIN-SUFFIX,wmsj.cn
 DOMAIN-SUFFIX,wmsjsteam.com
 DOMAIN-SUFFIX,wmupd.com
 DOMAIN-SUFFIX,wo1wan.com
+DOMAIN-SUFFIX,worldflipper.akamaized.net
 DOMAIN-SUFFIX,worldflipper.jp
 DOMAIN-SUFFIX,worldoftanks.com
 DOMAIN-SUFFIX,worldoftanks.eu

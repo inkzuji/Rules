@@ -1,0 +1,51 @@
+# 策略: 🤖️AI
+# 规则数: 45
+
+# DOMAIN-KEYWORD
+DOMAIN-KEYWORD,antigravity
+DOMAIN-KEYWORD,bedrock
+DOMAIN-KEYWORD,bedrock-runtime
+DOMAIN-KEYWORD,chatgpt-async-webps
+DOMAIN-KEYWORD,colab
+DOMAIN-KEYWORD,developerprofiles
+DOMAIN-KEYWORD,diabrowser
+DOMAIN-KEYWORD,generativeai
+DOMAIN-KEYWORD,generativelanguage
+DOMAIN-KEYWORD,generativelanguage.googleapis
+DOMAIN-KEYWORD,labs.google
+DOMAIN-KEYWORD,notebooklm.google
+DOMAIN-KEYWORD,openai
+DOMAIN-KEYWORD,openai-proxy
+DOMAIN-KEYWORD,openaiapi
+DOMAIN-KEYWORD,openaicom
+DOMAIN-KEYWORD,openaicom-api
+DOMAIN-KEYWORD,paypal
+DOMAIN-KEYWORD,stripe
+# IP-ASN
+IP-ASN,14061,no-resolve
+IP-ASN,20473,no-resolve
+# PROCESS-NAME
+PROCESS-NAME,Antigravity Helper
+PROCESS-NAME,ChatGPT
+PROCESS-NAME,ChatGPTHelper
+PROCESS-NAME,Claude
+PROCESS-NAME,Code Helper
+PROCESS-NAME,Cursor
+PROCESS-NAME,DiffusionBee
+PROCESS-NAME,Gemini
+PROCESS-NAME,MicrosoftEdge
+PROCESS-NAME,Midjourney
+PROCESS-NAME,Perplexity
+PROCESS-NAME,VSCode
+PROCESS-NAME,antigravity helper
+PROCESS-NAME,chatgpt
+PROCESS-NAME,chatgpthelper
+PROCESS-NAME,claude
+PROCESS-NAME,code helper
+PROCESS-NAME,cursor
+PROCESS-NAME,diffusionbee
+PROCESS-NAME,gemini
+PROCESS-NAME,microsoftedge
+PROCESS-NAME,midjourney
+PROCESS-NAME,perplexity
+PROCESS-NAME,vscode

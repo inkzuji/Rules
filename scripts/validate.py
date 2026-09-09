@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 """
-DoH 失效域名校验：对 surge/ 下所有 DOMAIN/DOMAIN-SUFFIX 规则做 NXDOMAIN 检测并清理
+可选 DoH 诊断：对 DOMAIN / DOMAIN-SUFFIX 查询，只报告疑似 NXDOMAIN，不修改规则。
 
-判定标准（保守）：3 次查询中 >=2 次 NXDOMAIN 且无成功解析才移除；
-SERVFAIL/超时等异常保留。仅输出移除数量，不生成移除清单文件。
+连续查询至少两次 NXDOMAIN 且无其他错误时标记；DNS 结果不是删除规则的依据。
 """
+import argparse
 import concurrent.futures
 import glob
 import json
 import os
 import time
+import urllib.parse
 import urllib.request
+
+from rules import parse_rules
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RULES_DIR = os.path.join(ROOT, 'surge')
@@ -19,7 +22,8 @@ WORKERS = 24
 
 
 def doh(name):
-    req = urllib.request.Request(f'{DOH}?name={name}&type=A', headers={'accept': 'application/dns-json'})
+    query = urllib.parse.urlencode({'name': name, 'type': 'A'})
+    req = urllib.request.Request(f'{DOH}?{query}', headers={'accept': 'application/dns-json'})
     with urllib.request.urlopen(req, timeout=10) as r:
         return json.loads(r.read())
 
@@ -42,12 +46,15 @@ def check(name):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--rules-dir', default=RULES_DIR, help='只读诊断的规则目录')
+    args = ap.parse_args()
     domains = set()
-    for f in glob.glob(os.path.join(RULES_DIR, '**', '*.list'), recursive=True):
-        for l in open(f, encoding='utf-8'):
-            s = l.strip()
-            if s.startswith(('DOMAIN,', 'DOMAIN-SUFFIX,')):
-                domains.add(s.split(',')[1].lower())
+    for f in glob.glob(os.path.join(args.rules_dir, '**', '*.list'), recursive=True):
+        with open(f, encoding='utf-8') as source:
+            for typ, value, _ in parse_rules(source.read(), source=f):
+                if typ in {'DOMAIN', 'DOMAIN-SUFFIX'}:
+                    domains.add(value)
     print(f'校验唯一域名: {len(domains)}', flush=True)
 
     res = {'alive': 0, 'dead': [], 'error': 0}
@@ -64,40 +71,9 @@ def main():
     dead = set(res['dead'])
     print(f"alive={res['alive']} dead={len(dead)} error={res['error']}")
 
-    # 清理 + 统计
-    removed = 0
-    for f in sorted(glob.glob(os.path.join(RULES_DIR, '**', '*.list'), recursive=True)):
-        lines = open(f, encoding='utf-8').read().splitlines()
-        header_i = next((i for i, l in enumerate(lines) if l.startswith('# 规则数')), None)
-        if header_i is None:
-            continue
-        body = [l for l in lines[header_i + 1:] if l.strip() and not l.startswith('#')]
-        kept = []
-        for s in body:
-            parts = s.split(',')
-            if parts[0] in ('DOMAIN', 'DOMAIN-SUFFIX') and parts[1].lower() in dead:
-                removed += 1
-                continue
-            kept.append(s)
-        if len(kept) == len(body):
-            continue
-        kept.sort(key=lambda x: (x.split(',')[0], x.split(',')[1].lower() if ',' in x else ''))
-        with open(f, 'w', encoding='utf-8') as out:
-            for h in lines[:header_i + 1]:
-                out.write(f'# 规则数: {len(kept)}\n' if h.startswith('# 规则数') else h + '\n')
-            out.write('\n')
-            cur = None
-            for s in kept:
-                typ = s.split(',')[0]
-                if typ != cur:
-                    cur = typ
-                    out.write(f'# {typ}\n')
-                out.write(s + '\n')
-
-    if removed:
-        print(f'移除 {removed} 条')
-    else:
-        print('无失效规则')
+    for name in sorted(dead):
+        print(f'疑似 NXDOMAIN（规则保留）: {name}')
+    print('诊断完成；未修改任何规则。')
 
 
 if __name__ == '__main__':
