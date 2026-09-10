@@ -161,7 +161,7 @@ def generate(surge_dir, mihomo='mihomo'):
     if not mihomo:
         raise ValueError('缺少 mihomo，请安装固定版本或使用 --mihomo 指定路径')
     version = run_mihomo(mihomo, '-v')
-    if f'Meta {MIHOMO_VERSION} ' not in version:
+    if not any(f'Meta {prefix}{MIHOMO_VERSION} ' in version for prefix in ('', 'v')):
         raise ValueError(f'构建需要 mihomo {MIHOMO_VERSION}，实际: {version.strip()}')
     files = sorted(Path(surge_dir).rglob('*.list'))
     if not files:
