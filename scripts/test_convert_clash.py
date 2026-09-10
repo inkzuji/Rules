@@ -56,6 +56,28 @@ IP-CIDR,192.0.2.7/24,no-resolve
 
 
 class ArtifactTests(unittest.TestCase):
+    def test_generate_accepts_pinned_version_with_optional_v_prefix(self):
+        source = Path(tempfile.mkdtemp(prefix='rules-version-test-'))
+        for version in ('Mihomo Meta v1.19.30 linux amd64 with go1.26.0\n',
+                        'Mihomo Meta 1.19.30 darwin amd64 with go1.26.0\n'):
+            with self.subTest(version=version), \
+                 mock.patch('convert_clash.shutil.which', return_value='/mock/mihomo'), \
+                 mock.patch('convert_clash.run_mihomo', return_value=version) as run, \
+                 self.assertRaisesRegex(ValueError, '缺少 Surge 源规则'):
+                convert_clash.generate(source)
+            run.assert_called_once_with('/mock/mihomo', '-v')
+
+    def test_generate_rejects_other_versions_and_version_suffixes(self):
+        source = Path(tempfile.mkdtemp(prefix='rules-version-test-'))
+        for version in ('1.19.29', '1.19.300', '1.19.30-rc.1'):
+            for prefix in ('', 'v'):
+                with self.subTest(version=version, prefix=prefix), \
+                     mock.patch('convert_clash.shutil.which', return_value='/mock/mihomo'), \
+                     mock.patch('convert_clash.run_mihomo', return_value=f'Mihomo Meta {prefix}{version} linux amd64\n') as run, \
+                     self.assertRaisesRegex(ValueError, r'构建需要 mihomo 1\.19\.30'):
+                    convert_clash.generate(source)
+                run.assert_called_once_with('/mock/mihomo', '-v')
+
     def test_retirement_failure_restores_previously_moved_files(self):
         root = Path(tempfile.mkdtemp(prefix='rules-retire-failure-'))
         output = root / 'clash'
