@@ -56,6 +56,35 @@ IP-CIDR,192.0.2.7/24,no-resolve
 
 
 class ArtifactTests(unittest.TestCase):
+    def test_actions_retirement_deletes_only_managed_files_and_check_is_readonly(self):
+        root = Path(tempfile.mkdtemp(prefix='rules-actions-test-'))
+        output = root / 'clash'
+        stale = output / 'mrs/Direct-ip.mrs'
+        stale.parent.mkdir(parents=True)
+        stale.write_bytes(b'old mrs')
+        artifacts = {'mrs/Direct-extra.list': b'IP-ASN,64512\n'}
+        # 本机测试模拟 unlink 的目录移除效果，保留夹具，避免永久删除。
+        with mock.patch.dict(convert_clash.os.environ, {'GITHUB_ACTIONS': 'true'}), \
+             mock.patch.object(Path, 'unlink', autospec=True,
+                               side_effect=lambda path: path.rename(root / 'removed-fixture')) as unlink, \
+             mock.patch.object(convert_clash, 'trash_file') as trash:
+            with self.assertRaisesRegex(ValueError, 'Direct-ip.mrs'):
+                convert_clash.publish(artifacts, output, check=True)
+            unlink.assert_not_called()
+            self.assertEqual(stale.read_bytes(), b'old mrs')
+            unknown = output / 'unknown.mrs'
+            unknown.write_bytes(b'unknown')
+            with self.assertRaisesRegex(ValueError, '未知的多余产物'):
+                convert_clash.publish(artifacts, output)
+            unlink.assert_not_called()
+            unknown.rename(root / 'unknown-fixture')
+            convert_clash.publish(artifacts, output)
+            unlink.assert_called_once_with(stale)
+            trash.assert_not_called()
+            self.assertFalse(stale.exists())
+            self.assertEqual((output / 'mrs/Direct-extra.list').read_bytes(), artifacts['mrs/Direct-extra.list'])
+            convert_clash.publish(artifacts, output, check=True)
+
     def test_generate_accepts_pinned_version_with_optional_v_prefix(self):
         source = Path(tempfile.mkdtemp(prefix='rules-version-test-'))
         for version in ('Mihomo Meta v1.19.30 linux amd64 with go1.26.0\n',
@@ -94,7 +123,7 @@ class ArtifactTests(unittest.TestCase):
             return original(path)
 
         with mock.patch.object(convert_clash.sys, 'platform', 'linux'), \
-             mock.patch.dict(convert_clash.os.environ, {'XDG_DATA_HOME': str(root / 'data')}), \
+             mock.patch.dict(convert_clash.os.environ, {'XDG_DATA_HOME': str(root / 'data'), 'GITHUB_ACTIONS': 'false'}), \
              mock.patch.object(convert_clash, 'trash_file', side_effect=fail_second), \
              self.assertRaisesRegex(OSError, 'simulated move failure'):
             convert_clash.publish({'mrs.yaml': b'new'}, output)
@@ -110,7 +139,7 @@ class ArtifactTests(unittest.TestCase):
         stale.write_bytes(b'old mrs')
         artifacts = {'mrs/Direct-extra.list': b'IP-ASN,64512\n'}
         with mock.patch.object(convert_clash.sys, 'platform', 'linux'), \
-             mock.patch.dict(convert_clash.os.environ, {'XDG_DATA_HOME': str(root / 'data')}):
+             mock.patch.dict(convert_clash.os.environ, {'XDG_DATA_HOME': str(root / 'data'), 'GITHUB_ACTIONS': 'false'}):
             with self.assertRaisesRegex(ValueError, 'Direct-ip.mrs'):
                 convert_clash.publish(artifacts, output, check=True)
             self.assertTrue(stale.exists())

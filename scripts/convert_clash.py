@@ -295,6 +295,20 @@ def retire_stale(artifacts, out_dir):
     for path in paths:
         if path.is_symlink() or not path.is_file():
             raise ValueError(f'不能自动退役非普通文件: {path}')
+    if os.environ.get('GITHUB_ACTIONS') == 'true':
+        backups = {path: path.read_bytes() for path in paths}
+        deleted = []
+        try:
+            for path in paths:
+                path.unlink()
+                deleted.append(path)
+        except OSError:
+            for path in reversed(deleted):
+                path.write_bytes(backups[path])
+            raise
+        for path in deleted:
+            print(f'已删除退役产物: {path}')
+        return
     moved = []
     try:
         for path in paths:
@@ -306,11 +320,11 @@ def retire_stale(artifacts, out_dir):
 
 
 def publish(artifacts, out_dir, check=False):
-    """检查模式严格只读；写入前将已知退役产物移入废纸篓。"""
+    """检查模式严格只读；写入前退役旧产物，Actions 直接删除，本机移入废纸篓。"""
     directory = Path(out_dir)
     stale = preflight(artifacts, directory)
     if check and stale:
-        raise ValueError(f'{directory}: 多余产物，请先移入系统废纸篓: {stale}')
+        raise ValueError(f'{directory}: 多余产物，请先运行构建退役: {stale}')
     dirty = [relative for relative, content in artifacts.items()
              if not (directory / relative).is_file() or (directory / relative).read_bytes() != content]
     if check:
