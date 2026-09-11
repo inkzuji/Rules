@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 18580
+# 规则数: 18581
 
 # DOMAIN
 DOMAIN,bybit.ada.support
@@ -13270,6 +13270,7 @@ DOMAIN-SUFFIX,qtcard.futunn.com
 DOMAIN-SUFFIX,qtcardfthk.futufin.com
 DOMAIN-SUFFIX,qtlcdn.com
 DOMAIN-SUFFIX,qtrac.eu
+DOMAIN-SUFFIX,quakemachinex.com
 DOMAIN-SUFFIX,qualcomm-email.com
 DOMAIN-SUFFIX,qualcomm-inc.com
 DOMAIN-SUFFIX,qualcommhalo.com
