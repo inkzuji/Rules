@@ -200,9 +200,36 @@ class BuildTests(unittest.TestCase):
         with mock.patch.object(build, 'fetch', return_value='DOMAIN,new.example\n'), \
              mock.patch.object(build.convert_clash, 'generate', return_value={'Direct.list': b'new'}), \
              mock.patch.object(build.convert_clash.sys, 'platform', 'darwin'), \
+             mock.patch.dict(build.os.environ, {'GITHUB_ACTIONS': 'false'}), \
              mock.patch.object(Path, 'home', return_value=root / 'missing-home'), \
              self.assertRaisesRegex(ValueError, '废纸篓不可用'):
             build.build(surge, clash, count, source_list=[('fake', 'DIRECT', 'Direct')])
+        self.assertEqual(self.snapshot(root), before)
+
+    def test_actions_delete_failure_restores_files_and_preserves_trees_and_count(self):
+        root, surge, clash, count = self.prepare_outputs()
+        (clash / 'mrs').mkdir()
+        for name in ('AI', 'Apple'):
+            (clash / f'mrs/{name}-ip.mrs').write_bytes(name.encode())
+        before = self.snapshot(root)
+        retained = Path(tempfile.mkdtemp(prefix='rules-actions-deleted-fixture-'))
+        calls = []
+
+        def fail_second(path):
+            calls.append(path)
+            if len(calls) == 2:
+                raise OSError('simulated delete failure')
+            path.rename(retained / path.name)
+
+        with mock.patch.dict(build.os.environ, {'GITHUB_ACTIONS': 'true'}), \
+             mock.patch.object(build, 'fetch', return_value='DOMAIN,new.example\n'), \
+             mock.patch.object(build.convert_clash, 'generate', return_value={'Direct.list': b'new'}), \
+             mock.patch.object(Path, 'unlink', autospec=True, side_effect=fail_second), \
+             mock.patch.object(build.convert_clash, 'trash_file') as trash, \
+             self.assertRaisesRegex(OSError, 'simulated delete failure'):
+            build.build(surge, clash, count, source_list=[('fake', 'DIRECT', 'Direct')])
+        self.assertEqual(len(calls), 2)
+        trash.assert_not_called()
         self.assertEqual(self.snapshot(root), before)
 
     def test_surge_does_not_retire_clash_named_files(self):
@@ -227,7 +254,7 @@ class BuildTests(unittest.TestCase):
         original = stale.read_bytes()
         with mock.patch.object(build, 'fetch', return_value=first + 'IP-ASN,64512\n'), \
              mock.patch.object(build.convert_clash.sys, 'platform', 'linux'), \
-             mock.patch.dict(build.os.environ, {'XDG_DATA_HOME': str(root / 'data')}), \
+             mock.patch.dict(build.os.environ, {'XDG_DATA_HOME': str(root / 'data'), 'GITHUB_ACTIONS': 'false'}), \
              contextlib.redirect_stdout(io.StringIO()):
             for _ in range(2):
                 build.build(surge, clash, count, source_list=[('fake', 'DIRECT', 'Direct')])

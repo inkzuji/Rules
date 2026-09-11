@@ -111,7 +111,7 @@ python3 -B scripts/convert_clash.py --check
 - `scripts/convert_clash.py --check` 在临时目录重建并比对文本、MRS 及引用片段，检查缺失、多余和内容差异，不修改仓库。未找到 mihomo 或转换失败返回非零退出码。明确的主题来源可纠正历史分类，聚合来源更新参数时保留历史细分归属。
 - 原生校验使用隔离配置和空 MMDB stub，逐条检查规则语法、provider 引用及 MRS 覆盖，不下载真实地理数据库；不验证 ASN/GEOIP 的实际归属或真实代理流量。stub 不进入发布文件。
 - `scripts/validate.py` 为可选的 DNS 诊断，只报告，不删规则；每日构建不执行 DNS 检查。上游移除和 DNS 查询失败都不会自动删除历史规则。
-- 生成和原生校验成功后，自动将不再需要的六策略 MRS 及配套文本移入系统废纸篓（macOS `~/.Trash`，Linux XDG Trash，保留恢复信息）；多文件退役失败时恢复已移动文件。未知产物或废纸篓不可用会阻断构建，`--check` 始终只读。
+- 生成和原生校验成功后，自动退役不再需要的六策略 MRS 及配套文本：GitHub Actions（`GITHUB_ACTIONS=true`）直接删除，本机移入系统废纸篓（macOS `~/.Trash`，Linux XDG Trash，保留恢复信息）；多文件退役失败时恢复已处理文件。未知产物或退役失败会阻断构建，`--check` 始终只读。
 - `.github/workflows/update-rules.yml` 保留每日 UTC 18:17（北京时间次日 02:17）和手动构建，同一分支的更新任务串行执行，排队后检出最新分支。CI 下载官方固定版本并验证锁定的 SHA-256，成功后仅提交 `surge/`、`clash/` 和 `scripts/.last_count`。
 - Pull request 运行测试和只读同步检查，仅授予读取权限，不抓取更新上游、不提交和推送。
 

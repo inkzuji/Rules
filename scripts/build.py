@@ -225,7 +225,7 @@ def build(surge_dir=OUT_DIR, clash_dir=None, count_path=None, mihomo='mihomo', v
     reject_stale(surge, surge_dir)
     convert_clash.preflight(surge, surge_dir)
     convert_clash.preflight(clash, clash_dir)
-    # 先退役旧配套文件；废纸篓不可用时，尚未更新任一规则树与计数。
+    # 先退役旧配套文件；退役失败时，尚未更新任一规则树与计数。
     convert_clash.retire_stale(clash, clash_dir)
     # 只有全部来源、转换、原生验证和目标预检均成功，才开始更新仓库。
     convert_clash.publish(surge, surge_dir)
