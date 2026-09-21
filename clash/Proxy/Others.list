@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 18579
+# 规则数: 18581
 
 # DOMAIN
 DOMAIN,bybit.ada.support
@@ -3817,6 +3817,7 @@ DOMAIN-SUFFIX,chinesedemocracy.com
 DOMAIN-SUFFIX,chinesegay.org
 DOMAIN-SUFFIX,chinesen.de
 DOMAIN-SUFFIX,chinesenews.net.au
+DOMAIN-SUFFIX,chineseposters.net
 DOMAIN-SUFFIX,chineseradioseattle.com
 DOMAIN-SUFFIX,chinesespanking.com
 DOMAIN-SUFFIX,chineseupress.com
@@ -11672,6 +11673,7 @@ DOMAIN-SUFFIX,nordvpn.com
 DOMAIN-SUFFIX,norsk.mobi
 DOMAIN-SUFFIX,norton.com
 DOMAIN-SUFFIX,nos.nl
+DOMAIN-SUFFIX,note.com
 DOMAIN-SUFFIX,noticias-rt.com
 DOMAIN-SUFFIX,notimundo.press
 DOMAIN-SUFFIX,notion-static.com
