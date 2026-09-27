@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 848
+# 规则数: 849
 
 # DOMAIN
 DOMAIN,api.imem.app
@@ -565,6 +565,7 @@ DOMAIN-SUFFIX,telegramdownload.com
 DOMAIN-SUFFIX,telesco.pe
 DOMAIN-SUFFIX,tellapart.com
 DOMAIN-SUFFIX,terragraph.com
+DOMAIN-SUFFIX,tfbnw.net
 DOMAIN-SUFFIX,tg.dev
 DOMAIN-SUFFIX,thefacebook.com
 DOMAIN-SUFFIX,thefacebook.net

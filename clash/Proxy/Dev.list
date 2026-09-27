@@ -1,8 +1,9 @@
 # 策略: 🚀节点选择
-# 规则数: 418
+# 规则数: 421
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,atlassian
+DOMAIN-KEYWORD,firebase
 DOMAIN-KEYWORD,jetbrains
 DOMAIN-KEYWORD,linux
 DOMAIN-KEYWORD,mozilla
@@ -60,6 +61,7 @@ DOMAIN-SUFFIX,clojure.org
 DOMAIN-SUFFIX,cnpmjs.org
 DOMAIN-SUFFIX,codeberg.org
 DOMAIN-SUFFIX,codeberg.page
+DOMAIN-SUFFIX,codebuff.com
 DOMAIN-SUFFIX,codeforaliving.io
 DOMAIN-SUFFIX,compass.is
 DOMAIN-SUFFIX,componentkit.org
@@ -135,6 +137,7 @@ DOMAIN-SUFFIX,framercanvas.com
 DOMAIN-SUFFIX,framerstatic.com
 DOMAIN-SUFFIX,framerusercontent.com
 DOMAIN-SUFFIX,freebsd.org
+DOMAIN-SUFFIX,freebuff.com
 DOMAIN-SUFFIX,frescolib.org
 DOMAIN-SUFFIX,fury.blog
 DOMAIN-SUFFIX,fury.co

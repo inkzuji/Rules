@@ -1,5 +1,5 @@
 # 策略: 🤖️AI
-# 规则数: 694
+# 规则数: 696
 
 # DOMAIN
 DOMAIN,ai.azure.com
@@ -212,6 +212,7 @@ DOMAIN-SUFFIX,fireflies.ai
 DOMAIN-SUFFIX,fireworks.ai
 DOMAIN-SUFFIX,fliki.ai
 DOMAIN-SUFFIX,flow.google
+DOMAIN-SUFFIX,flow.google.com
 DOMAIN-SUFFIX,fundpaypal.com
 DOMAIN-SUFFIX,gamma.app
 DOMAIN-SUFFIX,gateway.ai.cloudflare.com
@@ -317,6 +318,7 @@ DOMAIN-SUFFIX,mywaytopay.info
 DOMAIN-SUFFIX,mywaytopay.net
 DOMAIN-SUFFIX,nebius.com
 DOMAIN-SUFFIX,nomic.ai
+DOMAIN-SUFFIX,notebook.google
 DOMAIN-SUFFIX,notebook.google.com
 DOMAIN-SUFFIX,notebooklm.google
 DOMAIN-SUFFIX,notebooklm.google.com
