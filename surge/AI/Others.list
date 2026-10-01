@@ -1,7 +1,8 @@
 # 策略: 🤖️AI
-# 规则数: 696
+# 规则数: 713
 
 # DOMAIN
+DOMAIN,ai-gateway.vercel.sh
 DOMAIN,ai.azure.com
 DOMAIN,api.cloudflare.com
 DOMAIN,api.githubcopilot.com
@@ -17,7 +18,9 @@ DOMAIN,browser-intake-datadoghq.com
 DOMAIN,build.nvidia.com
 DOMAIN,clau.de
 DOMAIN,client-telemetry.us-east-1.amazonaws.com
+DOMAIN,cloudcode-pa.googleapis.com
 DOMAIN,codewhisperer.us-east-1.amazonaws.com
+DOMAIN,daily-cloudcode-pa.googleapis.com
 DOMAIN,desktop-release.codewhisperer.us-east-1.amazonaws.com
 DOMAIN,gateway.ai.cloudflare.com
 DOMAIN,gateway.bingviz.microsoft.net
@@ -54,6 +57,7 @@ DOMAIN-KEYWORD,openaicom-api
 DOMAIN-KEYWORD,paypal
 DOMAIN-KEYWORD,stripe
 # DOMAIN-SUFFIX
+DOMAIN-SUFFIX,abacus.ai
 DOMAIN-SUFFIX,account-paypal.info
 DOMAIN-SUFFIX,account-paypal.net
 DOMAIN-SUFFIX,account-paypal.org
@@ -61,6 +65,7 @@ DOMAIN-SUFFIX,accountpaypal.com
 DOMAIN-SUFFIX,accountpaypal.net
 DOMAIN-SUFFIX,accountpaypal.org
 DOMAIN-SUFFIX,agentclientprotocol.com
+DOMAIN-SUFFIX,ai.azure.com
 DOMAIN-SUFFIX,ai.studio
 DOMAIN-SUFFIX,ai21.com
 DOMAIN-SUFFIX,ai21labs.com
@@ -94,6 +99,8 @@ DOMAIN-SUFFIX,augment.dev
 DOMAIN-SUFFIX,augmentcode.com
 DOMAIN-SUFFIX,azuredatabricks.net
 DOMAIN-SUFFIX,bardeen.ai
+DOMAIN-SUFFIX,base44.app
+DOMAIN-SUFFIX,base44.com
 DOMAIN-SUFFIX,baseten.co
 DOMAIN-SUFFIX,beautiful.ai
 DOMAIN-SUFFIX,beibao.cn
@@ -175,6 +182,7 @@ DOMAIN-SUFFIX,cursor-cdn.com
 DOMAIN-SUFFIX,cursor.com
 DOMAIN-SUFFIX,cursor.sh
 DOMAIN-SUFFIX,cursorapi.com
+DOMAIN-SUFFIX,cursorvm.com
 DOMAIN-SUFFIX,d-id.com
 DOMAIN-SUFFIX,deepgram.com
 DOMAIN-SUFFIX,deepinfra.com
@@ -220,6 +228,7 @@ DOMAIN-SUFFIX,gateway.icloud.com
 DOMAIN-SUFFIX,gcp.databricks.com
 DOMAIN-SUFFIX,geller-pa.googleapis.com
 DOMAIN-SUFFIX,genmo.ai
+DOMAIN-SUFFIX,genspark.ai
 DOMAIN-SUFFIX,getbraintree.com
 DOMAIN-SUFFIX,glean.com
 DOMAIN-SUFFIX,gmoney.org
@@ -281,6 +290,7 @@ DOMAIN-SUFFIX,langsmith.com
 DOMAIN-SUFFIX,lemonsqueezy.com
 DOMAIN-SUFFIX,leonardo.ai
 DOMAIN-SUFFIX,lindy.ai
+DOMAIN-SUFFIX,link.com
 DOMAIN-SUFFIX,liquid.ai
 DOMAIN-SUFFIX,litellm.ai
 DOMAIN-SUFFIX,liveperson.net
@@ -294,6 +304,7 @@ DOMAIN-SUFFIX,lovable.dev
 DOMAIN-SUFFIX,lovart.ai
 DOMAIN-SUFFIX,lpsnmedia.net
 DOMAIN-SUFFIX,luma.ai
+DOMAIN-SUFFIX,lumalabs.ai
 DOMAIN-SUFFIX,magnific.com
 DOMAIN-SUFFIX,manus.ai
 DOMAIN-SUFFIX,manus.im
@@ -325,8 +336,10 @@ DOMAIN-SUFFIX,notebooklm.google.com
 DOMAIN-SUFFIX,notegpt.io
 DOMAIN-SUFFIX,nousresearch.com
 DOMAIN-SUFFIX,novelai.net
+DOMAIN-SUFFIX,novita.ai
 DOMAIN-SUFFIX,oaifree.com
 DOMAIN-SUFFIX,oaistatsig.com
+DOMAIN-SUFFIX,ollama.ai
 DOMAIN-SUFFIX,ollama.com
 DOMAIN-SUFFIX,opal.google
 DOMAIN-SUFFIX,opal.google.com
@@ -541,6 +554,7 @@ DOMAIN-SUFFIX,reka.ai
 DOMAIN-SUFFIX,relay.app
 DOMAIN-SUFFIX,remove.bg
 DOMAIN-SUFFIX,replicate.com
+DOMAIN-SUFFIX,replicate.delivery
 DOMAIN-SUFFIX,replika.com
 DOMAIN-SUFFIX,replit.com
 DOMAIN-SUFFIX,resemble.ai
@@ -574,6 +588,7 @@ DOMAIN-SUFFIX,stablediffusionweb.com
 DOMAIN-SUFFIX,stitch.withgoogle.com
 DOMAIN-SUFFIX,sudowrite.com
 DOMAIN-SUFFIX,suno.ai
+DOMAIN-SUFFIX,suno.com
 DOMAIN-SUFFIX,supermaven.com
 DOMAIN-SUFFIX,sweep.dev
 DOMAIN-SUFFIX,swiftbank.info
@@ -591,8 +606,10 @@ DOMAIN-SUFFIX,tavily.com
 DOMAIN-SUFFIX,themeforest.net
 DOMAIN-SUFFIX,thepaypalshop.com
 DOMAIN-SUFFIX,theshoppingexpresslane.net
+DOMAIN-SUFFIX,thinkingmachines.ai
 DOMAIN-SUFFIX,tldv.io
 DOMAIN-SUFFIX,together.ai
+DOMAIN-SUFFIX,together.xyz
 DOMAIN-SUFFIX,topazlabs.com
 DOMAIN-SUFFIX,trae.ai
 DOMAIN-SUFFIX,tripo3d.ai
