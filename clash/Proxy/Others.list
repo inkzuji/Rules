@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 18584
+# 规则数: 18585
 
 # DOMAIN
 DOMAIN,bybit.ada.support
@@ -8092,6 +8092,7 @@ DOMAIN-SUFFIX,huanyuju.com
 DOMAIN-SUFFIX,huaren.us
 DOMAIN-SUFFIX,huarenav.com
 DOMAIN-SUFFIX,huarenporn.com
+DOMAIN-SUFFIX,huarun.win
 DOMAIN-SUFFIX,huashundg.com
 DOMAIN-SUFFIX,huati.cc
 DOMAIN-SUFFIX,huaxin-lls.xyz
@@ -10947,7 +10948,6 @@ DOMAIN-SUFFIX,muryouav.net
 DOMAIN-SUFFIX,musashinobank.co.jp
 DOMAIN-SUFFIX,muscache.com
 DOMAIN-SUFFIX,musclegirlflix.com
-DOMAIN-SUFFIX,muse.ai
 DOMAIN-SUFFIX,mushroomtrack.com
 DOMAIN-SUFFIX,musicbay.net
 DOMAIN-SUFFIX,musicbrainz.org
@@ -14520,6 +14520,7 @@ DOMAIN-SUFFIX,sinara.ru
 DOMAIN-SUFFIX,sinchew.com.my
 DOMAIN-SUFFIX,sinchew.my
 DOMAIN-SUFFIX,sing-box.app
+DOMAIN-SUFFIX,sing-box.sagernet.org
 DOMAIN-SUFFIX,sing4.lat
 DOMAIN-SUFFIX,sing68.com
 DOMAIN-SUFFIX,singaporepools.com.sg
