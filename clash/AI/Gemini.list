@@ -1,9 +1,10 @@
 # 策略: 🤖️AI
-# 规则数: 21
+# 规则数: 22
 
 # DOMAIN
 DOMAIN,ai.google.dev
 DOMAIN,alkalimakersuite-pa.clients6.google.com
+DOMAIN,gemini.gstatic.com
 DOMAIN,generativelanguage.googleapis.com
 DOMAIN,makersuite.google.com
 # DOMAIN-KEYWORD

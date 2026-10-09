@@ -1,9 +1,15 @@
 # 策略: 🤖️AI
-# 规则数: 688
+# 规则数: 741
 
 # DOMAIN
 DOMAIN,ai-gateway.vercel.sh
 DOMAIN,ai.azure.com
+DOMAIN,aicode.googleapis.com
+DOMAIN,aida.googleapis.com
+DOMAIN,aisandbox-pa.googleapis.com
+DOMAIN,alkalicore-pa.clients6.google.com
+DOMAIN,antigravity-pa.googleapis.com
+DOMAIN,antigravity.googleapis.com
 DOMAIN,api.cloudflare.com
 DOMAIN,api.githubcopilot.com
 DOMAIN,api.jetbrains.ai
@@ -12,35 +18,57 @@ DOMAIN,api.ngc.nvidia.com
 DOMAIN,api.nvidia.com
 DOMAIN,assets.msn.com
 DOMAIN,auth.grazie.ai
+DOMAIN,auth.meta.com
 DOMAIN,aws-language-servers.us-east-1.amazonaws.com
 DOMAIN,aws-toolkit-language-servers.amazonaws.com
 DOMAIN,browser-intake-datadoghq.com
 DOMAIN,build.nvidia.com
 DOMAIN,clau.de
 DOMAIN,client-telemetry.us-east-1.amazonaws.com
+DOMAIN,cloudaicompanion.googleapis.com
 DOMAIN,cloudcode-pa.googleapis.com
+DOMAIN,coderabbit.gallery.vsassets.io
 DOMAIN,codewhisperer.us-east-1.amazonaws.com
+DOMAIN,content-firebaseappcheck.googleapis.com
 DOMAIN,daily-cloudcode-pa.googleapis.com
 DOMAIN,desktop-release.codewhisperer.us-east-1.amazonaws.com
+DOMAIN,firebaseappcheck.googleapis.com
 DOMAIN,gateway.ai.cloudflare.com
 DOMAIN,gateway.bingviz.microsoft.net
 DOMAIN,gateway.bingviz.microsoftapp.net
+DOMAIN,geller-pa.googleapis.com
+DOMAIN,geminiweb-pa.clients.google.com
+DOMAIN,geminiweb-pa.clients6.google.com
+DOMAIN,grazie.aws.intellij.net
+DOMAIN,grok.x.com
+DOMAIN,identitytoolkit.googleapis.com
 DOMAIN,idetoolkits-hostedfiles.amazonaws.com
 DOMAIN,idetoolkits.amazonwebservices.com
 DOMAIN,in.appcenter.ms
 DOMAIN,integrate.api.nvidia.com
+DOMAIN,labstailwind.pa.googleapis.com
 DOMAIN,location.microsoft.com
+DOMAIN,notebooklm-pa.googleapis.com
+DOMAIN,notebooklm.googleapis.com
 DOMAIN,odc.officeapps.live.com
 DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
 DOMAIN,openaicomproductionae4b.blob.core.windows.net
+DOMAIN,pay.google.com
+DOMAIN,ppl-ai-file-upload.s3.amazonaws.com
+DOMAIN,pplx-res.cloudinary.com
 DOMAIN,production-openaicom-storage.azureedge.net
 DOMAIN,q.us-east-1.amazonaws.com
+DOMAIN,robinfrontend-pa.googleapis.com
+DOMAIN,securetoken.googleapis.com
 DOMAIN,self.events.data.microsoft.com
 DOMAIN,servd-anthropic-website.b-cdn.net
 DOMAIN,services.bingapis.com
 DOMAIN,specs.q.us-east-1.amazonaws.com
 DOMAIN,static.cloudflareinsights.com
 DOMAIN,telemetry.aws-language-servers.us-east-1.amazonaws.com
+DOMAIN,us-central1-xi-labs.cloudfunctions.net
+DOMAIN,waa-pa.clients6.google.com
+DOMAIN,webchannel-alkalimakersuite-pa.clients6.google.com
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,antigravity
 DOMAIN-KEYWORD,bedrock
@@ -97,6 +125,7 @@ DOMAIN-SUFFIX,artbreeder.com
 DOMAIN-SUFFIX,assemblyai.com
 DOMAIN-SUFFIX,augment.dev
 DOMAIN-SUFFIX,augmentcode.com
+DOMAIN-SUFFIX,awswaf.com
 DOMAIN-SUFFIX,azuredatabricks.net
 DOMAIN-SUFFIX,bardeen.ai
 DOMAIN-SUFFIX,base44.app
@@ -115,6 +144,7 @@ DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io
 DOMAIN-SUFFIX,blackforestlabs.ai
 DOMAIN-SUFFIX,bml.info
 DOMAIN-SUFFIX,bolt.new
+DOMAIN-SUFFIX,braintree-api.com
 DOMAIN-SUFFIX,braintreegateway.com
 DOMAIN-SUFFIX,braintreegateway.tv
 DOMAIN-SUFFIX,braintreepayments.com
@@ -139,6 +169,7 @@ DOMAIN-SUFFIX,cashify.net
 DOMAIN-SUFFIX,cerebras.ai
 DOMAIN-SUFFIX,challenges.cloudflare.com
 DOMAIN-SUFFIX,character.ai
+DOMAIN-SUFFIX,characterai.io
 DOMAIN-SUFFIX,chargebee.com
 DOMAIN-SUFFIX,chat.com
 DOMAIN-SUFFIX,checkout.com
@@ -152,6 +183,7 @@ DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
 DOMAIN-SUFFIX,claudeusercontent.com
 DOMAIN-SUFFIX,clawhub.ai
+DOMAIN-SUFFIX,clerk.com
 DOMAIN-SUFFIX,cline.bot
 DOMAIN-SUFFIX,clipdrop.co
 DOMAIN-SUFFIX,cloud.databricks.com
@@ -168,6 +200,7 @@ DOMAIN-SUFFIX,colossyan.com
 DOMAIN-SUFFIX,comfy.org
 DOMAIN-SUFFIX,comfyci.org
 DOMAIN-SUFFIX,comfyregistry.org
+DOMAIN-SUFFIX,composio.dev
 DOMAIN-SUFFIX,context7.com
 DOMAIN-SUFFIX,continue.dev
 DOMAIN-SUFFIX,copilot-stg.com
@@ -178,6 +211,7 @@ DOMAIN-SUFFIX,coze.com
 DOMAIN-SUFFIX,crewai.com
 DOMAIN-SUFFIX,crixet.com
 DOMAIN-SUFFIX,crusoe.ai
+DOMAIN-SUFFIX,cue.im
 DOMAIN-SUFFIX,cursor-cdn.com
 DOMAIN-SUFFIX,cursor.com
 DOMAIN-SUFFIX,cursor.sh
@@ -202,6 +236,7 @@ DOMAIN-SUFFIX,dreamgen.com
 DOMAIN-SUFFIX,dreamstudio.ai
 DOMAIN-SUFFIX,duck.ai
 DOMAIN-SUFFIX,dust.tt
+DOMAIN-SUFFIX,eigent.ai
 DOMAIN-SUFFIX,elevenlabs.com
 DOMAIN-SUFFIX,elevenlabs.io
 DOMAIN-SUFFIX,envato-static.com
@@ -251,10 +286,12 @@ DOMAIN-SUFFIX,groktpcontent.com
 DOMAIN-SUFFIX,grokusercontent.com
 DOMAIN-SUFFIX,groq.com
 DOMAIN-SUFFIX,h2o.ai
+DOMAIN-SUFFIX,hcaptcha.com
 DOMAIN-SUFFIX,hebbia.ai
 DOMAIN-SUFFIX,hebbia.com
 DOMAIN-SUFFIX,hedra.com
 DOMAIN-SUFFIX,helicone.ai
+DOMAIN-SUFFIX,heygen.ai
 DOMAIN-SUFFIX,heygen.com
 DOMAIN-SUFFIX,hf.co
 DOMAIN-SUFFIX,hf.space
@@ -268,6 +305,7 @@ DOMAIN-SUFFIX,id.me
 DOMAIN-SUFFIX,ideogram.ai
 DOMAIN-SUFFIX,immersivetranslate.com
 DOMAIN-SUFFIX,inflection.ai
+DOMAIN-SUFFIX,interaction.co
 DOMAIN-SUFFIX,invideo.io
 DOMAIN-SUFFIX,jasper.ai
 DOMAIN-SUFFIX,jetbrains.ai
@@ -318,6 +356,7 @@ DOMAIN-SUFFIX,metaaivm.com
 DOMAIN-SUFFIX,microsoft-copilot.com
 DOMAIN-SUFFIX,midjourney.com
 DOMAIN-SUFFIX,milvus.io
+DOMAIN-SUFFIX,mindstudio.ai
 DOMAIN-SUFFIX,minimax.io
 DOMAIN-SUFFIX,mintlify.com
 DOMAIN-SUFFIX,mistral.ai
@@ -328,6 +367,7 @@ DOMAIN-SUFFIX,moonshot.ai
 DOMAIN-SUFFIX,mozilla.ai
 DOMAIN-SUFFIX,murf.ai
 DOMAIN-SUFFIX,muse.ai
+DOMAIN-SUFFIX,myclaw.ai
 DOMAIN-SUFFIX,mywaytopay.info
 DOMAIN-SUFFIX,mywaytopay.net
 DOMAIN-SUFFIX,nebius.com
@@ -344,6 +384,7 @@ DOMAIN-SUFFIX,oaifree.com
 DOMAIN-SUFFIX,oaistatsig.com
 DOMAIN-SUFFIX,ollama.ai
 DOMAIN-SUFFIX,ollama.com
+DOMAIN-SUFFIX,one.google.com
 DOMAIN-SUFFIX,opal.google
 DOMAIN-SUFFIX,opal.google.com
 DOMAIN-SUFFIX,openart.ai
@@ -366,6 +407,7 @@ DOMAIN-SUFFIX,pavpal.com
 DOMAIN-SUFFIX,pawan.krd
 DOMAIN-SUFFIX,paydiant.com
 DOMAIN-SUFFIX,paylike.com
+DOMAIN-SUFFIX,payments.google.com
 DOMAIN-SUFFIX,paypa1.com
 DOMAIN-SUFFIX,paypa1.org
 DOMAIN-SUFFIX,paypaal.com
@@ -536,11 +578,14 @@ DOMAIN-SUFFIX,playgroundai.com
 DOMAIN-SUFFIX,plusai.com
 DOMAIN-SUFFIX,poe.com
 DOMAIN-SUFFIX,poecdn.net
+DOMAIN-SUFFIX,poke.com
 DOMAIN-SUFFIX,portkey.ai
 DOMAIN-SUFFIX,pp-soc.com
 DOMAIN-SUFFIX,ppaypal.com
 DOMAIN-SUFFIX,pplx.ai
 DOMAIN-SUFFIX,pppds.com
+DOMAIN-SUFFIX,prelude.dev
+DOMAIN-SUFFIX,px-cloud.net
 DOMAIN-SUFFIX,pypl.com
 DOMAIN-SUFFIX,pypl.info
 DOMAIN-SUFFIX,pypl.net
@@ -551,6 +596,7 @@ DOMAIN-SUFFIX,qodo.ai
 DOMAIN-SUFFIX,qpoe.com
 DOMAIN-SUFFIX,quillbot.com
 DOMAIN-SUFFIX,read.ai
+DOMAIN-SUFFIX,recaptcha.net
 DOMAIN-SUFFIX,recraft.ai
 DOMAIN-SUFFIX,refact.ai
 DOMAIN-SUFFIX,reka.ai
@@ -565,6 +611,7 @@ DOMAIN-SUFFIX,respeecher.com
 DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com
 DOMAIN-SUFFIX,roocode.com
 DOMAIN-SUFFIX,runpod.io
+DOMAIN-SUFFIX,runway.com
 DOMAIN-SUFFIX,runwayml.com
 DOMAIN-SUFFIX,rytr.me
 DOMAIN-SUFFIX,s-xoom.com
@@ -578,6 +625,8 @@ DOMAIN-SUFFIX,sheerid.com
 DOMAIN-SUFFIX,sider.ai
 DOMAIN-SUFFIX,sierra.ai
 DOMAIN-SUFFIX,simility.com
+DOMAIN-SUFFIX,simular.ai
+DOMAIN-SUFFIX,slashy.com
 DOMAIN-SUFFIX,smallcloud.ai
 DOMAIN-SUFFIX,smoot.apple.com
 DOMAIN-SUFFIX,snowflakecomputing.com
@@ -589,6 +638,7 @@ DOMAIN-SUFFIX,sslpaypal.org
 DOMAIN-SUFFIX,stability.ai
 DOMAIN-SUFFIX,stablediffusionweb.com
 DOMAIN-SUFFIX,stitch.withgoogle.com
+DOMAIN-SUFFIX,stytch.com
 DOMAIN-SUFFIX,sudowrite.com
 DOMAIN-SUFFIX,suno.ai
 DOMAIN-SUFFIX,suno.com
@@ -622,6 +672,7 @@ DOMAIN-SUFFIX,udio.com
 DOMAIN-SUFFIX,v0.app
 DOMAIN-SUFFIX,v0.dev
 DOMAIN-SUFFIX,vast.ai
+DOMAIN-SUFFIX,vellum.ai
 DOMAIN-SUFFIX,venmo-touch.com
 DOMAIN-SUFFIX,venmo.com
 DOMAIN-SUFFIX,venmo.info
@@ -644,7 +695,9 @@ DOMAIN-SUFFIX,windsurf.ai
 DOMAIN-SUFFIX,windsurf.build
 DOMAIN-SUFFIX,windsurf.com
 DOMAIN-SUFFIX,wiremoneytoirelandwithxoomeasierandcheaper.com
+DOMAIN-SUFFIX,withpersona.com
 DOMAIN-SUFFIX,wordtune.com
+DOMAIN-SUFFIX,workos.com
 DOMAIN-SUFFIX,writer.com
 DOMAIN-SUFFIX,writesonic.com
 DOMAIN-SUFFIX,www-paypal.info

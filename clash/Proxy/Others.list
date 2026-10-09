@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 18614
+# 规则数: 18612
 
 # DOMAIN
 DOMAIN,bybit.ada.support
@@ -2136,7 +2136,6 @@ DOMAIN-SUFFIX,awsstatic.com
 DOMAIN-SUFFIX,awsthinkbox.com
 DOMAIN-SUFFIX,awstrack.me
 DOMAIN-SUFFIX,awstrust.com
-DOMAIN-SUFFIX,awswaf.com
 DOMAIN-SUFFIX,awwcn.buzz
 DOMAIN-SUFFIX,awwcn.xyz
 DOMAIN-SUFFIX,awxcdn.com
@@ -7413,7 +7412,6 @@ DOMAIN-SUFFIX,hbfile.net
 DOMAIN-SUFFIX,hbg.com
 DOMAIN-SUFFIX,hbox.jp
 DOMAIN-SUFFIX,hbrowse.com
-DOMAIN-SUFFIX,hcaptcha.com
 DOMAIN-SUFFIX,hcaptchastatus.com
 DOMAIN-SUFFIX,hcbdsm.com
 DOMAIN-SUFFIX,hclips.com
