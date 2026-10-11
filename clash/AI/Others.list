@@ -1,5 +1,5 @@
 # 策略: 🤖️AI
-# 规则数: 741
+# 规则数: 742
 
 # DOMAIN
 DOMAIN,ai-gateway.vercel.sh
@@ -651,6 +651,7 @@ DOMAIN-SUFFIX,swiftfinancial.com
 DOMAIN-SUFFIX,swiftfinancial.info
 DOMAIN-SUFFIX,swiftfinancial.net
 DOMAIN-SUFFIX,synthesia.io
+DOMAIN-SUFFIX,syntx.ai
 DOMAIN-SUFFIX,tabbyml.com
 DOMAIN-SUFFIX,tabnine.com
 DOMAIN-SUFFIX,talkai.info

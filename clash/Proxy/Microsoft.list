@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 522
+# 规则数: 523
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,azure
@@ -150,6 +150,7 @@ DOMAIN-SUFFIX,breakdown.me
 DOMAIN-SUFFIX,browser.events.data.msn.cn
 DOMAIN-SUFFIX,browser.events.data.msn.com
 DOMAIN-SUFFIX,c-msedge.net
+DOMAIN-SUFFIX,cafe.github.com
 DOMAIN-SUFFIX,cegid-cloud.cn
 DOMAIN-SUFFIX,centralvalidation.com
 DOMAIN-SUFFIX,ch9.ms
