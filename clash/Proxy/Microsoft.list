@@ -1,13 +1,23 @@
 # 策略: 🚀节点选择
-# 规则数: 523
+# 规则数: 519
 
+# DOMAIN
+DOMAIN,ai.azure.com
+DOMAIN,api.msn.com
+DOMAIN,assets.msn.com
+DOMAIN,gateway.bingviz.microsoft.net
+DOMAIN,gateway.bingviz.microsoftapp.net
+DOMAIN,in.appcenter.ms
+DOMAIN,location.microsoft.com
+DOMAIN,odc.officeapps.live.com
+DOMAIN,r.bing.com
+DOMAIN,self.events.data.microsoft.com
+DOMAIN,services.bingapis.com
+DOMAIN,www.bing.com
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,azure
 DOMAIN-KEYWORD,azure-dns
-DOMAIN-KEYWORD,bing
-DOMAIN-KEYWORD,github
 DOMAIN-KEYWORD,hotmail
-DOMAIN-KEYWORD,microsoft
 DOMAIN-KEYWORD,microsoftnews
 DOMAIN-KEYWORD,microsoftreactor
 DOMAIN-KEYWORD,onedrive
@@ -24,9 +34,11 @@ DOMAIN-SUFFIX,aadrm.cn
 DOMAIN-SUFFIX,aadrm.com
 DOMAIN-SUFFIX,adaptivecards.io
 DOMAIN-SUFFIX,aggresmart.com
+DOMAIN-SUFFIX,ai.azure.com
 DOMAIN-SUFFIX,aka.ms
 DOMAIN-SUFFIX,ankarazirvesi2018.com
 DOMAIN-SUFFIX,api-extractor.com
+DOMAIN-SUFFIX,api.microsoftapp.net
 DOMAIN-SUFFIX,apihub-internal.cn
 DOMAIN-SUFFIX,apisof.net
 DOMAIN-SUFFIX,appcenter.ms
@@ -36,7 +48,6 @@ DOMAIN-SUFFIX,appserviceenvironment.cn
 DOMAIN-SUFFIX,aria.ms
 DOMAIN-SUFFIX,asp.net
 DOMAIN-SUFFIX,aspnetcdn.com
-DOMAIN-SUFFIX,atom.io
 DOMAIN-SUFFIX,azchcdna.com
 DOMAIN-SUFFIX,azchcdnb.com
 DOMAIN-SUFFIX,azchcdnc.com
@@ -97,6 +108,7 @@ DOMAIN-SUFFIX,azurecosmosdb.info
 DOMAIN-SUFFIX,azurecosmosdb.net
 DOMAIN-SUFFIX,azurecr-test.cn
 DOMAIN-SUFFIX,azurecr.cn
+DOMAIN-SUFFIX,azuredatabricks.net
 DOMAIN-SUFFIX,azuredevopslaunch.com
 DOMAIN-SUFFIX,azuredigitaltwin.com
 DOMAIN-SUFFIX,azuredigitaltwins.com
@@ -127,6 +139,7 @@ DOMAIN-SUFFIX,b2clogin.cn
 DOMAIN-SUFFIX,b3itech.cn
 DOMAIN-SUFFIX,binads.com
 DOMAIN-SUFFIX,bing
+DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io
 DOMAIN-SUFFIX,bing.com
 DOMAIN-SUFFIX,bing.net
 DOMAIN-SUFFIX,bing123.com
@@ -150,7 +163,6 @@ DOMAIN-SUFFIX,breakdown.me
 DOMAIN-SUFFIX,browser.events.data.msn.cn
 DOMAIN-SUFFIX,browser.events.data.msn.com
 DOMAIN-SUFFIX,c-msedge.net
-DOMAIN-SUFFIX,cafe.github.com
 DOMAIN-SUFFIX,cegid-cloud.cn
 DOMAIN-SUFFIX,centralvalidation.com
 DOMAIN-SUFFIX,ch9.ms
@@ -166,7 +178,6 @@ DOMAIN-SUFFIX,cn.bing.com
 DOMAIN-SUFFIX,cn.bing.net
 DOMAIN-SUFFIX,cn.mm.bing.net
 DOMAIN-SUFFIX,codethemicrobit.com
-DOMAIN-SUFFIX,collector.github.com
 DOMAIN-SUFFIX,cortanaanalytics.com
 DOMAIN-SUFFIX,cortanaskills.com
 DOMAIN-SUFFIX,cosmosdb.info
@@ -175,7 +186,6 @@ DOMAIN-SUFFIX,crmdynint-gcc.com
 DOMAIN-SUFFIX,crmdynint.com
 DOMAIN-SUFFIX,crossborderexpansion.com
 DOMAIN-SUFFIX,dcg.microsoft.com
-DOMAIN-SUFFIX,dependabot.com
 DOMAIN-SUFFIX,devopsassessment.net
 DOMAIN-SUFFIX,devopsms.com
 DOMAIN-SUFFIX,dictate.ms
@@ -186,6 +196,7 @@ DOMAIN-SUFFIX,dot.net
 DOMAIN-SUFFIX,download.windowsupdate.com
 DOMAIN-SUFFIX,dynamics.cn
 DOMAIN-SUFFIX,dynamics.com
+DOMAIN-SUFFIX,edgeservices.bing.com
 DOMAIN-SUFFIX,efproject.net
 DOMAIN-SUFFIX,engkoo.com
 DOMAIN-SUFFIX,exp-tas.com
@@ -200,19 +211,7 @@ DOMAIN-SUFFIX,gears5.com
 DOMAIN-SUFFIX,gearspop.com
 DOMAIN-SUFFIX,gearstactics.com
 DOMAIN-SUFFIX,gfx.ms
-DOMAIN-SUFFIX,gh.io
-DOMAIN-SUFFIX,ghcr.io
-DOMAIN-SUFFIX,ghe.com
 DOMAIN-SUFFIX,gigjam.com
-DOMAIN-SUFFIX,git.io
-DOMAIN-SUFFIX,githubapp.com
-DOMAIN-SUFFIX,githubassets.com
-DOMAIN-SUFFIX,githubhackathon.com
-DOMAIN-SUFFIX,githubpreview.dev
-DOMAIN-SUFFIX,githubstatus.com
-DOMAIN-SUFFIX,githubsupport.com
-DOMAIN-SUFFIX,githubuniverse.com
-DOMAIN-SUFFIX,githubusercontent.com
 DOMAIN-SUFFIX,global.bing.com
 DOMAIN-SUFFIX,gotcosmos.com
 DOMAIN-SUFFIX,graphengine.io
@@ -251,6 +250,7 @@ DOMAIN-SUFFIX,management-azure-devices.cn
 DOMAIN-SUFFIX,management-azure-devices.net
 DOMAIN-SUFFIX,masalladeloslimites.com
 DOMAIN-SUFFIX,mcchcdn.com
+DOMAIN-SUFFIX,mcr.microsoft.com
 DOMAIN-SUFFIX,meetfasttrack.com
 DOMAIN-SUFFIX,meetyourdevices.com
 DOMAIN-SUFFIX,mepn.com
@@ -263,6 +263,8 @@ DOMAIN-SUFFIX,microsoft-ppe.com
 DOMAIN-SUFFIX,microsoft-sap-events.com
 DOMAIN-SUFFIX,microsoft-sbs-domains.com
 DOMAIN-SUFFIX,microsoft-smb.cn
+DOMAIN-SUFFIX,microsoft.com
+DOMAIN-SUFFIX,microsoft.net
 DOMAIN-SUFFIX,microsoft365.com
 DOMAIN-SUFFIX,microsoftaccountguard.com
 DOMAIN-SUFFIX,microsoftadc.com
@@ -381,12 +383,8 @@ DOMAIN-SUFFIX,msturing.org
 DOMAIN-SUFFIX,msudalosti.com
 DOMAIN-SUFFIX,msunlimitedcloudsummit.com
 DOMAIN-SUFFIX,mymicrosoft.com
-DOMAIN-SUFFIX,myoctocat.com
 DOMAIN-SUFFIX,nelreports.net
 DOMAIN-SUFFIX,nextechafrica.net
-DOMAIN-SUFFIX,npm.community
-DOMAIN-SUFFIX,npmjs.com
-DOMAIN-SUFFIX,npmjs.org
 DOMAIN-SUFFIX,nuget.org
 DOMAIN-SUFFIX,nugettest.org
 DOMAIN-SUFFIX,nxta.org
@@ -395,7 +393,6 @@ DOMAIN-SUFFIX,o365files.cn
 DOMAIN-SUFFIX,o365weve-dev.com
 DOMAIN-SUFFIX,o365weve-ppe.com
 DOMAIN-SUFFIX,o365weve.com
-DOMAIN-SUFFIX,octocaptcha.com
 DOMAIN-SUFFIX,office
 DOMAIN-SUFFIX,office.com
 DOMAIN-SUFFIX,office.net
@@ -406,11 +403,11 @@ DOMAIN-SUFFIX,office365love.com
 DOMAIN-SUFFIX,office365tw.com
 DOMAIN-SUFFIX,officeplus.cn
 DOMAIN-SUFFIX,officewebapps.cn
+DOMAIN-SUFFIX,onedrive.com
 DOMAIN-SUFFIX,onenote.com
 DOMAIN-SUFFIX,onenote.net
 DOMAIN-SUFFIX,onestore.ms
 DOMAIN-SUFFIX,onmschina.cn
-DOMAIN-SUFFIX,opensource.guide
 DOMAIN-SUFFIX,opentranslatorstothings.org
 DOMAIN-SUFFIX,opticsforthecloud.net
 DOMAIN-SUFFIX,outingsapp.com
@@ -437,7 +434,6 @@ DOMAIN-SUFFIX,pxt.io
 DOMAIN-SUFFIX,r.bing.com
 DOMAIN-SUFFIX,reactorms.com.cn
 DOMAIN-SUFFIX,renovacionoffice.com
-DOMAIN-SUFFIX,repo.new
 DOMAIN-SUFFIX,s-dc-msedge.net
 DOMAIN-SUFFIX,s-microsoft.com
 DOMAIN-SUFFIX,s-msedge.net
@@ -469,12 +465,12 @@ DOMAIN-SUFFIX,sqlserveronlinux.com
 DOMAIN-SUFFIX,staffhub.ms
 DOMAIN-SUFFIX,start.com
 DOMAIN-SUFFIX,storage.live.com
+DOMAIN-SUFFIX,streaming.mediaservices.windows.net
 DOMAIN-SUFFIX,successwithteams.com
 DOMAIN-SUFFIX,surface.com
 DOMAIN-SUFFIX,svc.ms
 DOMAIN-SUFFIX,sway-cdn.com
 DOMAIN-SUFFIX,sway.com
-DOMAIN-SUFFIX,sydney.bing.com
 DOMAIN-SUFFIX,sysinternals.com
 DOMAIN-SUFFIX,t-msedge.net
 DOMAIN-SUFFIX,tailwindtraders.com
@@ -482,7 +478,6 @@ DOMAIN-SUFFIX,teams.microsoft.com
 DOMAIN-SUFFIX,techhub.ms
 DOMAIN-SUFFIX,tfsallin.net
 DOMAIN-SUFFIX,th.bing.com
-DOMAIN-SUFFIX,thegithubshop.com
 DOMAIN-SUFFIX,timelinestoryteller.com
 DOMAIN-SUFFIX,trafficmanager.cn
 DOMAIN-SUFFIX,trafficmanager.net
@@ -498,6 +493,7 @@ DOMAIN-SUFFIX,videobreakdown.com
 DOMAIN-SUFFIX,videoindexer.ai
 DOMAIN-SUFFIX,virtualearth.net
 DOMAIN-SUFFIX,visualstudio-staging.com
+DOMAIN-SUFFIX,visualstudio.com
 DOMAIN-SUFFIX,vsallin.net
 DOMAIN-SUFFIX,vsassets.io
 DOMAIN-SUFFIX,vscode-cdn.net
@@ -509,6 +505,7 @@ DOMAIN-SUFFIX,vscodeedu.com
 DOMAIN-SUFFIX,wbd.ms
 DOMAIN-SUFFIX,what-fan.net
 DOMAIN-SUFFIX,windows-int.net
+DOMAIN-SUFFIX,windows.net
 DOMAIN-SUFFIX,windows8.hk
 DOMAIN-SUFFIX,windowsazure.cn
 DOMAIN-SUFFIX,windowsazure.com

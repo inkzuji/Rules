@@ -1,21 +1,14 @@
 # 策略: 🚀节点选择
-# 规则数: 21
+# 规则数: 16
 
-# DOMAIN
-DOMAIN,yt3.googleusercontent.com
-# DOMAIN-KEYWORD
-DOMAIN-KEYWORD,youtube
-DOMAIN-KEYWORD,youtubego
 # DOMAIN-SUFFIX
 DOMAIN-SUFFIX,ads.youtube.com
-DOMAIN-SUFFIX,ggpht.cn
-DOMAIN-SUFFIX,ggpht.com
 DOMAIN-SUFFIX,googlevideo.com
-DOMAIN-SUFFIX,wide-youtube.l.google.com
 DOMAIN-SUFFIX,withyoutube.com
 DOMAIN-SUFFIX,youtu.be
 DOMAIN-SUFFIX,youtube-nocookie.com
-DOMAIN-SUFFIX,youtube-ui.l.google.com
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,youtube.googleapis.com
 DOMAIN-SUFFIX,youtubeeducation.com
 DOMAIN-SUFFIX,youtubeembeddedplayer.googleapis.com
 DOMAIN-SUFFIX,youtubefanfest.com

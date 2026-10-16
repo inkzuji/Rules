@@ -1,9 +1,8 @@
 # 策略: 🚀节点选择
-# 规则数: 228
+# 规则数: 226
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,20thcenturystudios
-DOMAIN-KEYWORD,amazon
 DOMAIN-KEYWORD,disney
 DOMAIN-KEYWORD,disneymagicmoments
 DOMAIN-KEYWORD,hbogo
@@ -18,7 +17,6 @@ DOMAIN-SUFFIX,abcnews.com
 DOMAIN-SUFFIX,adventuresbydisney.com
 DOMAIN-SUFFIX,amazonvideo.cc
 DOMAIN-SUFFIX,amazonvideo.com
-DOMAIN-SUFFIX,aws.amazon.com
 DOMAIN-SUFFIX,babble.com
 DOMAIN-SUFFIX,babyzone.com
 DOMAIN-SUFFIX,bamgrid.com
@@ -37,6 +35,7 @@ DOMAIN-SUFFIX,disney-plus.net
 DOMAIN-SUFFIX,disney-portal.my.onetrust.com
 DOMAIN-SUFFIX,disney-studio.com
 DOMAIN-SUFFIX,disney-studio.net
+DOMAIN-SUFFIX,disney.com
 DOMAIN-SUFFIX,disneyaccount.com
 DOMAIN-SUFFIX,disneyadsales.com
 DOMAIN-SUFFIX,disneyanimation.com
@@ -151,6 +150,7 @@ DOMAIN-SUFFIX,hsprepack.akamaized.net
 DOMAIN-SUFFIX,hu1u.com
 DOMAIN-SUFFIX,huloo.cc
 DOMAIN-SUFFIX,huloo.tv
+DOMAIN-SUFFIX,hulu.com
 DOMAIN-SUFFIX,huluaction.com
 DOMAIN-SUFFIX,huluad.com
 DOMAIN-SUFFIX,huluapp.com
@@ -192,7 +192,6 @@ DOMAIN-SUFFIX,maxgo.com
 DOMAIN-SUFFIX,mickey.tv
 DOMAIN-SUFFIX,moviesanywhere.com
 DOMAIN-SUFFIX,mushymush.tv
-DOMAIN-SUFFIX,music.amazon.com
 DOMAIN-SUFFIX,myhulu.com
 DOMAIN-SUFFIX,natgeomaps.com
 DOMAIN-SUFFIX,nationalgeographic.com
@@ -201,7 +200,6 @@ DOMAIN-SUFFIX,ngeo.com
 DOMAIN-SUFFIX,nomadlandmovie.ch
 DOMAIN-SUFFIX,originalhulu.com
 DOMAIN-SUFFIX,payhulu.com
-DOMAIN-SUFFIX,payments-jp.amazon.com
 DOMAIN-SUFFIX,pixar.com
 DOMAIN-SUFFIX,playmation.com
 DOMAIN-SUFFIX,primevideo.com

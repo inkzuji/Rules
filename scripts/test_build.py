@@ -14,9 +14,9 @@ class BuildTests(unittest.TestCase):
     def test_domain_label_boundaries(self):
         for domain, expected in [('t.co', 'Proxy/Social'), ('a.t.co', 'Proxy/Social'),
                                  ('not.co', 'Proxy/Others'), ('trust.example', 'Proxy/Others'),
-                                 ('rust.example', 'Proxy/Dev'),
+                                 ('rust.example', 'Proxy/Others'),
                                  ('a.cloudflare.com', 'Proxy/Cloudflare'),
-                                 ('a.cloudfront.net', 'Proxy/Others')]:
+                                 ('a.cloudfront.net', 'Proxy/Dev')]:
             with self.subTest(domain=domain):
                 self.assertEqual(build.classify('🚀节点选择', ('DOMAIN-SUFFIX', domain, ())), expected)
 
@@ -25,23 +25,28 @@ class BuildTests(unittest.TestCase):
         rule = ('IP-CIDR', '192.0.2.0/24', ('no-resolve',))
         build.merge(best, '🚀节点选择', [rule], 'Proxy/Google')
         artifacts = build.surge_artifacts(best)
-        self.assertEqual(len(artifacts), 21)
+        self.assertLessEqual({'AI/OpenAI.list', 'AI/Claude.list', 'AI/Gemini.list',
+                         'AI/Copilot.list', 'AI/Others.list', 'Proxy/Google.list',
+                         'Proxy/YouTube.list', 'Proxy/Netflix.list', 'Proxy/Disney.list',
+                         'Proxy/Spotify.list', 'Proxy/GitHub.list', 'Proxy/Microsoft.list',
+                         'Proxy/Social.list', 'Proxy/Dev.list', 'Proxy/Cloudflare.list',
+                         'Proxy/Streaming.list', 'Proxy/Others.list', 'Apple.list',
+                         'Game.list', 'Bilibili.list', 'Direct.list'}, artifacts.keys())
         self.assertIn(b'IP-CIDR,192.0.2.0/24,no-resolve', artifacts['Proxy/Google.list'])
         self.assertNotIn(b'192.0.2.0', artifacts['Proxy/Others.list'])
 
-    def test_policy_then_current_then_source_order(self):
+    def test_current_specific_service_beats_history_and_aggregate_policy(self):
         best = {}
         old = ('IP-CIDR', '192.0.2.0/24', ())
         current = ('IP-CIDR', '192.0.2.0/24', ('no-resolve',))
         key = old[:2]
         build.merge(best, '🚀节点选择', [old], historical=True)
         build.merge(best, '🚀节点选择', [current], 'Proxy/Google')
-        build.merge(best, '🚀节点选择', [old], 'Proxy/Netflix')
         self.assertEqual(best[key][2:], ('Proxy/Google', current))
         build.merge(best, '🤖️AI', [old], historical=True)
         build.merge(best, 'DIRECT', [current])
-        self.assertEqual(best[key][1], '🤖️AI')
-        self.assertEqual(best[key][3], old)
+        self.assertEqual(best[key][1:3], ('🚀节点选择', 'Proxy/Google'))
+        self.assertEqual(best[key][3], current)
 
     def prepare_outputs(self):
         root = Path(tempfile.mkdtemp(prefix='rules-build-test-'))
@@ -87,7 +92,7 @@ class BuildTests(unittest.TestCase):
             self.assertNotIn(b'192.0.2.0', artifacts['Proxy/Others.list'])
             build.convert_clash.publish(artifacts, root)
 
-    def test_specific_source_corrects_history_but_policy_priority_still_wins(self):
+    def test_current_specific_source_corrects_history_across_policies(self):
         root = Path(tempfile.mkdtemp(prefix='rules-history-test-'))
         path = root / 'Proxy' / 'Google.list'
         path.parent.mkdir()
@@ -98,7 +103,7 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(best[('IP-CIDR', '192.0.2.0/24')][2], 'Proxy/Netflix')
         with mock.patch.object(build, 'fetch', return_value='IP-CIDR,192.0.2.0/24,no-resolve\n'):
             best, _ = build.collect(root, [('lower', 'DIRECT', 'Direct')])
-        self.assertEqual(best[('IP-CIDR', '192.0.2.0/24')][1:3], ('🚀节点选择', 'Proxy/Google'))
+        self.assertEqual(best[('IP-CIDR', '192.0.2.0/24')][1:3], ('DIRECT', 'Direct'))
 
     def test_unknown_or_incompatible_historical_theme_is_rejected_before_fetch(self):
         for filename, policy, error in [('Unexpected.list', 'DIRECT', '未知历史主题'),
@@ -160,6 +165,25 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(publish.call_count, 1)
         self.assertEqual(self.snapshot(root), before)
 
+    def test_classification_acceptance_failure_preserves_both_trees_and_count(self):
+        root, surge, clash, count = self.prepare_outputs()
+        before = self.snapshot(root)
+        with mock.patch.object(build, 'fetch', return_value='DOMAIN,new.example\n'), \
+             mock.patch.object(build.convert_clash, 'generate', return_value={'Direct.list': b'new'}), \
+             mock.patch.object(build.convert_clash, 'publish', wraps=build.convert_clash.publish) as publish, \
+             mock.patch.object(build.convert_clash, 'retire_stale', wraps=build.convert_clash.retire_stale) as retire, \
+             mock.patch.object(build, 'validate_artifacts', side_effect=ValueError('classification mismatch')) as gate, \
+             self.assertRaisesRegex(ValueError, 'classification mismatch'):
+            build.build(surge, clash, count, source_list=[('fake', 'DIRECT', 'Direct')])
+        gate.assert_called_once()
+        stage_surge, stage_clash, _ = gate.call_args.args
+        self.assertEqual(stage_surge.parent, stage_clash.parent)
+        self.assertTrue(stage_surge.is_dir())
+        self.assertTrue(stage_clash.is_dir())
+        self.assertEqual([call.args[1] for call in publish.call_args_list], [stage_surge, stage_clash])
+        self.assertTrue(all(call.args[1] not in (surge, clash) for call in retire.call_args_list))
+        self.assertEqual(self.snapshot(root), before)
+
     def test_dns_report_preserves_rules(self):
         root, surge, _, _ = self.prepare_outputs()
         before = self.snapshot(root)
@@ -199,6 +223,7 @@ class BuildTests(unittest.TestCase):
         before = self.snapshot(root)
         with mock.patch.object(build, 'fetch', return_value='DOMAIN,new.example\n'), \
              mock.patch.object(build.convert_clash, 'generate', return_value={'Direct.list': b'new'}), \
+             mock.patch.object(build, 'validate_artifacts'), \
              mock.patch.object(build.convert_clash.sys, 'platform', 'darwin'), \
              mock.patch.dict(build.os.environ, {'GITHUB_ACTIONS': 'false'}), \
              mock.patch.object(Path, 'home', return_value=root / 'missing-home'), \
@@ -224,6 +249,7 @@ class BuildTests(unittest.TestCase):
         with mock.patch.dict(build.os.environ, {'GITHUB_ACTIONS': 'true'}), \
              mock.patch.object(build, 'fetch', return_value='DOMAIN,new.example\n'), \
              mock.patch.object(build.convert_clash, 'generate', return_value={'Direct.list': b'new'}), \
+             mock.patch.object(build, 'validate_artifacts'), \
              mock.patch.object(Path, 'unlink', autospec=True, side_effect=fail_second), \
              mock.patch.object(build.convert_clash, 'trash_file') as trash, \
              self.assertRaisesRegex(OSError, 'simulated delete failure'):

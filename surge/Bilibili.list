@@ -1,5 +1,5 @@
 # 策略: 📽哔哩
-# 规则数: 127
+# 规则数: 129
 
 # DOMAIN
 DOMAIN,0gr4uqmtt8y41hcjsgrzdrc31.ourdvsss.com
@@ -91,6 +91,8 @@ DOMAIN-SUFFIX,biligame.cn
 DOMAIN-SUFFIX,biligo.com
 DOMAIN-SUFFIX,biliimg.com
 DOMAIN-SUFFIX,biliintl.co
+DOMAIN-SUFFIX,biliintl.com
+DOMAIN-SUFFIX,biliplus.com
 DOMAIN-SUFFIX,bilivideo.cn
 DOMAIN-SUFFIX,bilivideo.com
 DOMAIN-SUFFIX,bilivideo.net

@@ -1,9 +1,8 @@
 # 策略: 🍎苹果
-# 规则数: 30
+# 规则数: 29
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,12diasderegalosdeitunes
-DOMAIN-KEYWORD,apple
 DOMAIN-KEYWORD,apple-dns
 DOMAIN-KEYWORD,applecare
 DOMAIN-KEYWORD,applecomputer

@@ -37,6 +37,7 @@ jobs:
         run: |
           python3 -B -m unittest discover -s scripts -p 'test_*.py'
           python3 -B scripts/convert_clash.py --check
+          python3 -B scripts/acceptance.py
 
   build:
     if: github.event_name != 'pull_request'
@@ -66,8 +67,17 @@ jobs:
       - name: 构建与校验规则集
         run: |
           python3 -B -m unittest discover -s scripts -p 'test_*.py'
-          python3 -B scripts/build.py
+          python3 -B scripts/build.py --report "$RUNNER_TEMP/classification-report.json"
           python3 -B scripts/convert_clash.py --check
+          python3 -B scripts/acceptance.py
+
+      - name: 上传分类变更与冲突报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: classification-report
+          path: ${{ runner.temp }}/classification-report.json
+          if-no-files-found: ignore
 
       - name: Commit & Push
         run: |

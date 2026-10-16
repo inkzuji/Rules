@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 858
+# 规则数: 868
 
 # DOMAIN
 DOMAIN,api.imem.app
@@ -70,6 +70,10 @@ DOMAIN-SUFFIX,connect.facebook.net
 DOMAIN-SUFFIX,contest.com
 DOMAIN-SUFFIX,crowdtangle.com
 DOMAIN-SUFFIX,dacebook.com
+DOMAIN-SUFFIX,discord.com
+DOMAIN-SUFFIX,discord.gg
+DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discordapp.net
 DOMAIN-SUFFIX,dlfacebook.com
 DOMAIN-SUFFIX,dotfacebook.com
 DOMAIN-SUFFIX,dotfacebook.net
@@ -143,6 +147,7 @@ DOMAIN-SUFFIX,facebook-studio.com
 DOMAIN-SUFFIX,facebook-support.org
 DOMAIN-SUFFIX,facebook-texas-holdem.com
 DOMAIN-SUFFIX,facebook-texas-holdem.net
+DOMAIN-SUFFIX,facebook.com
 DOMAIN-SUFFIX,facebook123.org
 DOMAIN-SUFFIX,facebook30.com
 DOMAIN-SUFFIX,facebook30.net
@@ -542,6 +547,7 @@ DOMAIN-SUFFIX,plusmessenger.org
 DOMAIN-SUFFIX,pscp.tv
 DOMAIN-SUFFIX,quiz.directory
 DOMAIN-SUFFIX,reachtheworldonfacebook.com
+DOMAIN-SUFFIX,redd.it
 DOMAIN-SUFFIX,reddit.app.link
 DOMAIN-SUFFIX,reddit.com
 DOMAIN-SUFFIX,redkix.com
@@ -561,6 +567,8 @@ DOMAIN-SUFFIX,tdesktop.com
 DOMAIN-SUFFIX,telega.one
 DOMAIN-SUFFIX,telegra.ph
 DOMAIN-SUFFIX,telegram-cdn.org
+DOMAIN-SUFFIX,telegram.me
+DOMAIN-SUFFIX,telegram.org
 DOMAIN-SUFFIX,telegramdownload.com
 DOMAIN-SUFFIX,telesco.pe
 DOMAIN-SUFFIX,tellapart.com
@@ -656,6 +664,8 @@ DOMAIN-SUFFIX,vkuservideo.net
 DOMAIN-SUFFIX,vkuservideo.ru
 DOMAIN-SUFFIX,web-instagram.net
 DOMAIN-SUFFIX,webk.app
+DOMAIN-SUFFIX,whatsapp.com
+DOMAIN-SUFFIX,whatsapp.net
 DOMAIN-SUFFIX,whyfacebook.com
 DOMAIN-SUFFIX,workplace.com
 DOMAIN-SUFFIX,workplaceusecases.com

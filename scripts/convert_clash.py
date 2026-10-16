@@ -19,6 +19,7 @@ import urllib.parse
 import uuid
 
 from rules import POLICIES, parse_rules, read_policy, render_rules, rule_line
+import routing
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC_DIR = ROOT / 'surge'
@@ -163,7 +164,7 @@ def generate(surge_dir, mihomo='mihomo'):
     version = run_mihomo(mihomo, '-v')
     if not any(f'Meta {prefix}{MIHOMO_VERSION} ' in version for prefix in ('', 'v')):
         raise ValueError(f'构建需要 mihomo {MIHOMO_VERSION}，实际: {version.strip()}')
-    files = sorted(Path(surge_dir).rglob('*.list'))
+    files = routing.service_paths(surge_dir)
     if not files:
         raise ValueError(f'缺少 Surge 源规则: {surge_dir}')
     directory = Path(tempfile.mkdtemp(prefix='rules-convert-'))
@@ -171,6 +172,7 @@ def generate(surge_dir, mihomo='mihomo'):
     groups = collections.defaultdict(set)
     ordered_groups = collections.defaultdict(list)
     classical_entries = []
+    service_files = []
     skipped = collections.Counter()
     for path in files:
         text = path.read_text(encoding='utf-8')
@@ -183,13 +185,15 @@ def generate(surge_dir, mihomo='mihomo'):
             else:
                 converted.append(translated)
         relative = path.relative_to(surge_dir).as_posix()
+        service_files.append((relative, policy, converted))
         artifacts[relative] = render_rules(policy, converted).encode('utf-8')
         groups[policy].update(converted)
         ordered_groups[policy].extend(sorted(set(converted)))
         name = relative[:-5].replace('/', '-')
         classical_entries.append((name, relative, policy, 'classical', 'text', False))
-    order = list(POLICIES)
-    classical_entries.sort(key=lambda entry: (order.index(entry[2]), entry[0]))
+    domains, domain_entries = routing.domain_artifacts(service_files)
+    artifacts.update(domains)
+    classical_entries = domain_entries + sorted(classical_entries, key=routing.entry_order)
     mrs_entries = []
     for policy, name in POLICIES.items():
         domains, ips, extra = [], [], []
@@ -221,6 +225,8 @@ def generate(surge_dir, mihomo='mihomo'):
             artifacts[relative] = render_rules(policy, extra, preserve_order=resolves).encode('utf-8')
             mrs_entries.append((name + '-extra', relative, policy, 'classical', 'text', False))
         print(f'✓ {name:8s} 域名 {len(domains):6d} IP {len(ips):6d} 配套文本 {len(extra):6d}')
+    # 所有明确域名先匹配，不能让前一策略的 IP/进程抢走后一策略的域名。
+    mrs_entries.sort(key=lambda entry: entry[3] != 'domain')
     artifacts['classical.yaml'] = render_config(classical_entries).encode('utf-8')
     artifacts['mrs.yaml'] = render_config(mrs_entries).encode('utf-8')
     for relative, content in artifacts.items():
@@ -254,6 +260,7 @@ def preflight(artifacts, out_dir):
     stale = stale_paths(artifacts, out_dir)
     managed = {f'mrs/{name}{suffix}' for name in POLICIES.values()
                for suffix in ('.mrs', '-ip.mrs', '-extra.list')}
+    managed.update(f'routing/{name}-domain.list' for name in routing.SERVICE_NAMES)
     unknown = sorted(set(stale) - managed)
     if unknown:
         raise ValueError(f'{out_dir}: 未知的多余产物，请检查后移入系统废纸篓: {unknown}')

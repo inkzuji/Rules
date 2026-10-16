@@ -1,5 +1,152 @@
 # 合并到已有主配置；策略组名称须与主配置一致。
 rule-providers:
+  domain-AI-Claude:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/AI/Claude-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/AI/Claude-domain.list"
+    interval: 86400
+  domain-AI-Copilot:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/AI/Copilot-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/AI/Copilot-domain.list"
+    interval: 86400
+  domain-AI-Gemini:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/AI/Gemini-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/AI/Gemini-domain.list"
+    interval: 86400
+  domain-AI-OpenAI:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/AI/OpenAI-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/AI/OpenAI-domain.list"
+    interval: 86400
+  domain-AI-Others:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/AI/Others-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/AI/Others-domain.list"
+    interval: 86400
+  domain-Apple:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Apple-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Apple-domain.list"
+    interval: 86400
+  domain-Game:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Game-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Game-domain.list"
+    interval: 86400
+  domain-Proxy-YouTube:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/YouTube-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/YouTube-domain.list"
+    interval: 86400
+  domain-Proxy-Netflix:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Netflix-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Netflix-domain.list"
+    interval: 86400
+  domain-Proxy-Disney:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Disney-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Disney-domain.list"
+    interval: 86400
+  domain-Proxy-Spotify:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Spotify-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Spotify-domain.list"
+    interval: 86400
+  domain-Proxy-Streaming:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Streaming-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Streaming-domain.list"
+    interval: 86400
+  domain-Proxy-GitHub:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/GitHub-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/GitHub-domain.list"
+    interval: 86400
+  domain-Proxy-Microsoft:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Microsoft-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Microsoft-domain.list"
+    interval: 86400
+  domain-Proxy-Google:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Google-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Google-domain.list"
+    interval: 86400
+  domain-Proxy-Social:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Social-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Social-domain.list"
+    interval: 86400
+  domain-Proxy-Dev:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Dev-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Dev-domain.list"
+    interval: 86400
+  domain-Proxy-Cloudflare:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Cloudflare-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Cloudflare-domain.list"
+    interval: 86400
+  domain-Proxy-Others:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Proxy/Others-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Proxy/Others-domain.list"
+    interval: 86400
+  domain-Bilibili:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Bilibili-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Bilibili-domain.list"
+    interval: 86400
+  domain-Direct:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./routing/Direct-domain.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/routing/Direct-domain.list"
+    interval: 86400
   AI-Claude:
     type: "http"
     behavior: "classical"
@@ -49,47 +196,12 @@ rule-providers:
     path: "./Game.list"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Game.list"
     interval: 86400
-  Proxy-Cloudflare:
+  Proxy-YouTube:
     type: "http"
     behavior: "classical"
     format: "text"
-    path: "./Proxy/Cloudflare.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Cloudflare.list"
-    interval: 86400
-  Proxy-Dev:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./Proxy/Dev.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Dev.list"
-    interval: 86400
-  Proxy-Disney:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./Proxy/Disney.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Disney.list"
-    interval: 86400
-  Proxy-GitHub:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./Proxy/GitHub.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/GitHub.list"
-    interval: 86400
-  Proxy-Google:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./Proxy/Google.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Google.list"
-    interval: 86400
-  Proxy-Microsoft:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./Proxy/Microsoft.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Microsoft.list"
+    path: "./Proxy/YouTube.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/YouTube.list"
     interval: 86400
   Proxy-Netflix:
     type: "http"
@@ -98,19 +210,12 @@ rule-providers:
     path: "./Proxy/Netflix.list"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Netflix.list"
     interval: 86400
-  Proxy-Others:
+  Proxy-Disney:
     type: "http"
     behavior: "classical"
     format: "text"
-    path: "./Proxy/Others.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Others.list"
-    interval: 86400
-  Proxy-Social:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./Proxy/Social.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Social.list"
+    path: "./Proxy/Disney.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Disney.list"
     interval: 86400
   Proxy-Spotify:
     type: "http"
@@ -126,12 +231,54 @@ rule-providers:
     path: "./Proxy/Streaming.list"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Streaming.list"
     interval: 86400
-  Proxy-YouTube:
+  Proxy-GitHub:
     type: "http"
     behavior: "classical"
     format: "text"
-    path: "./Proxy/YouTube.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/YouTube.list"
+    path: "./Proxy/GitHub.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/GitHub.list"
+    interval: 86400
+  Proxy-Microsoft:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Microsoft.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Microsoft.list"
+    interval: 86400
+  Proxy-Google:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Google.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Google.list"
+    interval: 86400
+  Proxy-Social:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Social.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Social.list"
+    interval: 86400
+  Proxy-Dev:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Dev.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Dev.list"
+    interval: 86400
+  Proxy-Cloudflare:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Cloudflare.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Cloudflare.list"
+    interval: 86400
+  Proxy-Others:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Others.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Others.list"
     interval: 86400
   Bilibili:
     type: "http"
@@ -149,6 +296,27 @@ rule-providers:
     interval: 86400
 
 rules:
+  - "RULE-SET,domain-AI-Claude,🤖️AI"
+  - "RULE-SET,domain-AI-Copilot,🤖️AI"
+  - "RULE-SET,domain-AI-Gemini,🤖️AI"
+  - "RULE-SET,domain-AI-OpenAI,🤖️AI"
+  - "RULE-SET,domain-AI-Others,🤖️AI"
+  - "RULE-SET,domain-Apple,🍎苹果"
+  - "RULE-SET,domain-Game,🎮游戏"
+  - "RULE-SET,domain-Proxy-YouTube,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Netflix,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Disney,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Spotify,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Streaming,🚀节点选择"
+  - "RULE-SET,domain-Proxy-GitHub,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Microsoft,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Google,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Social,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Dev,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Cloudflare,🚀节点选择"
+  - "RULE-SET,domain-Proxy-Others,🚀节点选择"
+  - "RULE-SET,domain-Bilibili,📽哔哩"
+  - "RULE-SET,domain-Direct,DIRECT"
   - "RULE-SET,AI-Claude,🤖️AI"
   - "RULE-SET,AI-Copilot,🤖️AI"
   - "RULE-SET,AI-Gemini,🤖️AI"
@@ -156,18 +324,18 @@ rules:
   - "RULE-SET,AI-Others,🤖️AI"
   - "RULE-SET,Apple,🍎苹果"
   - "RULE-SET,Game,🎮游戏"
-  - "RULE-SET,Proxy-Cloudflare,🚀节点选择"
-  - "RULE-SET,Proxy-Dev,🚀节点选择"
-  - "RULE-SET,Proxy-Disney,🚀节点选择"
-  - "RULE-SET,Proxy-GitHub,🚀节点选择"
-  - "RULE-SET,Proxy-Google,🚀节点选择"
-  - "RULE-SET,Proxy-Microsoft,🚀节点选择"
+  - "RULE-SET,Proxy-YouTube,🚀节点选择"
   - "RULE-SET,Proxy-Netflix,🚀节点选择"
-  - "RULE-SET,Proxy-Others,🚀节点选择"
-  - "RULE-SET,Proxy-Social,🚀节点选择"
+  - "RULE-SET,Proxy-Disney,🚀节点选择"
   - "RULE-SET,Proxy-Spotify,🚀节点选择"
   - "RULE-SET,Proxy-Streaming,🚀节点选择"
-  - "RULE-SET,Proxy-YouTube,🚀节点选择"
+  - "RULE-SET,Proxy-GitHub,🚀节点选择"
+  - "RULE-SET,Proxy-Microsoft,🚀节点选择"
+  - "RULE-SET,Proxy-Google,🚀节点选择"
+  - "RULE-SET,Proxy-Social,🚀节点选择"
+  - "RULE-SET,Proxy-Dev,🚀节点选择"
+  - "RULE-SET,Proxy-Cloudflare,🚀节点选择"
+  - "RULE-SET,Proxy-Others,🚀节点选择"
   - "RULE-SET,Bilibili,📽哔哩"
   - "RULE-SET,Direct,DIRECT"
   - "MATCH,🐠 Final"

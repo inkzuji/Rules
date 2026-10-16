@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 363
+# 规则数: 358
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,-spotify-com
@@ -26,7 +26,6 @@ DOMAIN-KEYWORD,alienware
 DOMAIN-KEYWORD,alphabet
 DOMAIN-KEYWORD,alphera
 DOMAIN-KEYWORD,alpherafs
-DOMAIN-KEYWORD,amazon
 DOMAIN-KEYWORD,amazonaws
 DOMAIN-KEYWORD,amzndns
 DOMAIN-KEYWORD,annas-archive
@@ -45,7 +44,6 @@ DOMAIN-KEYWORD,bestbuy
 DOMAIN-KEYWORD,billpoint
 DOMAIN-KEYWORD,binance
 DOMAIN-KEYWORD,binancezh
-DOMAIN-KEYWORD,bing
 DOMAIN-KEYWORD,bitwarden
 DOMAIN-KEYWORD,blizzard
 DOMAIN-KEYWORD,blogspot
@@ -70,7 +68,6 @@ DOMAIN-KEYWORD,cashpassport
 DOMAIN-KEYWORD,cf-ns
 DOMAIN-KEYWORD,chatwhores
 DOMAIN-KEYWORD,clickup
-DOMAIN-KEYWORD,cloudflare
 DOMAIN-KEYWORD,codecademy
 DOMAIN-KEYWORD,codepen
 DOMAIN-KEYWORD,coursera
@@ -81,6 +78,7 @@ DOMAIN-KEYWORD,deepfreeze
 DOMAIN-KEYWORD,deepl
 DOMAIN-KEYWORD,deepmind
 DOMAIN-KEYWORD,dettol
+DOMAIN-KEYWORD,diabrowser
 DOMAIN-KEYWORD,digitalocean
 DOMAIN-KEYWORD,discord
 DOMAIN-KEYWORD,discovery.uplynk.com
@@ -132,11 +130,8 @@ DOMAIN-KEYWORD,geforce
 DOMAIN-KEYWORD,genotek
 DOMAIN-KEYWORD,gettyimages
 DOMAIN-KEYWORD,ghostery
-DOMAIN-KEYWORD,github
 DOMAIN-KEYWORD,gitlab
 DOMAIN-KEYWORD,globalsign
-DOMAIN-KEYWORD,gmail
-DOMAIN-KEYWORD,google
 DOMAIN-KEYWORD,gputechconf
 DOMAIN-KEYWORD,grammarly
 DOMAIN-KEYWORD,grapheneos
@@ -197,7 +192,6 @@ DOMAIN-KEYWORD,mcdonalds
 DOMAIN-KEYWORD,meadjohnson
 DOMAIN-KEYWORD,medium
 DOMAIN-KEYWORD,meta
-DOMAIN-KEYWORD,microsoft
 DOMAIN-KEYWORD,microsoftnews
 DOMAIN-KEYWORD,microsoftreactor
 DOMAIN-KEYWORD,midjourney
@@ -233,6 +227,7 @@ DOMAIN-KEYWORD,nytimes
 DOMAIN-KEYWORD,odnoklassniki
 DOMAIN-KEYWORD,okx-dns
 DOMAIN-KEYWORD,onedrive
+DOMAIN-KEYWORD,openai
 DOMAIN-KEYWORD,ozonru
 DOMAIN-KEYWORD,paramount
 DOMAIN-KEYWORD,paypal-center
@@ -346,12 +341,12 @@ DOMAIN-KEYWORD,xxxvideo
 DOMAIN-KEYWORD,yahoo
 DOMAIN-KEYWORD,yandex
 DOMAIN-KEYWORD,yango
-DOMAIN-KEYWORD,youtube
-DOMAIN-KEYWORD,youtubego
 DOMAIN-KEYWORD,z-lib
 DOMAIN-KEYWORD,zeit-world
 DOMAIN-KEYWORD,zzdh
 # IP-ASN
+IP-ASN,14061,no-resolve
+IP-ASN,20473,no-resolve
 IP-ASN,211157,no-resolve
 IP-ASN,44907,no-resolve
 IP-ASN,59930,no-resolve

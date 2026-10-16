@@ -1,5 +1,5 @@
 # 策略: DIRECT
-# 规则数: 5834
+# 规则数: 5839
 
 # DOMAIN
 DOMAIN,00713915daab0be43def5c338c02c80b.dlied1.cdntips.net
@@ -314,6 +314,7 @@ DOMAIN-SUFFIX,cnms.net.cn
 DOMAIN-SUFFIX,cntv.cn
 DOMAIN-SUFFIX,cntv.com.cn
 DOMAIN-SUFFIX,cntvwb.cn
+DOMAIN-SUFFIX,cocopilot.org
 DOMAIN-SUFFIX,czzyvideo.com
 DOMAIN-SUFFIX,dmhmusic.com
 DOMAIN-SUFFIX,domesticmedia.com
@@ -381,6 +382,8 @@ DOMAIN-SUFFIX,music.126.net
 DOMAIN-SUFFIX,music.163.com
 DOMAIN-SUFFIX,music.qq.com
 DOMAIN-SUFFIX,music.tc.qq.com
+DOMAIN-SUFFIX,musicbrainz.org
+DOMAIN-SUFFIX,ngrok-free.app
 DOMAIN-SUFFIX,ns6mitkxo.cn
 DOMAIN-SUFFIX,ntp.org
 DOMAIN-SUFFIX,olympicchannelchina.cn
@@ -404,6 +407,7 @@ DOMAIN-SUFFIX,qiyipic.com
 DOMAIN-SUFFIX,qlogo.cn
 DOMAIN-SUFFIX,qpic.cn
 DOMAIN-SUFFIX,qqmusic.qq.com
+DOMAIN-SUFFIX,quickconnect.to
 DOMAIN-SUFFIX,qy.com
 DOMAIN-SUFFIX,qy.net
 DOMAIN-SUFFIX,servicewechat.com
@@ -415,6 +419,7 @@ DOMAIN-SUFFIX,sohu.com.cn
 DOMAIN-SUFFIX,soku.com
 DOMAIN-SUFFIX,speedtest.cn
 DOMAIN-SUFFIX,suike.cn
+DOMAIN-SUFFIX,synology.com
 DOMAIN-SUFFIX,taihe.com
 DOMAIN-SUFFIX,tazai.com
 DOMAIN-SUFFIX,tencentmusic.com

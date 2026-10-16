@@ -1,11 +1,9 @@
 # 策略: 🤖️AI
-# 规则数: 6
+# 规则数: 5
 
-# DOMAIN
-DOMAIN,cdn.usefathom.com
 # DOMAIN-SUFFIX
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claude.com
-DOMAIN-SUFFIX,claude.dev
 DOMAIN-SUFFIX,claude.site
+DOMAIN-SUFFIX,claudeusercontent.com

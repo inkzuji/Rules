@@ -7,6 +7,41 @@ rule-providers:
     path: "./mrs/AI.mrs"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/AI.mrs"
     interval: 86400
+  Apple:
+    type: "http"
+    behavior: "domain"
+    format: "mrs"
+    path: "./mrs/Apple.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Apple.mrs"
+    interval: 86400
+  Game:
+    type: "http"
+    behavior: "domain"
+    format: "mrs"
+    path: "./mrs/Game.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Game.mrs"
+    interval: 86400
+  Proxy:
+    type: "http"
+    behavior: "domain"
+    format: "mrs"
+    path: "./mrs/Proxy.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Proxy.mrs"
+    interval: 86400
+  Bilibili:
+    type: "http"
+    behavior: "domain"
+    format: "mrs"
+    path: "./mrs/Bilibili.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Bilibili.mrs"
+    interval: 86400
+  Direct:
+    type: "http"
+    behavior: "domain"
+    format: "mrs"
+    path: "./mrs/Direct.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Direct.mrs"
+    interval: 86400
   AI-ip:
     type: "http"
     behavior: "ipcidr"
@@ -20,13 +55,6 @@ rule-providers:
     format: "text"
     path: "./mrs/AI-extra.list"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/AI-extra.list"
-    interval: 86400
-  Apple:
-    type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/Apple.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Apple.mrs"
     interval: 86400
   Apple-ip:
     type: "http"
@@ -42,26 +70,12 @@ rule-providers:
     path: "./mrs/Apple-extra.list"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Apple-extra.list"
     interval: 86400
-  Game:
-    type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/Game.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Game.mrs"
-    interval: 86400
   Game-extra:
     type: "http"
     behavior: "classical"
     format: "text"
     path: "./mrs/Game-extra.list"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Game-extra.list"
-    interval: 86400
-  Proxy:
-    type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/Proxy.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Proxy.mrs"
     interval: 86400
   Proxy-ip:
     type: "http"
@@ -77,13 +91,6 @@ rule-providers:
     path: "./mrs/Proxy-extra.list"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Proxy-extra.list"
     interval: 86400
-  Bilibili:
-    type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/Bilibili.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Bilibili.mrs"
-    interval: 86400
   Bilibili-ip:
     type: "http"
     behavior: "ipcidr"
@@ -98,13 +105,6 @@ rule-providers:
     path: "./mrs/Bilibili-extra.list"
     url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Bilibili-extra.list"
     interval: 86400
-  Direct:
-    type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/Direct.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Direct.mrs"
-    interval: 86400
   Direct-extra:
     type: "http"
     behavior: "classical"
@@ -115,19 +115,19 @@ rule-providers:
 
 rules:
   - "RULE-SET,AI,🤖️AI"
+  - "RULE-SET,Apple,🍎苹果"
+  - "RULE-SET,Game,🎮游戏"
+  - "RULE-SET,Proxy,🚀节点选择"
+  - "RULE-SET,Bilibili,📽哔哩"
+  - "RULE-SET,Direct,DIRECT"
   - "RULE-SET,AI-ip,🤖️AI,no-resolve"
   - "RULE-SET,AI-extra,🤖️AI"
-  - "RULE-SET,Apple,🍎苹果"
   - "RULE-SET,Apple-ip,🍎苹果,no-resolve"
   - "RULE-SET,Apple-extra,🍎苹果"
-  - "RULE-SET,Game,🎮游戏"
   - "RULE-SET,Game-extra,🎮游戏"
-  - "RULE-SET,Proxy,🚀节点选择"
   - "RULE-SET,Proxy-ip,🚀节点选择,no-resolve"
   - "RULE-SET,Proxy-extra,🚀节点选择"
-  - "RULE-SET,Bilibili,📽哔哩"
   - "RULE-SET,Bilibili-ip,📽哔哩,no-resolve"
   - "RULE-SET,Bilibili-extra,📽哔哩"
-  - "RULE-SET,Direct,DIRECT"
   - "RULE-SET,Direct-extra,DIRECT"
   - "MATCH,🐠 Final"

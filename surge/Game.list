@@ -1,5 +1,5 @@
 # 策略: 🎮游戏
-# 规则数: 931
+# 规则数: 929
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,garena
@@ -13,7 +13,6 @@ DOMAIN-KEYWORD,riotgames
 DOMAIN-KEYWORD,roblox
 DOMAIN-KEYWORD,steam
 DOMAIN-KEYWORD,vrzwk
-DOMAIN-KEYWORD,xbox360
 # DOMAIN-SUFFIX
 DOMAIN-SUFFIX,100classicbooks.com
 DOMAIN-SUFFIX,17173.com
@@ -651,7 +650,6 @@ DOMAIN-SUFFIX,rmwxgame.com
 DOMAIN-SUFFIX,ro-blox.com
 DOMAIN-SUFFIX,roadblocks.com
 DOMAIN-SUFFIX,roblocks.com
-DOMAIN-SUFFIX,roblox-api.arkoselabs.com
 DOMAIN-SUFFIX,robloxdev.cn
 DOMAIN-SUFFIX,robloxlabs.com
 DOMAIN-SUFFIX,roborecall.com

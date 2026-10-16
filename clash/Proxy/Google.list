@@ -1,11 +1,23 @@
 # 策略: 🚀节点选择
-# 规则数: 9082
+# 规则数: 9112
 
+# DOMAIN
+DOMAIN,alkalicore-pa.clients6.google.com
+DOMAIN,cloudcode-pa.googleapis.com
+DOMAIN,content-firebaseappcheck.googleapis.com
+DOMAIN,daily-cloudcode-pa.googleapis.com
+DOMAIN,firebaseappcheck.googleapis.com
+DOMAIN,geller-pa.googleapis.com
+DOMAIN,identitytoolkit.googleapis.com
+DOMAIN,labstailwind.pa.googleapis.com
+DOMAIN,pay.google.com
+DOMAIN,robinfrontend-pa.googleapis.com
+DOMAIN,securetoken.googleapis.com
+DOMAIN,waa-pa.clients6.google.com
+DOMAIN,yt3.googleusercontent.com
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,blogspot
 DOMAIN-KEYWORD,bumptop
-DOMAIN-KEYWORD,gmail
-DOMAIN-KEYWORD,google
 DOMAIN-KEYWORD,womenwill
 # DOMAIN-SUFFIX
 DOMAIN-SUFFIX,0emm.com
@@ -41,13 +53,16 @@ DOMAIN-SUFFIX,api-verify.recaptcha.net
 DOMAIN-SUFFIX,api.ai
 DOMAIN-SUFFIX,api.recaptcha.net
 DOMAIN-SUFFIX,apigee.com
+DOMAIN-SUFFIX,apis.google.com
 DOMAIN-SUFFIX,app-ads-services.com
 DOMAIN-SUFFIX,app-analytics-services-att.com
+DOMAIN-SUFFIX,app-analytics-services.com
 DOMAIN-SUFFIX,app-measurement-cn.com
 DOMAIN-SUFFIX,app-measurement.com
 DOMAIN-SUFFIX,appbridge.ca
 DOMAIN-SUFFIX,appbridge.io
 DOMAIN-SUFFIX,appbridge.it
+DOMAIN-SUFFIX,appengine.google.com
 DOMAIN-SUFFIX,appspot.com
 DOMAIN-SUFFIX,apture.com
 DOMAIN-SUFFIX,area120.com
@@ -62,6 +77,7 @@ DOMAIN-SUFFIX,beatthatquote.com
 DOMAIN-SUFFIX,blink.org
 DOMAIN-SUFFIX,blogblog.com
 DOMAIN-SUFFIX,blogger.com
+DOMAIN-SUFFIX,blogspot.com
 DOMAIN-SUFFIX,brocaproject.com
 DOMAIN-SUFFIX,brotli.org
 DOMAIN-SUFFIX,bumpshare.com
@@ -123,6 +139,7 @@ DOMAIN-SUFFIX,firebase.com
 DOMAIN-SUFFIX,firebase.dev
 DOMAIN-SUFFIX,firebase.io
 DOMAIN-SUFFIX,firebaseapp.com
+DOMAIN-SUFFIX,firebaseappcheck.googleapis.com
 DOMAIN-SUFFIX,firebaseio.com
 DOMAIN-SUFFIX,fitbit.com
 DOMAIN-SUFFIX,flutter.dev
@@ -138,6 +155,7 @@ DOMAIN-SUFFIX,g.page
 DOMAIN-SUFFIX,gateway.dev
 DOMAIN-SUFFIX,gbiz
 DOMAIN-SUFFIX,gcr.io
+DOMAIN-SUFFIX,geller-pa.googleapis.com
 DOMAIN-SUFFIX,gerritcodereview.com
 DOMAIN-SUFFIX,get.app
 DOMAIN-SUFFIX,get.dev
@@ -147,6 +165,8 @@ DOMAIN-SUFFIX,get.page
 DOMAIN-SUFFIX,get.rsvp
 DOMAIN-SUFFIX,getbumptop.com
 DOMAIN-SUFFIX,ggoogle.com
+DOMAIN-SUFFIX,ggpht.cn
+DOMAIN-SUFFIX,ggpht.com
 DOMAIN-SUFFIX,gipscorp.com
 DOMAIN-SUFFIX,gkecnapps.cn
 DOMAIN-SUFFIX,gle
@@ -170,10 +190,12 @@ DOMAIN-SUFFIX,goog
 DOMAIN-SUFFIX,googel.com
 DOMAIN-SUFFIX,googil.com
 DOMAIN-SUFFIX,googl.com
+DOMAIN-SUFFIX,google
 DOMAIN-SUFFIX,google-access.net
 DOMAIN-SUFFIX,google-analytics-cn.com
 DOMAIN-SUFFIX,google-analytics.com
 DOMAIN-SUFFIX,google-syndication.com
+DOMAIN-SUFFIX,google.com
 DOMAIN-SUFFIX,googleacquisitionmigration.com
 DOMAIN-SUFFIX,googleadapis.com
 DOMAIN-SUFFIX,googleadapis.l.google.com
@@ -184,6 +206,7 @@ DOMAIN-SUFFIX,googleadservices.com
 DOMAIN-SUFFIX,googleadsserving.cn
 DOMAIN-SUFFIX,googleanalytics.com
 DOMAIN-SUFFIX,googleapis.cn
+DOMAIN-SUFFIX,googleapis.com
 DOMAIN-SUFFIX,googleapps.com
 DOMAIN-SUFFIX,googlearth.com
 DOMAIN-SUFFIX,googleblog.com
@@ -221,6 +244,7 @@ DOMAIN-SUFFIX,googletagservices-cn.com
 DOMAIN-SUFFIX,googletagservices.com
 DOMAIN-SUFFIX,googletraveladservices-cn.com
 DOMAIN-SUFFIX,googletraveladservices.com
+DOMAIN-SUFFIX,googleusercontent.com
 DOMAIN-SUFFIX,googlevads-cn.com
 DOMAIN-SUFFIX,googleventures.com
 DOMAIN-SUFFIX,googlezip.net
@@ -269,6 +293,7 @@ DOMAIN-SUFFIX,keyhole.com
 DOMAIN-SUFFIX,keytransparency.com
 DOMAIN-SUFFIX,keytransparency.foo
 DOMAIN-SUFFIX,keytransparency.org
+DOMAIN-SUFFIX,labstailwind.pa.googleapis.com
 DOMAIN-SUFFIX,lanternal.com
 DOMAIN-SUFFIX,like.com
 DOMAIN-SUFFIX,madewithcode.com
@@ -286,9 +311,11 @@ DOMAIN-SUFFIX,nest.com
 DOMAIN-SUFFIX,new.day
 DOMAIN-SUFFIX,nexus
 DOMAIN-SUFFIX,nomulus.foo
+DOMAIN-SUFFIX,notebook.google
 DOMAIN-SUFFIX,oauthz.com
 DOMAIN-SUFFIX,on.here
 DOMAIN-SUFFIX,on2.com
+DOMAIN-SUFFIX,one.google.com
 DOMAIN-SUFFIX,onefifteen.net
 DOMAIN-SUFFIX,onefifteen.org
 DOMAIN-SUFFIX,oneworldmanystories.com
@@ -306,6 +333,7 @@ DOMAIN-SUFFIX,panoramio.com
 DOMAIN-SUFFIX,partnerad.l.google.com
 DOMAIN-SUFFIX,partylikeits1986.org
 DOMAIN-SUFFIX,paxlicense.org
+DOMAIN-SUFFIX,payments.google.com
 DOMAIN-SUFFIX,picasa.com
 DOMAIN-SUFFIX,picasaweb.com
 DOMAIN-SUFFIX,picasaweb.net
@@ -324,8 +352,10 @@ DOMAIN-SUFFIX,publishproxy.com
 DOMAIN-SUFFIX,questvisual.com
 DOMAIN-SUFFIX,quickoffice.com
 DOMAIN-SUFFIX,quiksee.com
+DOMAIN-SUFFIX,recaptcha.net
 DOMAIN-SUFFIX,revolv.com
 DOMAIN-SUFFIX,ridepenguin.com
+DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com
 DOMAIN-SUFFIX,run.app
 DOMAIN-SUFFIX,savethedate.foo
 DOMAIN-SUFFIX,saynow.com
@@ -381,6 +411,7 @@ DOMAIN-SUFFIX,webrtc.org
 DOMAIN-SUFFIX,weltweitwachsen.de
 DOMAIN-SUFFIX,whatbrowser.org
 DOMAIN-SUFFIX,whats.new
+DOMAIN-SUFFIX,wide-youtube.l.google.com
 DOMAIN-SUFFIX,widevine.com
 DOMAIN-SUFFIX,withgoogle.com
 DOMAIN-SUFFIX,x.company
@@ -396,6 +427,7 @@ DOMAIN-SUFFIX,xn--ngstr-lra8j.com
 DOMAIN-SUFFIX,xn--p8j9a0d9c9a.xn--q9jyb4c
 DOMAIN-SUFFIX,xn--qcka1pmc
 DOMAIN-SUFFIX,xplr.co
+DOMAIN-SUFFIX,youtube-ui.l.google.com
 DOMAIN-SUFFIX,zukunftswerkstatt.de
 # IP-CIDR
 IP-CIDR,1.179.112.0/21,no-resolve
@@ -3131,7 +3163,6 @@ IP-CIDR,172.110.44.0/23,no-resolve
 IP-CIDR,172.110.46.0/24,no-resolve
 IP-CIDR,172.217.0.0/16,no-resolve
 IP-CIDR,172.253.0.0/16,no-resolve
-IP-CIDR,172.68.158.0/24,no-resolve
 IP-CIDR,172.98.18.0/23,no-resolve
 IP-CIDR,173.194.0.0/16,no-resolve
 IP-CIDR,173.255.112.0/20,no-resolve

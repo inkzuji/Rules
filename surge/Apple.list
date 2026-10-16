@@ -1,9 +1,8 @@
 # 策略: 🍎苹果
-# 规则数: 1311
+# 规则数: 1321
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,12diasderegalosdeitunes
-DOMAIN-KEYWORD,apple
 DOMAIN-KEYWORD,apple-dns
 DOMAIN-KEYWORD,applecare
 DOMAIN-KEYWORD,applecomputer
@@ -123,6 +122,7 @@ DOMAIN-SUFFIX,apple-store.wang
 DOMAIN-SUFFIX,apple-studies.com
 DOMAIN-SUFFIX,apple-usa.net
 DOMAIN-SUFFIX,apple-watch.com.ru
+DOMAIN-SUFFIX,apple.com
 DOMAIN-SUFFIX,apple.com.cn
 DOMAIN-SUFFIX,appleaccount.net
 DOMAIN-SUFFIX,appleafrica.com
@@ -231,6 +231,7 @@ DOMAIN-SUFFIX,applfe.com
 DOMAIN-SUFFIX,applle.com
 DOMAIN-SUFFIX,applw.com
 DOMAIN-SUFFIX,appmediagroup.com
+DOMAIN-SUFFIX,apps.mzstatic.com
 DOMAIN-SUFFIX,appsto.re
 DOMAIN-SUFFIX,appstoreapple.cn
 DOMAIN-SUFFIX,appule.com
@@ -667,7 +668,11 @@ DOMAIN-SUFFIX,desktopmovies.net
 DOMAIN-SUFFIX,desktopmovies.org
 DOMAIN-SUFFIX,detaliczny.com
 DOMAIN-SUFFIX,developer-advisor.com
+DOMAIN-SUFFIX,developer.apple.com
+DOMAIN-SUFFIX,developerservices2.apple.com
 DOMAIN-SUFFIX,device-manager.us
+DOMAIN-SUFFIX,devimages-cdn.apple.com
+DOMAIN-SUFFIX,devstreaming-cdn.apple.com
 DOMAIN-SUFFIX,digitalhub.com
 DOMAIN-SUFFIX,discountbeatsbydre-us.com
 DOMAIN-SUFFIX,discountbeatsstore.com
@@ -765,6 +770,7 @@ DOMAIN-SUFFIX,free-sns.com
 DOMAIN-SUFFIX,frishoes.com
 DOMAIN-SUFFIX,fundaiphone5s.com
 DOMAIN-SUFFIX,gamebeforethegame.com
+DOMAIN-SUFFIX,gateway.icloud.com
 DOMAIN-SUFFIX,gdmf.apple.com
 DOMAIN-SUFFIX,gdmf.apple.com.akadns.net
 DOMAIN-SUFFIX,geoport.com
@@ -817,6 +823,7 @@ DOMAIN-SUFFIX,icloud-content.com
 DOMAIN-SUFFIX,icloud-content.com.cn
 DOMAIN-SUFFIX,icloud-isupport.com
 DOMAIN-SUFFIX,icloud-sandbox.com
+DOMAIN-SUFFIX,icloud.com
 DOMAIN-SUFFIX,icloud.com.cn
 DOMAIN-SUFFIX,icloudads.net
 DOMAIN-SUFFIX,icloudapple.cn
@@ -1183,6 +1190,7 @@ DOMAIN-SUFFIX,personeelsland.com
 DOMAIN-SUFFIX,picknicekicks.net
 DOMAIN-SUFFIX,pickshoesclothes.com
 DOMAIN-SUFFIX,pillbeatsblackfridaysale.com
+DOMAIN-SUFFIX,playgrounds-cdn.apple.com
 DOMAIN-SUFFIX,pocketbiketrader.com
 DOMAIN-SUFFIX,powerbeats2wireless.com
 DOMAIN-SUFFIX,powerbeatsbydrdre.com
@@ -1221,6 +1229,7 @@ DOMAIN-SUFFIX,shopping-days.net
 DOMAIN-SUFFIX,shoppinguheadphones.com
 DOMAIN-SUFFIX,simplyipod.com
 DOMAIN-SUFFIX,siri.com
+DOMAIN-SUFFIX,smoot.apple.com
 DOMAIN-SUFFIX,sneaker666.com
 DOMAIN-SUFFIX,sneakerpage.net
 DOMAIN-SUFFIX,sneakerskick.com
@@ -1251,6 +1260,7 @@ DOMAIN-SUFFIX,thebeatsbydre.net
 DOMAIN-SUFFIX,thebeatsheadphonesale.com
 DOMAIN-SUFFIX,theuab.net
 DOMAIN-SUFFIX,thinkdifferent.us
+DOMAIN-SUFFIX,timestamp.apple.com
 DOMAIN-SUFFIX,topbeatsbydrdreoutlet.com
 DOMAIN-SUFFIX,topbeatsdealer.com
 DOMAIN-SUFFIX,topbeatsforsale.com

@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 191
+# 规则数: 184
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,discovery.uplynk.com
@@ -46,7 +46,6 @@ DOMAIN-SUFFIX,blueseacdn.com
 DOMAIN-SUFFIX,carlos.trade
 DOMAIN-SUFFIX,carryz.net
 DOMAIN-SUFFIX,catlinks.co.uk
-DOMAIN-SUFFIX,cbs.com
 DOMAIN-SUFFIX,cbs.ntu.edu.tw
 DOMAIN-SUFFIX,cc.ccemby.tk
 DOMAIN-SUFFIX,cc.semby.ink
@@ -82,9 +81,6 @@ DOMAIN-SUFFIX,embyserver.ga
 DOMAIN-SUFFIX,embytv.cf
 DOMAIN-SUFFIX,feimu.tv
 DOMAIN-SUFFIX,feiniu.lol
-DOMAIN-SUFFIX,fox
-DOMAIN-SUFFIX,fox.com
-DOMAIN-SUFFIX,fox.tv
 DOMAIN-SUFFIX,freetz.top
 DOMAIN-SUFFIX,gfwemby.org
 DOMAIN-SUFFIX,ggtt.cf
@@ -115,8 +111,6 @@ DOMAIN-SUFFIX,mobaiemby.site
 DOMAIN-SUFFIX,movie.xeton.dev
 DOMAIN-SUFFIX,mulgore.net
 DOMAIN-SUFFIX,nanflix.net
-DOMAIN-SUFFIX,nbc.co
-DOMAIN-SUFFIX,nbc.com
 DOMAIN-SUFFIX,nebula-media.org
 DOMAIN-SUFFIX,newpppp.com
 DOMAIN-SUFFIX,newwan.top
@@ -128,7 +122,6 @@ DOMAIN-SUFFIX,ohhhh.org
 DOMAIN-SUFFIX,onyra.cc
 DOMAIN-SUFFIX,ouonet.org
 DOMAIN-SUFFIX,pandora.com
-DOMAIN-SUFFIX,paramount.com
 DOMAIN-SUFFIX,pbs.org
 DOMAIN-SUFFIX,pilipili.club
 DOMAIN-SUFFIX,pilipiliultra.com

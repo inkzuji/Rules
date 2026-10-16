@@ -9,6 +9,10 @@
 用法: python3 scripts/build.py [--mihomo PATH] [--validate]
 """
 import argparse
+import collections
+import hashlib
+import ipaddress
+import json
 import os
 import sys
 import subprocess
@@ -19,6 +23,9 @@ import urllib.request
 from pathlib import Path
 
 import convert_clash
+from acceptance import validate_artifacts
+import ownership
+import routing
 from rules import POLICIES, parse_rules, read_policy, render_rules
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +34,7 @@ RAW_BASE = 'https://raw.githubusercontent.com'
 
 # ---------------------------------------------------------------------------
 # 上游配置：666OS 规则集 → 目标策略
-# 策略优先级（同时出现时小编号优先）: AI > Apple > Game > Proxy > Bili > Direct
+# 策略顺序仅用于路由展示，不能决定服务归属。
 # ---------------------------------------------------------------------------
 SOURCE_666OS = {
     'AI.txt': '🤖️AI', 'Claude.txt': '🤖️AI', 'Gemini.txt': '🤖️AI', 'OpenAI.txt': '🤖️AI',
@@ -47,48 +54,8 @@ SOURCE_666OS = {
 URL_666OS = RAW_BASE + '/666OS/rules/release/surge/'
 URL_OVERSEAS_AI = RAW_BASE + '/viewer12/OverseasAI.list/main/rule/Surge/OverseasAI/OverseasAI.list'
 
-POLICY_ORDER = {policy: i for i, policy in enumerate(POLICIES)}
-
-# ---------------------------------------------------------------------------
-# 主题关键词（顺序即优先级，先专后泛）；策略 → [(文件名, 关键词列表)]
-# ---------------------------------------------------------------------------
-THEMES_AI = [
-    ('AI/OpenAI', ['openai', 'chatgpt', 'oai', 'sora', 'arkoselabs', 'statsig', 'featuregates', 'livekit']),
-    ('AI/Claude', ['anthropic', 'claude', 'identrust', 'intercom', 'segment', 'sentry', 'algolia', 'launchdarkly']),
-    ('AI/Gemini', ['gemini', 'bard', 'makersuite', 'aistudio', 'deepmind', 'generativelanguage', 'ai.google']),
-    ('AI/Copilot', ['copilot', 'githubnext', 'bing']),
-]
-THEMES_PROXY = [
-    ('Proxy/YouTube', ['youtube', 'ytimg', 'googlevideo', 'youtu', 'ytbe']),
-    ('Proxy/Netflix', ['netflix', 'nflx']),
-    ('Proxy/Disney', ['disney', 'dssot', 'bamgrid', 'hulu', 'hbo', 'max.com', 'primevideo', 'amazonvideo', 'amazon']),
-    ('Proxy/Spotify', ['spotify']),
-    ('Proxy/GitHub', ['github', 'ghproxy']),
-    ('Proxy/Microsoft', ['microsoft', 'msn.com', 'bing', 'azure', 'office365', 'onedrive', 'live.com',
-                         'visualstudio', 'msedge', 'windowsupdate', 'xbox']),
-    ('Proxy/Google', ['google', 'gmail', 'gstatic', 'ggpht', '1e100', 'doubleclick', 'blogger',
-                      'android', 'appengine', 'gvt1', 'recaptcha', 'adsense', 'firebase', 'chromium']),
-    ('Proxy/Social', ['twitter', 'x.com', 'twimg', 't.co', 'facebook', 'fbcdn', 'instagram', 'cdninstagram',
-                      'telegram', 't.me', 'whatsapp', 'discord', 'reddit', 'tiktok', 'musically',
-                      'snapchat', 'pinterest', 'linkedin', 'threads']),
-    ('Proxy/Dev', ['docker', 'npmjs', 'rubygems', 'pypi', 'maven', 'stackoverflow', 'jetbrains', 'homebrew',
-                   'rust', 'golang', 'python', 'nodejs', 'kernel', 'apache', 'nginx', 'mysql', 'postgres',
-                   'redis', 'linux', 'ubuntu', 'debian', 'redhat', 'gnu', 'openssl', 'mozilla', 'w3.org',
-                   'spring', 'gradle', 'atlassian', 'goland', 'pycharm', 'intellij', 'webstorm', 'datagrip',
-                   'clion', 'rustrover', 'phpstorm', 'rubymine', 'java']),
-    ('Proxy/Cloudflare', ['cloudflare', 'cloudflaredns', 'cloudflareinsights', 'cloudflared', 'argo']),
-    ('Proxy/Streaming', ['crunchyroll', 'peacock', 'abema', 'tver', 'fod', 'paravi', 'telasa', 'dazn', 'fubo',
-                         'paramount', 'fox', 'nbc', 'cbs', 'pbs', 'discovery', 'tidal', 'deezer', 'soundcloud',
-                         'pandora', 'netease', 'qqmusic', 'kugou', 'kuwo', 'viu', 'vuclip']),
-]
-# 单文件主题（保持平铺）
-SINGLE = {'🍎苹果': 'Apple', '🎮游戏': 'Game', '📽哔哩': 'Bilibili', 'DIRECT': 'Direct'}
-THEME_POLICIES = {name: policy for policy, name in SINGLE.items()}
-THEME_POLICIES.update({name: '🤖️AI' for name, _ in THEMES_AI})
-THEME_POLICIES.update({name: '🚀节点选择' for name, _ in THEMES_PROXY})
-THEME_POLICIES.update({'AI/Others': '🤖️AI', 'Proxy/Others': '🚀节点选择'})
-
-DOMAIN_TYPES = {'DOMAIN', 'DOMAIN-SUFFIX', 'DOMAIN-KEYWORD'}
+THEME_POLICIES = {name: ownership.theme_policy(name) for name in routing.SERVICE_NAMES}
+SINGLE = {policy: name for policy, name in POLICIES.items() if name not in ('AI', 'Proxy')}
 
 
 # 明确服务源决定主题（包括 IP / 进程规则）；聚合源才使用域名分类。
@@ -103,6 +70,8 @@ SOURCE_THEMES = {
     'Emby.txt': 'Proxy/Streaming', 'Google.txt': 'Proxy/Google',
     'GitHub.txt': 'Proxy/GitHub', 'Dev.txt': 'Proxy/Dev',
     'Cloudflare.txt': 'Proxy/Cloudflare',
+    'PayPal.txt': 'Proxy/Others', 'NewsMedia.txt': 'Proxy/Others',
+    'Crypto.txt': 'Proxy/Others', 'Bybit.txt': 'Proxy/Others',
 }
 URL_BILIBILI = RAW_BASE + '/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBili/BiliBili.list'
 URL_COPILOT = RAW_BASE + '/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/github-copilot.list'
@@ -130,39 +99,59 @@ def fetch(url, timeout=30):
             time.sleep(attempt + 1)
 
 
+class Selections(dict):
+    """保留决策记录用于报告；字典值仍为排序依据、策略、主题和规则。"""
+    def __init__(self):
+        super().__init__()
+        self.decisions = []
+        self.sources = []
+        self.origins = {}
+        self.reasons = {}
+
+
 def classify(policy, rule):
-    """仅按完整域名标签匹配，避免 t.co / rust 等子串误归类。"""
-    if policy in SINGLE:
-        return SINGLE[policy]
-    typ, value, _ = rule
-    themes = THEMES_AI if policy == '🤖️AI' else THEMES_PROXY
-    if typ in DOMAIN_TYPES:
-        domain = '.' + value.strip('.') + '.'
-        for name, keywords in themes:
-            if any('.' + keyword + '.' in domain for keyword in keywords):
-                return name
-    return 'AI/Others' if policy == '🤖️AI' else 'Proxy/Others'
+    return ownership.decide(rule, policy, None).theme
 
 
-def merge(best, policy, rules, theme=None, historical=False):
-    """策略优先；当前参数优先历史，聚合源沿用同策略已明确的历史主题。"""
+def merge(best, policy, rules, theme=None, historical=False, source='<memory>', source_rank=None):
+    """先执行归属契约，再以当前来源、明确服务证据决定候选；同级冲突报错。"""
     for rule in rules:
         typ, value, _ = rule
         key = (typ, value)
-        rank = (POLICY_ORDER[policy], historical)
-        if key not in best or rank < best[key][0]:
-            target = theme or classify(policy, rule)
-            previous = best.get(key)
-            if (theme is None and previous and previous[1] == policy
-                    and previous[2] not in ('AI/Others', 'Proxy/Others')):
+        decision = ownership.decide(rule, policy, theme)
+        target = decision.theme
+        if isinstance(best, Selections) and (target != theme or decision.reason != '来源候选'):
+            best.decisions.append({'rule': rule, 'source': source, 'historical': historical,
+                                   'from': theme or policy, 'to': target, 'reason': decision.reason})
+        if target is None:
+            continue
+        resolved_policy = ownership.theme_policy(target)
+        # 专题 AI 聚合的范围小于全网代理聚合；公共服务仍由归属契约纠正。
+        evidence = (0 if theme else 2 if policy == '🤖️AI' else 3) if source_rank is None else source_rank
+        rank = (historical, evidence)
+        previous = best.get(key)
+        if previous and previous[0] == rank and previous[2] != target:
+            if not historical and theme is not None:
+                raise ValueError(f'同级明确来源归属冲突 {key}: {previous[2]} / {target} ({source})')
+            # 聚合源、历史来源均不能证明服务专属归属，使用保守公共分类。
+            target = 'Proxy/Others'
+            resolved_policy = ownership.theme_policy(target)
+        if previous is None or rank <= previous[0]:
+            preserved = (evidence > 0 and decision.reason == '来源候选'
+                    and previous and previous[1] == resolved_policy
+                    and previous[2] not in ('AI/Others', 'Proxy/Others'))
+            if preserved:
                 target = previous[2]
-            best[key] = (rank, policy, target, rule)
+            best[key] = (rank, resolved_policy, target, rule)
+            if isinstance(best, Selections):
+                best.origins[key] = source
+                best.reasons[key] = '聚合源更新参数，保留有效服务归属' if preserved else decision.reason
 
 
 def collect(surge_dir, source_list=None):
     """抓取和解析全部来源，任何来源失败或为空均中止，不写产物。"""
-    best = {}
-    for path in sorted(Path(surge_dir).rglob('*.list')):
+    best = Selections()
+    for path in routing.service_paths(surge_dir):
         text = path.read_text(encoding='utf-8')
         policy = read_policy(text, source=str(path))
         theme = path.relative_to(surge_dir).with_suffix('').as_posix()
@@ -170,20 +159,32 @@ def collect(surge_dir, source_list=None):
             raise ValueError(f'{path}: 未知历史主题 {theme!r}')
         if THEME_POLICIES[theme] != policy:
             raise ValueError(f'{path}: 历史主题 {theme!r} 与策略 {policy!r} 不兼容')
-        merge(best, policy, parse_rules(text, source=str(path)), theme, historical=True)
+        merge(best, policy, parse_rules(text, source=str(path)), theme, historical=True, source=str(path))
     total_fetched = 0
     for url, policy, theme in sources() if source_list is None else source_list:
         try:
-            rules = parse_rules(fetch(url), source=url)
+            raw = fetch(url)
+            rules = parse_rules(raw, source=url)
             if not rules:
                 raise ValueError('来源没有有效规则')
         except Exception as exc:
             raise RuntimeError(f'必需来源失败 {url}: {exc}') from exc
-        merge(best, policy, rules, theme)
+        # 开发/流媒体/社交主题是跨公司的聚合，证据弱于命名服务来源。
+        source_name = url.rsplit('/', 1)[-1]
+        source_rank = 1 if source_name in ('Dev.txt', 'Streaming.txt', 'SocialMedia.txt',
+                                         'NewsMedia.txt', 'Crypto.txt') else None
+        merge(best, policy, rules, theme, source=url, source_rank=source_rank)
+        best.sources.append({'url': url, 'sha256': hashlib.sha256(raw.encode('utf-8')).hexdigest(),
+                             'rules': len(rules)})
         total_fetched += len(rules)
         print(f'✓ {url.rsplit("/", 1)[-1]:24s} {len(rules):6d} 条 → {policy}')
     if not best:
         raise ValueError('没有可构建的规则')
+    # 专属例外不能依赖上游恰好保留；例如 Google 父域存在时 Gemini 仍须可识别。
+    for domain, theme in ownership.DOMAIN_OWNERS.items():
+        rule = ('DOMAIN-SUFFIX', domain, ())
+        if rule[:2] not in best:
+            merge(best, ownership.theme_policy(theme), [rule], theme, source='归属契约')
     return best, total_fetched
 
 
@@ -192,8 +193,50 @@ def surge_artifacts(best):
     buckets = {name: (policy, []) for name, policy in THEME_POLICIES.items()}
     for _, policy, theme, rule in best.values():
         buckets[theme][1].append(rule)
-    return {name + '.list': render_rules(policy, rules).encode('utf-8')
-            for name, (policy, rules) in buckets.items()}
+    files = [(name + '.list', policy, rules) for name, (policy, rules) in buckets.items()]
+    artifacts = {relative: render_rules(policy, rules).encode('utf-8')
+                 for relative, policy, rules in files}
+    domains, domain_entries = routing.domain_artifacts(files)
+    service_entries = [(relative[:-5].replace('/', '-'), relative, policy, 'classical', 'text', False)
+                       for relative, policy, _ in files]
+    artifacts.update(domains)
+    artifacts['rules.conf'] = routing.surge_references(domain_entries + sorted(service_entries, key=routing.entry_order))
+    return artifacts
+
+
+def network_conflicts(best):
+    """区间扫描发现跨策略的真实 CIDR 交叠；不把同策略主题重叠误报成路由冲突。"""
+    intervals = []
+    for _, policy, theme, (typ, value, _) in best.values():
+        if typ in ('IP-CIDR', 'IP-CIDR6'):
+            network = ipaddress.ip_network(value)
+            intervals.append((network.version, int(network.network_address), int(network.broadcast_address),
+                              policy, theme, value))
+    active, conflicts = [], []
+    for interval in sorted(intervals):
+        version, start, _, policy, theme, value = interval
+        active = [item for item in active if item[0] == version and item[2] >= start]
+        for other in active:
+            if policy != other[3]:
+                conflicts.append({'first': [theme, value], 'second': [other[4], other[5]]})
+        active.append(interval)
+    return conflicts
+
+
+def discard_covered_fallbacks(best):
+    """通用代理的小网段若被另一明确服务完整覆盖，保留有服务证据的覆盖。"""
+    specific = [(ipaddress.ip_network(rule[1]), theme) for _, _, theme, rule in best.values()
+                if rule[0] in ('IP-CIDR', 'IP-CIDR6') and theme != 'Proxy/Others']
+    for key, (_, _, theme, rule) in list(best.items()):
+        if theme != 'Proxy/Others' or rule[0] not in ('IP-CIDR', 'IP-CIDR6'):
+            continue
+        network = ipaddress.ip_network(rule[1])
+        covering = next((owner for other, owner in specific
+                         if network.version == other.version and network.subnet_of(other)), None)
+        if covering:
+            del best[key]
+            best.decisions.append({'rule': rule, 'source': '网段覆盖核验', 'from': theme,
+                                   'to': covering, 'reason': '通用 IP 已被明确服务网段完整覆盖'})
 
 
 def reject_stale(artifacts, directory):
@@ -203,11 +246,33 @@ def reject_stale(artifacts, directory):
         raise ValueError(f'{directory}: 未知的多余产物: {stale}')
 
 
+def write_report(path, report):
+    if path:
+        path = Path(path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+
 def build(surge_dir=OUT_DIR, clash_dir=None, count_path=None, mihomo='mihomo', validate=False,
-          source_list=None):
+          source_list=None, report_path=None):
     clash_dir = Path(clash_dir or os.path.join(ROOT, 'clash'))
     count_path = Path(count_path or os.path.join(ROOT, 'scripts', '.last_count'))
-    best, total_fetched = collect(surge_dir, source_list)
+    try:
+        best, total_fetched = collect(surge_dir, source_list)
+    except (OSError, ValueError, RuntimeError) as error:
+        write_report(report_path, {'status': 'collection_failed', 'error': str(error)})
+        raise
+    discard_covered_fallbacks(best)
+    conflicts = network_conflicts(best)
+    report = {'status': 'collected', 'total': len(best), 'by_theme': dict(sorted(collections.Counter(
+        entry[2] for entry in best.values()).items())), 'candidate_decisions': best.decisions,
+        'selected': [{'rule': rule, 'policy': policy, 'theme': theme,
+                      'source': best.origins[key], 'reason': best.reasons[key]}
+                     for key, (_, policy, theme, rule) in sorted(best.items())],
+        'network_conflicts': conflicts, 'sources': best.sources}
+    write_report(report_path, report)
+    if conflicts:
+        raise ValueError(f'存在 {len(conflicts)} 个未解决的跨策略 CIDR 重叠: {conflicts[:5]}')
     count = len(best)
     if count_path.exists():
         last = int(count_path.read_text().strip())
@@ -225,6 +290,15 @@ def build(surge_dir=OUT_DIR, clash_dir=None, count_path=None, mihomo='mihomo', v
     reject_stale(surge, surge_dir)
     convert_clash.preflight(surge, surge_dir)
     convert_clash.preflight(clash, clash_dir)
+    convert_clash.publish(clash, stage / 'clash')
+    try:
+        report['acceptance'] = validate_artifacts(stage / 'surge', stage / 'clash', mihomo, require_surge_config=True)
+    except (OSError, ValueError, RuntimeError) as error:
+        report.update(status='acceptance_failed', error=str(error))
+        write_report(report_path, report)
+        raise
+    report['status'] = 'validated'
+    write_report(report_path, report)
     # 先退役旧配套文件；退役失败时，尚未更新任一规则树与计数。
     convert_clash.retire_stale(clash, clash_dir)
     # 只有全部来源、转换、原生验证和目标预检均成功，才开始更新仓库。
@@ -239,9 +313,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--validate', action='store_true', help='可选 DoH 诊断，只报告、不删除规则')
     ap.add_argument('--mihomo', default='mihomo', help='官方 mihomo 可执行文件路径')
+    ap.add_argument('--report', help='写出归属纠正、过滤原因和跨策略网段冲突报告')
     args = ap.parse_args()
     try:
-        build(mihomo=args.mihomo, validate=args.validate)
+        build(mihomo=args.mihomo, validate=args.validate, report_path=args.report)
     except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError) as exc:
         print(f'❌ 构建失败: {exc}', file=sys.stderr)
         sys.exit(1)
