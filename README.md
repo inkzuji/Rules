@@ -1,6 +1,6 @@
 # Surge / mihomo 规则集
 
-`surge/` 保存 Surge 规则，`clash/` 由同一构建链路自动生成 mihomo 规则。每日拉取上游、按服务归属合并去重，保留原有 21 个服务 `.list` 地址，并生成域名优先路由片段及六类业务策略 MRS。策略组名称保持不变。
+`surge/` 保存 Surge 规则，`clash/` 由同一构建链路自动生成 mihomo 规则。每周一拉取上游、按服务归属合并去重，保留原有 21 个服务 `.list` 地址，并生成域名优先路由片段及六类业务策略 MRS。策略组名称保持不变。
 
 Clash 目录以 **mihomo** 为兼容目标，不承诺旧 Clash 内核兼容。域名、IP、ASN 等兼容规则保留参数；进程名称、路径及通配符转换为对应 mihomo 进程规则。保留进程值的原始大小写，但两端内核语义不同：Surge 区分进程大小写，mihomo 的名称、路径和通配符匹配不区分。Surge 专属的 `USER-AGENT`、`URL-REGEX` 保留在 Surge，转换时明确统计无法转换的条目；未知语法或无法等价转换的参数中止构建。
 
@@ -98,10 +98,10 @@ python3 -B scripts/acceptance.py
 - `scripts/convert_clash.py --check` 在临时目录重建并比对文本、MRS 及引用片段，检查缺失、多余和内容差异，不修改仓库。未找到 mihomo 或转换失败返回非零退出码。命名服务来源可纠正历史分类；没有相反归属证据时，聚合来源更新参数仍保留有效历史细分主题。转换检查本身不代替分类验收。
 - 原生校验使用隔离配置和空 MMDB stub，逐条检查规则语法、provider 引用及 MRS 覆盖，不下载真实地理数据库；不验证 ASN/GEOIP 的实际归属或真实代理流量。stub 不进入发布文件。
 - `scripts/acceptance.py` 独立读取 Surge 实际引用片段、Clash classical 配置和官方反解后的 MRS，检查完整文本转换契约、全量规则覆盖及服务首匹配。包含 Google/YouTube/Gemini、Microsoft/Copilot/GitHub、跨策略真实 IP、IPv6、纯 IP、普通浏览器/编辑器和仿名域名场景；三端同时错分也会失败。实际 ASN/GEOIP 数据、UA、URL 正则及客户端真实连接未模拟，不能据此声称已验证这些运行行为。
-- `scripts/validate.py` 为可选的 DNS 诊断，只报告，不删规则；每日构建不执行 DNS 检查。上游移除和 DNS 查询失败都不会自动删除历史规则。
+- `scripts/validate.py` 为可选的 DNS 诊断，只报告，不删规则；定时构建不执行 DNS 检查。上游移除和 DNS 查询失败都不会自动删除历史规则。
 - 生成和原生校验成功后，自动退役不再需要的六策略 MRS 及配套文本：GitHub Actions（`GITHUB_ACTIONS=true`）直接删除，本机移入系统废纸篓（macOS `~/.Trash`，Linux XDG Trash，保留恢复信息）；多文件退役失败时恢复已处理文件。未知产物或退役失败会阻断构建，`--check` 始终只读。
-- `.github/workflows/update-rules.yml` 保留每日 UTC 18:17（北京时间次日 02:17）和手动构建，同一分支的更新任务串行执行，排队后检出最新分支。CI 下载官方固定版本并验证锁定的 SHA-256，成功后仅提交 `surge/`、`clash/` 和 `scripts/.last_count`。
-- Pull request 运行测试、只读同步检查和分类验收，仅授予读取权限，不更新上游、不提交和推送。每日构建执行同样的验收门禁，并上传分类报告；失败不会提交规则。
+- `.github/workflows/update-rules.yml` 每周日 UTC 18:17（北京时间每周一 02:17）执行一次，另支持手动构建。同一分支的更新任务串行执行，排队后检出最新分支。CI 下载官方固定版本并验证锁定的 SHA-256，成功后仅提交 `surge/`、`clash/` 和 `scripts/.last_count`。
+- Pull request 运行测试、只读同步检查和分类验收，仅授予读取权限，不更新上游、不提交和推送。每周构建执行同样的验收门禁，并上传分类报告；失败不会提交规则。
 
 ## 来源与参考
 

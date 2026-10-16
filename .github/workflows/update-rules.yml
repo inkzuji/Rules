@@ -1,8 +1,8 @@
-name: 每日更新规则集
+name: 每周更新规则集
 
 on:
   schedule:
-    - cron: '17 18 * * *'  # UTC 18:17 = 北京时间次日 02:17
+    - cron: '17 18 * * 0'  # UTC 周日 18:17 = 北京时间周一 02:17
   workflow_dispatch:
   pull_request:
 
