@@ -1,5 +1,5 @@
 # 策略: 🎮游戏
-# 规则数: 929
+# 规则数: 930
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,garena
@@ -573,6 +573,7 @@ DOMAIN-SUFFIX,playparagon.com
 DOMAIN-SUFFIX,playstation
 DOMAIN-SUFFIX,playstation.com
 DOMAIN-SUFFIX,playstation.net
+DOMAIN-SUFFIX,playstationnetwork.com
 DOMAIN-SUFFIX,playvalorant.com
 DOMAIN-SUFFIX,playwarcraft3.com
 DOMAIN-SUFFIX,pogo.com
