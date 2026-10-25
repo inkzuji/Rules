@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 358
+# 规则数: 362
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,-spotify-com
@@ -36,10 +36,12 @@ DOMAIN-KEYWORD,appledaily
 DOMAIN-KEYWORD,archive
 DOMAIN-KEYWORD,asana
 DOMAIN-KEYWORD,atlassian
+DOMAIN-KEYWORD,avito
 DOMAIN-KEYWORD,avoddashs
 DOMAIN-KEYWORD,azure
 DOMAIN-KEYWORD,azure-dns
 DOMAIN-KEYWORD,bbcfmt
+DOMAIN-KEYWORD,beget
 DOMAIN-KEYWORD,bestbuy
 DOMAIN-KEYWORD,billpoint
 DOMAIN-KEYWORD,binance
@@ -67,6 +69,7 @@ DOMAIN-KEYWORD,canva
 DOMAIN-KEYWORD,cashpassport
 DOMAIN-KEYWORD,cf-ns
 DOMAIN-KEYWORD,chatwhores
+DOMAIN-KEYWORD,claude
 DOMAIN-KEYWORD,clickup
 DOMAIN-KEYWORD,codecademy
 DOMAIN-KEYWORD,codepen
@@ -120,6 +123,7 @@ DOMAIN-KEYWORD,firebase
 DOMAIN-KEYWORD,firestone
 DOMAIN-KEYWORD,firestonecomercial
 DOMAIN-KEYWORD,flightradar
+DOMAIN-KEYWORD,fluxer
 DOMAIN-KEYWORD,foxnews
 DOMAIN-KEYWORD,foxsports
 DOMAIN-KEYWORD,free.28.al

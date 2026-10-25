@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 463
+# 规则数: 469
 
 # DOMAIN
 DOMAIN,api.statsig.com
@@ -164,6 +164,7 @@ DOMAIN-SUFFIX,getbootstrap.com
 DOMAIN-SUFFIX,getcomposer.org
 DOMAIN-SUFFIX,getfedora.org
 DOMAIN-SUFFIX,getpaint.net
+DOMAIN-SUFFIX,getsafety.com
 DOMAIN-SUFFIX,getsentry.com
 DOMAIN-SUFFIX,getzola.org
 DOMAIN-SUFFIX,git-scm.com
@@ -323,6 +324,7 @@ DOMAIN-SUFFIX,pkgbuild.com
 DOMAIN-SUFFIX,plasma-mobile.org
 DOMAIN-SUFFIX,playerjs.io
 DOMAIN-SUFFIX,postgresql.org
+DOMAIN-SUFFIX,postman.com
 DOMAIN-SUFFIX,prd-lender.cdp.internal.unity3d.com
 DOMAIN-SUFFIX,putty.org
 DOMAIN-SUFFIX,px-cloud.net
@@ -334,6 +336,7 @@ DOMAIN-SUFFIX,pyrobot.org
 DOMAIN-SUFFIX,python.com.tw
 DOMAIN-SUFFIX,python.org
 DOMAIN-SUFFIX,pythonhosted.org
+DOMAIN-SUFFIX,pyup.io
 DOMAIN-SUFFIX,qt-project.org
 DOMAIN-SUFFIX,qt.io
 DOMAIN-SUFFIX,quay.io
@@ -368,6 +371,7 @@ DOMAIN-SUFFIX,rust-lang.org
 DOMAIN-SUFFIX,rustup.rs
 DOMAIN-SUFFIX,s3-ap-northeast-1.amazonaws.com
 DOMAIN-SUFFIX,s3.dualstack.us-west-2.amazonaws.com
+DOMAIN-SUFFIX,safetycli.com
 DOMAIN-SUFFIX,scala-lang.org
 DOMAIN-SUFFIX,scala-sbt.org
 DOMAIN-SUFFIX,scientificlinux.org
@@ -411,6 +415,7 @@ DOMAIN-SUFFIX,superuser.com
 DOMAIN-SUFFIX,system76.com
 DOMAIN-SUFFIX,talkingkotlin.com
 DOMAIN-SUFFIX,tampermonkey.net
+DOMAIN-SUFFIX,templatemonster.com
 DOMAIN-SUFFIX,termius.com
 DOMAIN-SUFFIX,termux.com
 DOMAIN-SUFFIX,termux.dev
@@ -424,6 +429,7 @@ DOMAIN-SUFFIX,tilda.ws
 DOMAIN-SUFFIX,tildaapi.com
 DOMAIN-SUFFIX,tildacdn.com
 DOMAIN-SUFFIX,tildacdn.net
+DOMAIN-SUFFIX,tmimgcdn.com
 DOMAIN-SUFFIX,topcoder.com
 DOMAIN-SUFFIX,turn.livekit.cloud
 DOMAIN-SUFFIX,ubuntu-touch.io

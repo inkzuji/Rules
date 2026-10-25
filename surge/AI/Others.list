@@ -1,5 +1,5 @@
 # 策略: 🤖️AI
-# 规则数: 374
+# 规则数: 384
 
 # DOMAIN
 DOMAIN,ai-gateway.vercel.sh
@@ -34,7 +34,10 @@ DOMAIN-SUFFIX,aleph-alpha.com
 DOMAIN-SUFFIX,allenai.org
 DOMAIN-SUFFIX,ampcode.ai
 DOMAIN-SUFFIX,ampcode.com
+DOMAIN-SUFFIX,ant.dev
+DOMAIN-SUFFIX,anthropic.team
 DOMAIN-SUFFIX,antigravity-unleash.goog
+DOMAIN-SUFFIX,antspace.dev
 DOMAIN-SUFFIX,anyscale.com
 DOMAIN-SUFFIX,anythingllm.com
 DOMAIN-SUFFIX,api.nvidia.com
@@ -65,16 +68,21 @@ DOMAIN-SUFFIX,cerebras.ai
 DOMAIN-SUFFIX,character.ai
 DOMAIN-SUFFIX,characterai.io
 DOMAIN-SUFFIX,chat.com
+DOMAIN-SUFFIX,chatbotclaude.com
 DOMAIN-SUFFIX,chatgpt.site
 DOMAIN-SUFFIX,chutes.ai
 DOMAIN-SUFFIX,cici.com
 DOMAIN-SUFFIX,ciciai.com
 DOMAIN-SUFFIX,ciciaicdn.com
 DOMAIN-SUFFIX,civitai.com
+DOMAIN-SUFFIX,claicode.com
 DOMAIN-SUFFIX,clau.de
 DOMAIN-SUFFIX,claude.dev
+DOMAIN-SUFFIX,claudeacademy.com
 DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
+DOMAIN-SUFFIX,claudepages.dev
+DOMAIN-SUFFIX,claudestudio.com
 DOMAIN-SUFFIX,clawhub.ai
 DOMAIN-SUFFIX,cline.bot
 DOMAIN-SUFFIX,clipdrop.co
@@ -93,6 +101,7 @@ DOMAIN-SUFFIX,colossyan.com
 DOMAIN-SUFFIX,comfy.org
 DOMAIN-SUFFIX,comfyci.org
 DOMAIN-SUFFIX,comfyregistry.org
+DOMAIN-SUFFIX,commandcode.ai
 DOMAIN-SUFFIX,composio.dev
 DOMAIN-SUFFIX,context7.com
 DOMAIN-SUFFIX,continue.dev
@@ -241,6 +250,7 @@ DOMAIN-SUFFIX,oaifree.com
 DOMAIN-SUFFIX,oaistatsig.com
 DOMAIN-SUFFIX,ollama.ai
 DOMAIN-SUFFIX,ollama.com
+DOMAIN-SUFFIX,openai.org
 DOMAIN-SUFFIX,openart.ai
 DOMAIN-SUFFIX,openclaw.ai
 DOMAIN-SUFFIX,opencode.ai
