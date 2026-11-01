@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 868
+# 规则数: 872
 
 # DOMAIN
 DOMAIN,api.imem.app
@@ -597,6 +597,9 @@ DOMAIN-SUFFIX,tiktokeu-cdn.com
 DOMAIN-SUFFIX,tiktokglobalshopv.com
 DOMAIN-SUFFIX,tiktokminis.us
 DOMAIN-SUFFIX,tiktokrow-cdn.com
+DOMAIN-SUFFIX,tiktokshop.com
+DOMAIN-SUFFIX,tiktokstaticb.com
+DOMAIN-SUFFIX,tiktokvapp.com
 DOMAIN-SUFFIX,tiktokw.eu
 DOMAIN-SUFFIX,tiktokw.us
 DOMAIN-SUFFIX,toplayerserver.com
@@ -746,6 +749,7 @@ IP-CIDR,157.240.136.0/23,no-resolve
 IP-CIDR,157.240.137.0/24,no-resolve
 IP-CIDR,157.240.139.0/24,no-resolve
 IP-CIDR,157.240.140.0/24,no-resolve
+IP-CIDR,157.240.144.0/24,no-resolve
 IP-CIDR,157.240.156.0/22,no-resolve
 IP-CIDR,157.240.156.0/23,no-resolve
 IP-CIDR,157.240.158.0/24,no-resolve

@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 476
+# 规则数: 477
 
 # DOMAIN
 DOMAIN,api.statsig.com
@@ -37,6 +37,7 @@ DOMAIN-SUFFIX,anaconda.cloud
 DOMAIN-SUFFIX,anaconda.com
 DOMAIN-SUFFIX,anaconda.org
 DOMAIN-SUFFIX,analytics.cloud.unity3d.com
+DOMAIN-SUFFIX,anthropic.auth0.com
 DOMAIN-SUFFIX,apache.org
 DOMAIN-SUFFIX,api.statsig.com
 DOMAIN-SUFFIX,archlinux.de

@@ -1,5 +1,5 @@
 # 策略: 🤖️AI
-# 规则数: 370
+# 规则数: 372
 
 # DOMAIN
 DOMAIN,ai-gateway.vercel.sh
@@ -46,6 +46,7 @@ DOMAIN-SUFFIX,apify.com
 DOMAIN-SUFFIX,arena.ai
 DOMAIN-SUFFIX,arize.com
 DOMAIN-SUFFIX,artbreeder.com
+DOMAIN-SUFFIX,artificialanalysis.ai
 DOMAIN-SUFFIX,assemblyai.com
 DOMAIN-SUFFIX,augment.dev
 DOMAIN-SUFFIX,augmentcode.com
@@ -224,6 +225,7 @@ DOMAIN-SUFFIX,marscode.com
 DOMAIN-SUFFIX,meetgeek.ai
 DOMAIN-SUFFIX,mem.ai
 DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,metaaiusercontent.com
 DOMAIN-SUFFIX,metaaivm.com
 DOMAIN-SUFFIX,microsoft-copilot.com
 DOMAIN-SUFFIX,midjourney.com

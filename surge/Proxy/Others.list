@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 19052
+# 规则数: 19070
 
 # DOMAIN
 DOMAIN,auth.meta.com
@@ -59,6 +59,7 @@ DOMAIN-KEYWORD,brave
 DOMAIN-KEYWORD,bridgestone
 DOMAIN-KEYWORD,bridgestonecomercial
 DOMAIN-KEYWORD,browserleaks
+DOMAIN-KEYWORD,bsky
 DOMAIN-KEYWORD,businessinsider
 DOMAIN-KEYWORD,buyitnow
 DOMAIN-KEYWORD,calgon
@@ -922,6 +923,7 @@ DOMAIN-SUFFIX,addthis.com
 DOMAIN-SUFFIX,addthiscdn.com
 DOMAIN-SUFFIX,addthisedge.com
 DOMAIN-SUFFIX,addtoany.com
+DOMAIN-SUFFIX,addtodropbox.com
 DOMAIN-SUFFIX,addyoutube.com
 DOMAIN-SUFFIX,adelaidenow.com.au
 DOMAIN-SUFFIX,adguard-dns.com
@@ -1437,7 +1439,6 @@ DOMAIN-SUFFIX,amcplus.com
 DOMAIN-SUFFIX,amd.com
 DOMAIN-SUFFIX,amd.com.cn
 DOMAIN-SUFFIX,amdfanstore.com
-DOMAIN-SUFFIX,amdgaming.com
 DOMAIN-SUFFIX,amdigital.co.uk
 DOMAIN-SUFFIX,ameba.jp
 DOMAIN-SUFFIX,amebame.com
@@ -1612,6 +1613,7 @@ DOMAIN-SUFFIX,api.palworldgame.com
 DOMAIN-SUFFIX,api.pureapk.com
 DOMAIN-SUFFIX,api.shuaiapi.com
 DOMAIN-SUFFIX,api.steampowered.com
+DOMAIN-SUFFIX,api.themoviedb.org
 DOMAIN-SUFFIX,api2.amplitude.com
 DOMAIN-SUFFIX,api5.futunn.com
 DOMAIN-SUFFIX,apiary.io
@@ -4567,6 +4569,7 @@ DOMAIN-SUFFIX,darpa.mil
 DOMAIN-SUFFIX,darrenliuwei.com
 DOMAIN-SUFFIX,darwindimensions.com
 DOMAIN-SUFFIX,dasaob.online
+DOMAIN-SUFFIX,dash.ai
 DOMAIN-SUFFIX,dashlane.com
 DOMAIN-SUFFIX,dashlytrack.app
 DOMAIN-SUFFIX,dastanhisexy.cc
@@ -5107,6 +5110,7 @@ DOMAIN-SUFFIX,dockerstatus.com
 DOMAIN-SUFFIX,docleradn.com
 DOMAIN-SUFFIX,doclercdn.com
 DOMAIN-SUFFIX,docs.rw
+DOMAIN-SUFFIX,docsend.com
 DOMAIN-SUFFIX,doctor-videos.com
 DOMAIN-SUFFIX,documentforce.com
 DOMAIN-SUFFIX,documentingreality.com
@@ -5231,12 +5235,15 @@ DOMAIN-SUFFIX,dropbox.tech
 DOMAIN-SUFFIX,dropboxapi.com
 DOMAIN-SUFFIX,dropboxbusiness.com
 DOMAIN-SUFFIX,dropboxcaptcha.com
+DOMAIN-SUFFIX,dropboxexperiment.com
 DOMAIN-SUFFIX,dropboxforum.com
 DOMAIN-SUFFIX,dropboxforums.com
 DOMAIN-SUFFIX,dropboxinsiders.com
+DOMAIN-SUFFIX,dropboxlegal.com
 DOMAIN-SUFFIX,dropboxmail.com
 DOMAIN-SUFFIX,dropboxpartners.com
 DOMAIN-SUFFIX,dropboxstatic.com
+DOMAIN-SUFFIX,dropboxteam.com
 DOMAIN-SUFFIX,dropboxusercontent.com
 DOMAIN-SUFFIX,drpc.org
 DOMAIN-SUFFIX,drtuber.com
@@ -7136,6 +7143,7 @@ DOMAIN-SUFFIX,girlswelustfor.com
 DOMAIN-SUFFIX,girlsxxx.net
 DOMAIN-SUFFIX,gisplanning.com
 DOMAIN-SUFFIX,githack.com
+DOMAIN-SUFFIX,githubhelp.com
 DOMAIN-SUFFIX,gitstar.com
 DOMAIN-SUFFIX,gitstar.net
 DOMAIN-SUFFIX,gittigidiyor.net
@@ -7596,8 +7604,10 @@ DOMAIN-SUFFIX,heise360182.buzz
 DOMAIN-SUFFIX,helixstudios.net
 DOMAIN-SUFFIX,helloandroid.com
 DOMAIN-SUFFIX,helloavgirls.com
+DOMAIN-SUFFIX,hellofax.com
 DOMAIN-SUFFIX,hellomoto.com
 DOMAIN-SUFFIX,helloqueer.com
+DOMAIN-SUFFIX,hellosign.com
 DOMAIN-SUFFIX,hellosmartbook.com
 DOMAIN-SUFFIX,hellporno.com
 DOMAIN-SUFFIX,hellven.net
@@ -8952,6 +8962,7 @@ DOMAIN-SUFFIX,itvstatic.com
 DOMAIN-SUFFIX,iuhrdf.org
 DOMAIN-SUFFIX,ivacy.com
 DOMAIN-SUFFIX,ivi.ru
+DOMAIN-SUFFIX,ivi.tv
 DOMAIN-SUFFIX,ivicdn.tv
 DOMAIN-SUFFIX,ivintageporn.com
 DOMAIN-SUFFIX,ivonblog.com
@@ -9831,6 +9842,7 @@ DOMAIN-SUFFIX,library.lol
 DOMAIN-SUFFIX,librarylovefest.com
 DOMAIN-SUFFIX,libraryofthumbs.com
 DOMAIN-SUFFIX,libredd.it
+DOMAIN-SUFFIX,librewolf.dev
 DOMAIN-SUFFIX,librewolf.net
 DOMAIN-SUFFIX,libsolutions.app
 DOMAIN-SUFFIX,libsolutions.domains
@@ -16083,6 +16095,7 @@ DOMAIN-SUFFIX,thinkchina.sg
 DOMAIN-SUFFIX,thinkgeek.com
 DOMAIN-SUFFIX,thinkingtaiwan.com
 DOMAIN-SUFFIX,thinkofliving.com
+DOMAIN-SUFFIX,thinkorswim.com
 DOMAIN-SUFFIX,thirdmill.org
 DOMAIN-SUFFIX,thirdns.de
 DOMAIN-SUFFIX,thirdweb.com
@@ -16335,6 +16348,7 @@ DOMAIN-SUFFIX,toroporno.com
 DOMAIN-SUFFIX,torproject.org
 DOMAIN-SUFFIX,torrentgalaxy.to
 DOMAIN-SUFFIX,torrentkitty.tv
+DOMAIN-SUFFIX,torrentleech.org
 DOMAIN-SUFFIX,torrentprivacy.com
 DOMAIN-SUFFIX,torrenty.org
 DOMAIN-SUFFIX,torrindex.net
@@ -18220,6 +18234,12 @@ DOMAIN-SUFFIX,xn--d1aqf.xn--p1ai
 DOMAIN-SUFFIX,xn--d4ty0ojsqzfd.com
 DOMAIN-SUFFIX,xn--e1adjldbbpv.xn--90ais
 DOMAIN-SUFFIX,xn--e1aigb.xn--p1ai
+DOMAIN-SUFFIX,xn--fiq80y.hk
+DOMAIN-SUFFIX,xn--fiq80y.xn--j6w193g
+DOMAIN-SUFFIX,xn--fiq80y3xbiwr.hk
+DOMAIN-SUFFIX,xn--fiq80y3xbiwr.xn--j6w193g
+DOMAIN-SUFFIX,xn--fiq80y3xbiwrs0kiu9d.hk
+DOMAIN-SUFFIX,xn--fiq80y3xbiwrs0kiu9d.xn--j6w193g
 DOMAIN-SUFFIX,xn--fiqs8s1bxp3anr7a.hk
 DOMAIN-SUFFIX,xn--fiqs8s1bxp3anr7a.xn--j6w193g
 DOMAIN-SUFFIX,xn--fiqs8s1byzqyvl.hk
@@ -18243,6 +18263,7 @@ DOMAIN-SUFFIX,xn--oiq.cc
 DOMAIN-SUFFIX,xn--pearsonenespaol-brb.com
 DOMAIN-SUFFIX,xn--pssu7ci2j23mp9ny48b.hk
 DOMAIN-SUFFIX,xn--pssu7ci2j23mp9ny48b.xn--j6w193g
+DOMAIN-SUFFIX,xn--pssu7ci3q5oge0ai91q.xn--j6w193g
 DOMAIN-SUFFIX,xn--pssu7cv61af1tcs59bnvd.hk
 DOMAIN-SUFFIX,xn--pssu7cv61af1tcs59bnvd.xn--j6w193g
 DOMAIN-SUFFIX,xn--pssu7cv61af44b.hk
@@ -18251,6 +18272,7 @@ DOMAIN-SUFFIX,xn--pssu7cv61ahw8aq79bztd.hk
 DOMAIN-SUFFIX,xn--pssu7cv61ahw8aq79bztd.xn--j6w193g
 DOMAIN-SUFFIX,xn--pssu7cv61ahwcb1p2yk.hk
 DOMAIN-SUFFIX,xn--pssu7cv61ahwcb1p2yk.xn--j6w193g
+DOMAIN-SUFFIX,xn--pssu7cz8nr8ibkx1e8a.xn--j6w193g
 DOMAIN-SUFFIX,xn--q41am8x.com
 DOMAIN-SUFFIX,xn--qoq462m.com
 DOMAIN-SUFFIX,xn--r8jwklh769h2mc880dk1o431a.com
@@ -18747,6 +18769,7 @@ DOMAIN-SUFFIX,youtooz.com
 DOMAIN-SUFFIX,youtrannytube.com
 DOMAIN-SUFFIX,youtubecisco.com
 DOMAIN-SUFFIX,youversion.com
+DOMAIN-SUFFIX,youversionapi.com
 DOMAIN-SUFFIX,youwin.com
 DOMAIN-SUFFIX,youwuss.com
 DOMAIN-SUFFIX,youx.xxx
@@ -19005,8 +19028,6 @@ IP-CIDR,104.109.129.153/32,no-resolve
 IP-CIDR,110.238.107.47/32,no-resolve
 IP-CIDR,136.22.100.0/22,no-resolve
 IP-CIDR,136.22.110.0/23,no-resolve
-IP-CIDR,136.22.20.0/24,no-resolve
-IP-CIDR,136.23.33.0/24,no-resolve
 IP-CIDR,136.49.48.0/24,no-resolve
 IP-CIDR,136.50.216.0/21,no-resolve
 IP-CIDR,136.58.136.0/21,no-resolve
@@ -19017,7 +19038,6 @@ IP-CIDR,154.197.80.0/24,no-resolve
 IP-CIDR,154.197.88.0/24,no-resolve
 IP-CIDR,154.219.5.0/24,no-resolve
 IP-CIDR,156.225.72.0/24,no-resolve
-IP-CIDR,172.102.8.0/24,no-resolve
 IP-CIDR,185.176.24.0/24,no-resolve
 IP-CIDR,193.233.132.0/24,no-resolve
 IP-CIDR,193.233.21.0/24,no-resolve
@@ -19026,8 +19046,6 @@ IP-CIDR,203.211.4.193/32,no-resolve
 IP-CIDR,203.74.95.131/32,no-resolve
 IP-CIDR,203.74.95.139/32,no-resolve
 IP-CIDR,203.74.95.153/32,no-resolve
-IP-CIDR,209.107.180.0/23,no-resolve
-IP-CIDR,209.107.188.0/23,no-resolve
 IP-CIDR,210.201.32.11/32,no-resolve
 IP-CIDR,210.201.32.8/32,no-resolve
 IP-CIDR,210.71.227.200/32,no-resolve
