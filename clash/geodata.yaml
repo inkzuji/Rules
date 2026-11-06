@@ -1,0 +1,5 @@
+# 与规则片段一起合并到主配置；ASN 使用同一仓库的每周快照。
+geo-auto-update: true
+geo-update-interval: 168
+geox-url:
+  asn: https://raw.githubusercontent.com/inkzuji/Rules/main/inputs/ASN.mmdb

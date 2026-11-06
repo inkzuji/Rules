@@ -99,7 +99,7 @@ SERVICE_DOMAINS = {
 DOMAIN_OWNERS = {domain: theme for theme, domains in SERVICE_DOMAINS.items()
                  for domain in domains.split()}
 HISTORICAL_NON_AI = frozenset(line.strip() for line in
-    Path(__file__).with_name('non_ai_domains.txt').read_text(encoding='utf-8').splitlines()
+    (Path(__file__).resolve().parent.parent / 'config/non_ai_domains.txt').read_text(encoding='utf-8').splitlines()
     if line.strip() and not line.startswith('#'))
 
 # Cloudflare 官方共享代理网段，核验于 2026-10-16：

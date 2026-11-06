@@ -1,133 +1,190 @@
 # 合并到已有主配置；策略组名称须与主配置一致。
+# 配套 geodata 更新周期：geo-update-interval: 168（小时）；规则 provider 为每周。
 rule-providers:
   AI:
     type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/AI.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/AI.mrs"
-    interval: 86400
+    behavior: "classical"
+    format: "text"
+    path: "./AI.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/AI.list"
+    interval: 604800
   Apple:
     type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/Apple.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Apple.mrs"
-    interval: 86400
+    behavior: "classical"
+    format: "text"
+    path: "./Apple.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Apple.list"
+    interval: 604800
   Game:
     type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/Game.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Game.mrs"
-    interval: 86400
-  Proxy:
+    behavior: "classical"
+    format: "text"
+    path: "./Game.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Game.list"
+    interval: 604800
+  Google-domain:
     type: "http"
     behavior: "domain"
     format: "mrs"
-    path: "./mrs/Proxy.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Proxy.mrs"
-    interval: 86400
+    path: "./mrs/Google-domain.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Google-domain.mrs"
+    interval: 604800
+  Google-keyword:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./mrs/Google-keyword.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Google-keyword.list"
+    interval: 604800
+  Google-ip:
+    type: "http"
+    behavior: "ipcidr"
+    format: "mrs"
+    path: "./mrs/Google-ip.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Google-ip.mrs"
+    interval: 604800
+  Proxy-YouTube:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/YouTube.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/YouTube.list"
+    interval: 604800
+  Proxy-Netflix:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Netflix.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Netflix.list"
+    interval: 604800
+  Proxy-Disney:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Disney.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Disney.list"
+    interval: 604800
+  Proxy-Spotify:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Spotify.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Spotify.list"
+    interval: 604800
+  Proxy-Streaming:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Streaming.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Streaming.list"
+    interval: 604800
+  Proxy-GitHub:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/GitHub.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/GitHub.list"
+    interval: 604800
+  Proxy-Microsoft:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Microsoft.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Microsoft.list"
+    interval: 604800
+  Proxy-Social:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Social.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Social.list"
+    interval: 604800
+  Proxy-Dev:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Dev.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Dev.list"
+    interval: 604800
+  Proxy-Cloudflare:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Proxy/Cloudflare.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Proxy/Cloudflare.list"
+    interval: 604800
+  Others-domain:
+    type: "http"
+    behavior: "domain"
+    format: "mrs"
+    path: "./mrs/Others-domain.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Others-domain.mrs"
+    interval: 604800
+  Others-extra:
+    type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./mrs/Others-extra.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Others-extra.list"
+    interval: 604800
   Bilibili:
     type: "http"
+    behavior: "classical"
+    format: "text"
+    path: "./Bilibili.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/Bilibili.list"
+    interval: 604800
+  Direct-domain:
+    type: "http"
     behavior: "domain"
     format: "mrs"
-    path: "./mrs/Bilibili.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Bilibili.mrs"
-    interval: 86400
-  Direct:
+    path: "./mrs/Direct-domain.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Direct-domain.mrs"
+    interval: 604800
+  Direct-before:
     type: "http"
-    behavior: "domain"
-    format: "mrs"
-    path: "./mrs/Direct.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Direct.mrs"
-    interval: 86400
-  AI-ip:
+    behavior: "classical"
+    format: "text"
+    path: "./mrs/Direct-before.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Direct-before.list"
+    interval: 604800
+  Direct-asn-ip:
     type: "http"
     behavior: "ipcidr"
     format: "mrs"
-    path: "./mrs/AI-ip.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/AI-ip.mrs"
-    interval: 86400
-  AI-extra:
+    path: "./mrs/Direct-asn-ip.mrs"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Direct-asn-ip.mrs"
+    interval: 604800
+  Direct-after:
     type: "http"
     behavior: "classical"
     format: "text"
-    path: "./mrs/AI-extra.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/AI-extra.list"
-    interval: 86400
-  Apple-ip:
-    type: "http"
-    behavior: "ipcidr"
-    format: "mrs"
-    path: "./mrs/Apple-ip.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Apple-ip.mrs"
-    interval: 86400
-  Apple-extra:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./mrs/Apple-extra.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Apple-extra.list"
-    interval: 86400
-  Game-extra:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./mrs/Game-extra.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Game-extra.list"
-    interval: 86400
-  Proxy-ip:
-    type: "http"
-    behavior: "ipcidr"
-    format: "mrs"
-    path: "./mrs/Proxy-ip.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Proxy-ip.mrs"
-    interval: 86400
-  Proxy-extra:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./mrs/Proxy-extra.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Proxy-extra.list"
-    interval: 86400
-  Bilibili-ip:
-    type: "http"
-    behavior: "ipcidr"
-    format: "mrs"
-    path: "./mrs/Bilibili-ip.mrs"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Bilibili-ip.mrs"
-    interval: 86400
-  Bilibili-extra:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./mrs/Bilibili-extra.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Bilibili-extra.list"
-    interval: 86400
-  Direct-extra:
-    type: "http"
-    behavior: "classical"
-    format: "text"
-    path: "./mrs/Direct-extra.list"
-    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Direct-extra.list"
-    interval: 86400
+    path: "./mrs/Direct-after.list"
+    url: "https://raw.githubusercontent.com/inkzuji/Rules/main/clash/mrs/Direct-after.list"
+    interval: 604800
 
 rules:
-  - "RULE-SET,AI,🤖️AI"
-  - "RULE-SET,Apple,🍎苹果"
-  - "RULE-SET,Game,🎮游戏"
-  - "RULE-SET,Proxy,🚀节点选择"
-  - "RULE-SET,Bilibili,📽哔哩"
-  - "RULE-SET,Direct,DIRECT"
-  - "RULE-SET,AI-ip,🤖️AI,no-resolve"
-  - "RULE-SET,AI-extra,🤖️AI"
-  - "RULE-SET,Apple-ip,🍎苹果,no-resolve"
-  - "RULE-SET,Apple-extra,🍎苹果"
-  - "RULE-SET,Game-extra,🎮游戏"
-  - "RULE-SET,Proxy-ip,🚀节点选择,no-resolve"
-  - "RULE-SET,Proxy-extra,🚀节点选择"
-  - "RULE-SET,Bilibili-ip,📽哔哩,no-resolve"
-  - "RULE-SET,Bilibili-extra,📽哔哩"
-  - "RULE-SET,Direct-extra,DIRECT"
-  - "MATCH,🐠 Final"
+  - "RULE-SET,AI,🤖 AI 服务"
+  - "RULE-SET,Apple,🍎 苹果服务"
+  - "RULE-SET,Game,🎮 游戏"
+  - "RULE-SET,Google-domain,🔍 谷歌服务"
+  - "RULE-SET,Google-keyword,🔍 谷歌服务"
+  - "RULE-SET,Google-ip,🔍 谷歌服务,no-resolve"
+  - "RULE-SET,Proxy-YouTube,🚀 节点选择"
+  - "RULE-SET,Proxy-Netflix,🚀 节点选择"
+  - "RULE-SET,Proxy-Disney,🚀 节点选择"
+  - "RULE-SET,Proxy-Spotify,🚀 节点选择"
+  - "RULE-SET,Proxy-Streaming,🚀 节点选择"
+  - "RULE-SET,Proxy-GitHub,🚀 节点选择"
+  - "RULE-SET,Proxy-Microsoft,🚀 节点选择"
+  - "RULE-SET,Proxy-Social,🚀 节点选择"
+  - "RULE-SET,Proxy-Dev,🚀 节点选择"
+  - "RULE-SET,Proxy-Cloudflare,🚀 节点选择"
+  - "RULE-SET,Others-domain,🚀 节点选择"
+  - "RULE-SET,Others-extra,🚀 节点选择"
+  - "RULE-SET,Bilibili,📽 哔哩哔哩"
+  - "RULE-SET,Direct-domain,🔒 国内服务"
+  - "RULE-SET,Direct-before,🔒 国内服务"
+  - "RULE-SET,Direct-asn-ip,🔒 国内服务"
+  - "RULE-SET,Direct-after,🔒 国内服务"
+  - "MATCH,🐟 漏网之鱼"

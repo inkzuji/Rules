@@ -28,6 +28,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.6'
+          cache-dependency-path: tools/asn-export/go.sum
+
       - name: Setup mihomo
         run: |
           bash scripts/setup_mihomo.sh "$RUNNER_TEMP/mihomo-bin"
@@ -35,9 +41,10 @@ jobs:
 
       - name: 测试与只读同步检查
         run: |
-          python3 -B -m unittest discover -s scripts -p 'test_*.py'
+          PYTHONPATH=scripts python3 -B -m unittest discover -s tests -p 'test_*.py'
           python3 -B scripts/convert_clash.py --check
           python3 -B scripts/acceptance.py
+          python3 -B scripts/native_acceptance.py --report "$RUNNER_TEMP/native-report.json"
 
   build:
     if: github.event_name != 'pull_request'
@@ -59,6 +66,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.6'
+          cache-dependency-path: tools/asn-export/go.sum
+
       - name: Setup mihomo
         run: |
           bash scripts/setup_mihomo.sh "$RUNNER_TEMP/mihomo-bin"
@@ -66,24 +79,29 @@ jobs:
 
       - name: 构建与校验规则集
         run: |
-          python3 -B -m unittest discover -s scripts -p 'test_*.py'
+          PYTHONPATH=scripts python3 -B -m unittest discover -s tests -p 'test_*.py'
+          python3 -B scripts/asn.py --refresh
           python3 -B scripts/build.py --report "$RUNNER_TEMP/classification-report.json"
           python3 -B scripts/convert_clash.py --check
           python3 -B scripts/acceptance.py
+          python3 -B scripts/native_acceptance.py --report "$RUNNER_TEMP/native-report.json"
 
       - name: 上传分类变更与冲突报告
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: classification-report
-          path: ${{ runner.temp }}/classification-report.json
+          path: |
+            ${{ runner.temp }}/classification-report.json
+            ${{ runner.temp }}/native-report.json
+            clash/manifest.json
           if-no-files-found: ignore
 
       - name: Commit & Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- surge clash scripts/.last_count
+          git add -- surge clash inputs
           if git diff --cached --quiet; then
             echo "无产物变更，跳过提交"
             exit 0

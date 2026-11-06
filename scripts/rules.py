@@ -92,3 +92,20 @@ def render_rules(policy, rules, preserve_order=False):
             lines.append(f'# {current}')
         lines.append(rule_line(rule))
     return '\n'.join(lines) + '\n'
+
+
+def parse_ai_sections(text, source='<text>'):
+    """读取单 AI 文件中的来源主题；注释保留历史 IP/进程的服务证据。"""
+    themes = {'AI/OpenAI', 'AI/Claude', 'AI/Gemini', 'AI/Copilot', 'AI/Others'}
+    sections = {theme: [] for theme in sorted(themes)}
+    theme = None
+    for number, line in enumerate(text.splitlines(), 1):
+        if line.startswith('# 来源主题: '):
+            theme = line.removeprefix('# 来源主题: ').strip()
+            if theme not in themes:
+                raise ValueError(f'{source}:{number}: 未知 AI 来源主题 {theme!r}')
+        elif line.strip() and not line.lstrip().startswith(('#', '//', ';')):
+            if theme is None:
+                raise ValueError(f'{source}:{number}: AI 规则缺少来源主题注释')
+            sections[theme].extend(parse_rules(line, source=f'{source}:{number}'))
+    return sections

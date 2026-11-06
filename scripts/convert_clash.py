@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""surge/ → mihomo 细分 classical 文本及六类业务策略 MRS。
+"""surge/ → mihomo 单 AI 文本、分服务优化片段及可核验产物清单。
 
 用法: python3 scripts/convert_clash.py [--check] [--mihomo PATH]
 --check 在临时目录重新编译、校验全部产物，不改仓库文件。
 """
 import argparse
 import collections
+import hashlib
 from datetime import datetime
 import ipaddress
 import json
@@ -20,12 +21,15 @@ import uuid
 
 from rules import POLICIES, parse_rules, read_policy, render_rules, rule_line
 import routing
+import asn
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC_DIR = ROOT / 'surge'
 OUT_DIR = ROOT / 'clash'
 RAW_BASE = 'https://raw.githubusercontent.com/inkzuji/Rules/main/clash/'
 MIHOMO_VERSION = '1.19.30'
+CLASH_POLICIES = dict(zip(POLICIES, ('🤖 AI 服务', '🍎 苹果服务', '🎮 游戏', '🚀 节点选择', '📽 哔哩哔哩', '🔒 国内服务')))
+CLASH_FINAL = '🐟 漏网之鱼'
 
 
 def to_clash(rule):
@@ -92,17 +96,18 @@ def config_for(entries, remote=True):
         provider = {'type': 'http' if remote else 'file', 'behavior': behavior,
                     'format': fmt, 'path': './' + relative}
         if remote:
-            provider.update(url=RAW_BASE + relative, interval=86400)
+            provider.update(url=RAW_BASE + relative, interval=604800)
         providers[name] = provider
-        routes.append(f'RULE-SET,{name},{policy}' + (',no-resolve' if no_resolve else ''))
-    routes.append('MATCH,🐠 Final')
+        target = '🔍 谷歌服务' if name.startswith('Proxy-Google') or name.startswith('Google-') else CLASH_POLICIES[policy]
+        routes.append(f'RULE-SET,{name},{target}' + (',no-resolve' if no_resolve else ''))
+    routes.append('MATCH,' + CLASH_FINAL)
     return {'rule-providers': providers, 'rules': routes}
 
 
 def render_config(entries):
     config = config_for(entries)
     scalar = lambda value: json.dumps(value, ensure_ascii=False)
-    lines = ['# 合并到已有主配置；策略组名称须与主配置一致。', 'rule-providers:']
+    lines = ['# 合并到已有主配置；策略组名称须与主配置一致。', '# 配套 geodata 更新周期：geo-update-interval: 168（小时）；规则 provider 为每周。', 'rule-providers:']
     for name, provider in config['rule-providers'].items():
         lines.append(f'  {name}:')
         for key, value in provider.items():
@@ -139,7 +144,7 @@ def validate_config(entries, all_rules, directory, mihomo):
     """隔离目录内校验 provider 与逐条规则；不启动代理、不使用用户配置。"""
     config = config_for(entries, remote=False)
     config['proxy-groups'] = [{'name': policy, 'type': 'select', 'proxies': ['DIRECT']}
-                              for policy in [*POLICIES, '🐠 Final'] if policy != 'DIRECT']
+                              for policy in sorted({route.split(',')[2] for route in config['rules'] if route.startswith('RULE-SET,')} | {CLASH_FINAL}) if policy != 'DIRECT']
     config['log-level'] = 'info'
     # ASN/GEOIP 构造器需要数据库；空 stub 隔离远程服务，不声称验证实际地理归属。
     for filename in ('ASN.mmdb', 'country.mmdb'):
@@ -170,7 +175,6 @@ def generate(surge_dir, mihomo='mihomo'):
     directory = Path(tempfile.mkdtemp(prefix='rules-convert-'))
     artifacts = {}
     groups = collections.defaultdict(set)
-    ordered_groups = collections.defaultdict(list)
     classical_entries = []
     service_files = []
     skipped = collections.Counter()
@@ -188,45 +192,58 @@ def generate(surge_dir, mihomo='mihomo'):
         service_files.append((relative, policy, converted))
         artifacts[relative] = render_rules(policy, converted).encode('utf-8')
         groups[policy].update(converted)
-        ordered_groups[policy].extend(sorted(set(converted)))
         name = relative[:-5].replace('/', '-')
         classical_entries.append((name, relative, policy, 'classical', 'text', False))
-    domains, domain_entries = routing.domain_artifacts(service_files)
-    artifacts.update(domains)
-    classical_entries = domain_entries + sorted(classical_entries, key=routing.entry_order)
+    classical_entries = sorted(classical_entries, key=routing.entry_order)
     mrs_entries = []
-    for policy, name in POLICIES.items():
-        domains, ips, extra = [], [], []
-        # 解析型 ASN/GEOIP/CIDR 会为后续 no-resolve 规则提供 IP。
-        # 此时保留非域名规则的细分文件顺序，不能将 IP 独立提前。
-        resolves = any(typ in ('IP-CIDR', 'IP-CIDR6', 'IP-ASN', 'GEOIP') and 'no-resolve' not in options
-                       for typ, _, options in groups[policy])
-        for typ, value, options in ordered_groups[policy]:
-            if typ in ('DOMAIN', 'DOMAIN-SUFFIX') and not options:
-                domains.append(('+.' if typ == 'DOMAIN-SUFFIX' else '') + value)
-            elif typ in ('IP-CIDR', 'IP-CIDR6'):
-                network = ipaddress.ip_network(value)
-                if resolves or (network.version == 6 and network.overlaps(ipaddress.ip_network('::ffff:0:0/96'))):
-                    # MRS 的 IPSet 会将 IPv4-mapped IPv6 转成 IPv4，不能改变匹配范围。
-                    extra.append((typ, value, options))
-                else:
-                    ips.append(value)
+    for relative, policy, converted in sorted(service_files, key=lambda item: routing.entry_order(
+            (item[0][:-5].replace('/', '-'), item[0], item[1]))):
+        theme = relative[:-5]
+        if theme not in ('Proxy/Google', 'Proxy/Others', 'Direct'):
+            mrs_entries.append((theme.replace('/', '-'), relative, policy, 'classical', 'text', False))
+            continue
+        label = theme.split('/')[-1]
+        domains = [rule for rule in converted if rule[0] in ('DOMAIN', 'DOMAIN-SUFFIX')]
+        remaining = [rule for rule in converted if rule[0] not in ('DOMAIN', 'DOMAIN-SUFFIX')]
+        partitions = [('domain', domains, 'domain', False)]
+        if theme == 'Proxy/Google':
+            keywords = [rule for rule in remaining if rule[0] == 'DOMAIN-KEYWORD']
+            ips = [rule for rule in remaining if rule[0] in ('IP-CIDR', 'IP-CIDR6')]
+            if len(keywords) + len(ips) != len(remaining) or any(rule[2] != ('no-resolve',) for rule in ips):
+                raise ValueError('Google 规则结构改变，需要重新审查分区')
+            partitions.extend([('keyword', keywords, 'classical', False), ('ip', ips, 'ipcidr', True)])
+        elif theme == 'Proxy/Others':
+            partitions.append(('extra', remaining, 'classical', False))
+        else:
+            positions = [i for i, rule in enumerate(remaining) if rule[0] == 'IP-ASN']
+            if positions:
+                start, end = positions[0], positions[-1] + 1
+                segment = remaining[start:end]
+                if any(rule[0] != 'IP-ASN' for rule in segment) or 'no-resolve' in segment[0][2]:
+                    raise ValueError('Direct ASN 必须连续且首条允许解析，拒绝盲目合并')
+                networks = asn.export_networks([value for _, value, _ in segment], ROOT / 'inputs/ASN.mmdb', directory)
+                partitions.extend([('before', remaining[:start], 'classical', False),
+                                   ('asn-ip', networks, 'ipcidr', False),
+                                   ('after', remaining[end:], 'classical', False)])
             else:
-                extra.append((typ, value, options))
-        for suffix, values, behavior, no_resolve in (
-                ('', domains, 'domain', False),
-                ('-ip', ips, 'ipcidr', True)):
-            if values:
-                relative = f'mrs/{name}{suffix}.mrs'
-                artifacts[relative] = compile_mrs(values, behavior, directory / f'{name}{suffix}.mrs', mihomo)
-                mrs_entries.append((name + suffix, relative, policy, behavior, 'mrs', no_resolve))
-        if extra:
-            relative = f'mrs/{name}-extra.list'
-            artifacts[relative] = render_rules(policy, extra, preserve_order=resolves).encode('utf-8')
-            mrs_entries.append((name + '-extra', relative, policy, 'classical', 'text', False))
-        print(f'✓ {name:8s} 域名 {len(domains):6d} IP {len(ips):6d} 配套文本 {len(extra):6d}')
-    # 所有明确域名先匹配，不能让前一策略的 IP/进程抢走后一策略的域名。
-    mrs_entries.sort(key=lambda entry: entry[3] != 'domain')
+                partitions.append(('after', remaining, 'classical', False))
+        for suffix, values, behavior, no_resolve in partitions:
+            if not values:
+                continue
+            name = f'{label}-{suffix}'
+            if behavior == 'classical':
+                target = f'mrs/{name}.list'
+                artifacts[target] = render_rules(policy, values, preserve_order=True).encode('utf-8')
+                fmt = 'text'
+            else:
+                target = f'mrs/{name}.mrs'
+                if behavior == 'domain':
+                    values = [('+.' if typ == 'DOMAIN-SUFFIX' else '') + value for typ, value, options in values]
+                elif suffix != 'asn-ip':
+                    values = [value for typ, value, options in values]
+                artifacts[target] = compile_mrs(values, behavior, directory / f'{name}.mrs', mihomo)
+                fmt = 'mrs'
+            mrs_entries.append((name, target, policy, behavior, fmt, no_resolve))
     artifacts['classical.yaml'] = render_config(classical_entries).encode('utf-8')
     artifacts['mrs.yaml'] = render_config(mrs_entries).encode('utf-8')
     for relative, content in artifacts.items():
@@ -236,6 +253,14 @@ def generate(surge_dir, mihomo='mihomo'):
     all_rules = [rule for rules in groups.values() for rule in rules]
     validate_config(classical_entries, all_rules, directory, mihomo)
     validate_config(mrs_entries, all_rules, directory, mihomo)
+    artifacts['geodata.yaml'] = ('# 与规则片段一起合并到主配置；ASN 使用同一仓库的每周快照。\n'
+        'geo-auto-update: true\ngeo-update-interval: 168\ngeox-url:\n'
+        '  asn: https://raw.githubusercontent.com/inkzuji/Rules/main/inputs/ASN.mmdb\n').encode('utf-8')
+    manifest = {'schema': 1, 'mihomo': MIHOMO_VERSION, 'update_interval': 604800,
+                'asn_database': json.loads((ROOT / 'inputs/asn-lock.json').read_text()),
+                'sources': {p.relative_to(surge_dir).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
+                'artifacts': {name: hashlib.sha256(content).hexdigest() for name, content in sorted(artifacts.items())}}
+    artifacts['manifest.json'] = (json.dumps(manifest, ensure_ascii=False, sort_keys=True, indent=2) + '\n').encode('utf-8')
     if skipped:
         print('⚠️ 仅保留在 Surge 的类型: ' + ', '.join(f'{typ}×{count}' for typ, count in sorted(skipped.items())))
     return artifacts
@@ -260,7 +285,11 @@ def preflight(artifacts, out_dir):
     stale = stale_paths(artifacts, out_dir)
     managed = {f'mrs/{name}{suffix}' for name in POLICIES.values()
                for suffix in ('.mrs', '-ip.mrs', '-extra.list')}
-    managed.update(f'routing/{name}-domain.list' for name in routing.SERVICE_NAMES)
+    managed.update(f'routing/{name}-domain.list' for name in routing.THEME_NAMES)
+    managed.update(f'AI/{name}.list' for name in ('OpenAI', 'Claude', 'Gemini', 'Copilot', 'Others'))
+    managed.update(f'mrs/{name}{suffix}' for name in ('Google', 'Others', 'Direct')
+                   for suffix in ('-domain.mrs', '-keyword.list', '-ip.mrs', '-extra.list', '-before.list', '-asn-ip.mrs', '-after.list'))
+    managed.update(routing.RETIRED_PATHS)
     unknown = sorted(set(stale) - managed)
     if unknown:
         raise ValueError(f'{out_dir}: 未知的多余产物，请检查后移入系统废纸篓: {unknown}')

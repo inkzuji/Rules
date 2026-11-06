@@ -26,7 +26,7 @@ import convert_clash
 from acceptance import validate_artifacts
 import ownership
 import routing
-from rules import POLICIES, parse_rules, read_policy, render_rules
+from rules import POLICIES, parse_rules, read_policy, render_rules, parse_ai_sections
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, 'surge')
@@ -54,7 +54,7 @@ SOURCE_666OS = {
 URL_666OS = RAW_BASE + '/666OS/rules/release/surge/'
 URL_OVERSEAS_AI = RAW_BASE + '/viewer12/OverseasAI.list/main/rule/Surge/OverseasAI/OverseasAI.list'
 
-THEME_POLICIES = {name: ownership.theme_policy(name) for name in routing.SERVICE_NAMES}
+THEME_POLICIES = {name: ownership.theme_policy(name) for name in routing.THEME_NAMES}
 SINGLE = {policy: name for policy, name in POLICIES.items() if name not in ('AI', 'Proxy')}
 
 
@@ -155,6 +155,12 @@ def collect(surge_dir, source_list=None):
         text = path.read_text(encoding='utf-8')
         policy = read_policy(text, source=str(path))
         theme = path.relative_to(surge_dir).with_suffix('').as_posix()
+        if theme == 'AI':
+            if policy != '🤖️AI':
+                raise ValueError(f'{path}: AI 文件策略不兼容 {policy!r}')
+            for origin, rules in parse_ai_sections(text, source=str(path)).items():
+                merge(best, policy, rules, origin, historical=True, source=str(path))
+            continue
         if theme not in THEME_POLICIES:
             raise ValueError(f'{path}: 未知历史主题 {theme!r}')
         if THEME_POLICIES[theme] != policy:
@@ -189,18 +195,32 @@ def collect(surge_dir, source_list=None):
 
 
 def surge_artifacts(best):
-    """保持全部 21 个历史地址，即使某主题暂时为空也生成文件。"""
-    buckets = {name: (policy, []) for name, policy in THEME_POLICIES.items()}
-    for _, policy, theme, rule in best.values():
-        buckets[theme][1].append(rule)
-    files = [(name + '.list', policy, rules) for name, (policy, rules) in buckets.items()]
-    artifacts = {relative: render_rules(policy, rules).encode('utf-8')
-                 for relative, policy, rules in files}
-    domains, domain_entries = routing.domain_artifacts(files)
-    service_entries = [(relative[:-5].replace('/', '-'), relative, policy, 'classical', 'text', False)
-                       for relative, policy, _ in files]
-    artifacts.update(domains)
-    artifacts['rules.conf'] = routing.surge_references(domain_entries + sorted(service_entries, key=routing.entry_order))
+    """生成 17 个服务文件，AI 来源主题保存在同一个文件内。"""
+    buckets = {name: [] for name in routing.THEME_NAMES}
+    for _, _, theme, rule in best.values():
+        buckets[theme].append(rule)
+    artifacts, entries = {}, []
+    for name in routing.SERVICE_NAMES:
+        policy = ownership.theme_policy(name)
+        relative = name + '.list'
+        if name == 'AI':
+            count = sum(len(set(buckets[theme])) for theme in routing.AI_THEMES)
+            parts = [f'# 策略: {policy}\n# 规则数: {count}\n']
+            seen = {}
+            for theme in routing.AI_THEMES:
+                rules = buckets[theme]
+                for rule in rules:
+                    if rule[:2] in seen and seen[rule[:2]] != rule:
+                        raise ValueError(f'AI 合并参数冲突: {rule}')
+                    seen[rule[:2]] = rule
+                body = render_rules(policy, rules).splitlines()[3:]
+                parts.append('# 来源主题: ' + theme + '\n' + '\n'.join(body) + '\n')
+            content = '\n'.join(parts)
+        else:
+            content = render_rules(policy, buckets[name])
+        artifacts[relative] = content.encode('utf-8')
+        entries.append((name.replace('/', '-'), relative, policy, 'classical', 'text', False))
+    artifacts['rules.conf'] = routing.surge_references(entries)
     return artifacts
 
 
@@ -223,6 +243,28 @@ def network_conflicts(best):
     return conflicts
 
 
+def ordered_service_overlaps(best):
+    """Google 与其他 Proxy 的交叠按原客户端顺序保留，并显式输出证据。"""
+    intervals = []
+    for _, _, theme, (typ, value, _) in best.values():
+        if theme.startswith('Proxy/') and typ in ('IP-CIDR', 'IP-CIDR6'):
+            network = ipaddress.ip_network(value)
+            intervals.append((network.version, int(network.network_address), int(network.broadcast_address),
+                              theme, value))
+    active, overlaps = [], []
+    for interval in sorted(intervals):
+        version, start, _, theme, value = interval
+        active = [other for other in active if other[0] == version and other[2] >= start]
+        for other in active:
+            if (theme == 'Proxy/Google') != (other[3] == 'Proxy/Google'):
+                ordered = sorted(([theme, value], [other[3], other[4]]),
+                                 key=lambda item: routing.service_order(item[0]))
+                overlaps.append({'first': ordered[0], 'second': ordered[1],
+                                 'winner': ordered[0][0]})
+        active.append(interval)
+    return sorted(overlaps, key=lambda item: (item['first'], item['second']))
+
+
 def discard_covered_fallbacks(best):
     """通用代理的小网段若被另一明确服务完整覆盖，保留有服务证据的覆盖。"""
     specific = [(ipaddress.ip_network(rule[1]), theme) for _, _, theme, rule in best.values()
@@ -240,9 +282,9 @@ def discard_covered_fallbacks(best):
 
 
 def reject_stale(artifacts, directory):
-    """Surge 没有可退役的动态配套文件，所有多余产物均阻断。"""
+    """仅允许退役已知的旧 AI 文件和域名投影。"""
     stale = convert_clash.stale_paths(artifacts, directory)
-    if stale:
+    if set(stale) - routing.RETIRED_PATHS:
         raise ValueError(f'{directory}: 未知的多余产物: {stale}')
 
 
@@ -256,7 +298,7 @@ def write_report(path, report):
 def build(surge_dir=OUT_DIR, clash_dir=None, count_path=None, mihomo='mihomo', validate=False,
           source_list=None, report_path=None):
     clash_dir = Path(clash_dir or os.path.join(ROOT, 'clash'))
-    count_path = Path(count_path or os.path.join(ROOT, 'scripts', '.last_count'))
+    count_path = Path(count_path or os.path.join(ROOT, 'inputs', 'last_count'))
     try:
         best, total_fetched = collect(surge_dir, source_list)
     except (OSError, ValueError, RuntimeError) as error:
@@ -264,12 +306,16 @@ def build(surge_dir=OUT_DIR, clash_dir=None, count_path=None, mihomo='mihomo', v
         raise
     discard_covered_fallbacks(best)
     conflicts = network_conflicts(best)
-    report = {'status': 'collected', 'total': len(best), 'by_theme': dict(sorted(collections.Counter(
+    executable = convert_clash.shutil.which(str(mihomo))
+    revision = subprocess.run(['git', '-C', ROOT, 'rev-parse', 'HEAD'], capture_output=True, text=True, check=True).stdout.strip()
+    report = {'revision': revision, 'mihomo_sha256': hashlib.sha256(Path(executable).read_bytes()).hexdigest() if executable else None,
+        'status': 'collected', 'total': len(best), 'by_theme': dict(sorted(collections.Counter(
         entry[2] for entry in best.values()).items())), 'candidate_decisions': best.decisions,
         'selected': [{'rule': rule, 'policy': policy, 'theme': theme,
                       'source': best.origins[key], 'reason': best.reasons[key]}
                      for key, (_, policy, theme, rule) in sorted(best.items())],
-        'network_conflicts': conflicts, 'sources': best.sources}
+        'network_conflicts': conflicts, 'ordered_service_overlaps': ordered_service_overlaps(best),
+        'sources': best.sources}
     write_report(report_path, report)
     if conflicts:
         raise ValueError(f'存在 {len(conflicts)} 个未解决的跨策略 CIDR 重叠: {conflicts[:5]}')

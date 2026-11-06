@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """独立验收文本归属、实际 provider 首匹配和官方反解后的 MRS 覆盖。
 
-匹配场景覆盖域名、CIDR 与进程；不模拟 ASN/GEOIP、URL-REGEX、USER-AGENT
-或 extended-matching。后两类只按转换器公开契约验证文本转换，不声称内核等价。
+匹配场景覆盖域名、CIDR、进程和固定快照的 ASN 查询；不模拟真实 DNS 状态、
+GEOIP、URL-REGEX、USER-AGENT 或 extended-matching，不代替内核运行测试。
 """
 import argparse
 import collections
 import csv
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import fnmatch
+import functools
+import hashlib
 import ipaddress
 import json
 from pathlib import Path
@@ -25,6 +27,14 @@ ROOT = Path(__file__).resolve().parent.parent
 AI = '🤖️AI'
 PROXY = '🚀节点选择'
 FINAL = '🐠 Final'
+CLASH_FINAL = '🐟 漏网之鱼'
+CLASH_POLICIES = {'🤖 AI 服务': AI, '🍎 苹果服务': '🍎苹果', '🎮 游戏': '🎮游戏',
+                  '🚀 节点选择': PROXY, '📽 哔哩哔哩': '📽哔哩',
+                  '🔒 国内服务': 'DIRECT', '🔍 谷歌服务': 'Google'}
+SERVICE_ORDER = ('AI', 'Apple', 'Game', 'Proxy/Google', 'Proxy/YouTube', 'Proxy/Netflix',
+                 'Proxy/Disney', 'Proxy/Spotify', 'Proxy/Streaming', 'Proxy/GitHub',
+                 'Proxy/Microsoft', 'Proxy/Social', 'Proxy/Dev', 'Proxy/Cloudflare',
+                 'Proxy/Others', 'Bilibili', 'Direct')
 # 这些预期来自服务归属契约，独立于构建器的关键词、来源与分类配置。
 SERVICE_CASES = (
     ('google.com', 'Proxy/Google', PROXY),
@@ -39,7 +49,7 @@ SERVICE_CASES = (
     ('ai.studio', 'AI/Gemini', AI),
     ('ppl-ai-file-upload.s3.amazonaws.com', 'AI/Others', AI),
     ('production-openaicom-storage.azureedge.net', 'AI/OpenAI', AI),
-    ('youtubei.googleapis.com', 'Proxy/YouTube', PROXY),
+    ('youtubei.googleapis.com', 'Proxy/Google', PROXY),
     ('bing.com', 'Proxy/Microsoft', PROXY),
     ('github.com', 'Proxy/GitHub', PROXY),
     ('api.githubcopilot.com', 'AI/Copilot', AI),
@@ -57,6 +67,9 @@ SERVICE_CASES = (
     ('ollama.com', 'AI/Others', AI),
 )
 PROCESS_TYPES = {'PROCESS-NAME', 'PROCESS-PATH', 'PROCESS-NAME-WILDCARD', 'PROCESS-PATH-WILDCARD'}
+# 真实交集差分反复匹配同一批地址/网段，缓存解析结果而不缓存匹配结果。
+_network = functools.lru_cache(maxsize=65536)(ipaddress.ip_network)
+_address = functools.lru_cache(maxsize=1024)(ipaddress.ip_address)
 
 
 @dataclass(frozen=True)
@@ -73,6 +86,7 @@ class Request:
     host: str = ''
     ip: str = ''
     process: str = ''
+    asn: str = ''
 
 
 def read_config(path):
@@ -98,16 +112,23 @@ def read_config(path):
             routes.append(json.loads(raw[4:]))
         else:
             raise ValueError(f'{path}:{number}: 不支持的生成配置格式')
-    if not providers or not routes or routes[-1] != f'MATCH,{FINAL}':
+    for name, entry in providers.items():
+        if entry.get('type') == 'http':
+            if entry.get('interval') != 604800:
+                raise ValueError(f'{path}: provider {name} 必须每周更新')
+            remote = urllib.parse.unquote(urllib.parse.urlparse(entry.get('url', '')).path).partition('/clash/')[2]
+            if remote != entry.get('path', '').removeprefix('./'):
+                raise ValueError(f'{path}: provider {name} 的 URL 与本地产物路径不一致')
+    if not providers or not routes or routes[-1] != f'MATCH,{CLASH_FINAL}':
         raise ValueError(f'{path}: 缺少 provider、规则或最终策略')
     references = []
     for route in routes[:-1]:
         fields = route.split(',')
         if len(fields) not in (3, 4) or fields[0] != 'RULE-SET' or (len(fields) == 4 and fields[3] != 'no-resolve'):
             raise ValueError(f'{path}: 非法引用 {route}')
-        if fields[1] not in providers or fields[2] not in POLICIES:
+        if fields[1] not in providers or fields[2] not in CLASH_POLICIES:
             raise ValueError(f'{path}: 未知 provider 或策略 {route}')
-        references.append((fields[1], fields[2], len(fields) == 4))
+        references.append((fields[1], CLASH_POLICIES[fields[2]], len(fields) == 4))
     names = [name for name, _, _ in references]
     if len(names) != len(set(names)) or set(names) != set(providers):
         raise ValueError(f'{path}: provider 未引用或重复引用')
@@ -161,7 +182,8 @@ def load_text(surge_dir, clash_dir, require_surge_config=False):
         source = local_path(surge_dir, relative)
         source_text = source.read_text(encoding='utf-8')
         target_text = path.read_text(encoding='utf-8')
-        if read_policy(source_text, str(source)) != policy or read_policy(target_text, str(path)) != policy:
+        header_policy = PROXY if policy == 'Google' else policy
+        if read_policy(source_text, str(source)) != header_policy or read_policy(target_text, str(path)) != header_policy:
             raise ValueError(f'provider 策略与文件头不一致: {relative}')
         source_rules = tuple(parse_rules(source_text, str(source)))
         target_rules = clash_rules(target_text, str(path))
@@ -197,7 +219,7 @@ def load_text(surge_dir, clash_dir, require_surge_config=False):
             if len(fields) != 3 or fields[0] != 'RULE-SET':
                 raise ValueError(f'{routes_path}: 非法 Surge 引用 {line}')
             relative = urllib.parse.unquote(urllib.parse.urlparse(fields[1]).path).partition('/surge/')[2]
-            if relative not in by_relative or fields[2] != by_relative[relative].policy:
+            if relative not in by_relative or fields[2] != (PROXY if by_relative[relative].policy == 'Google' else by_relative[relative].policy):
                 raise ValueError(f'{routes_path}: 未知文件或策略 {line}')
             ordered.append(by_relative[relative])
         if len(ordered) != len(surge) or {p.name for p in ordered} != {p.name for p in surge}:
@@ -230,27 +252,39 @@ def decode_mrs(mihomo, behavior, source, directory):
 def load_mrs(clash_dir, mihomo, directory):
     config, references = read_config(clash_dir / 'mrs.yaml')
     providers = []
+    referenced = set()
     for name, policy, no_resolve in references:
         entry = config[name]
         source = local_path(clash_dir, entry['path'])
-        if not source.is_relative_to((clash_dir / 'mrs').resolve()):
-            raise ValueError(f'MRS provider 必须引用 mrs/ 产物: {name}')
+        referenced.add(source)
+        relative = source.relative_to(clash_dir).as_posix()
         behavior, fmt = entry.get('behavior'), entry.get('format')
         if fmt == 'mrs' and behavior in ('domain', 'ipcidr'):
+            if not relative.startswith('mrs/'):
+                raise ValueError(f'二进制 MRS 必须位于 mrs/: {name}')
             rules = decode_mrs(mihomo, behavior, source, directory)
-            if behavior == 'ipcidr' and not no_resolve:
-                raise ValueError(f'MRS IP provider 缺少 no-resolve: {name}')
+            if behavior == 'ipcidr':
+                if name == 'Direct-asn-ip':
+                    if no_resolve or policy != 'DIRECT':
+                        raise ValueError('Direct ASN 集合必须允许解析且指向国内服务')
+                    rules = tuple((typ, value, ()) for typ, value, _ in rules)
+                elif not no_resolve:
+                    raise ValueError(f'MRS IP provider 缺少 no-resolve: {name}')
         elif fmt == 'text' and behavior == 'classical':
             text = source.read_text(encoding='utf-8')
-            if read_policy(text, str(source)) != policy:
+            if read_policy(text, str(source)) != (PROXY if policy == 'Google' else policy):
                 raise ValueError(f'MRS 配套文本策略不一致: {name}')
             rules = clash_rules(text, str(source))
         else:
             raise ValueError(f'MRS provider 格式错误: {name}')
-        providers.append(Provider(name, name, policy, rules, no_resolve))
+        if relative.startswith('mrs/'):
+            stem = source.stem.split('-')[0]
+            theme = {'Google': 'Proxy/Google', 'Others': 'Proxy/Others'}.get(stem, stem)
+        else:
+            theme = relative[:-5]
+        providers.append(Provider(name, theme, policy, rules, no_resolve))
     actual = {p.resolve() for p in (clash_dir / 'mrs').iterdir() if p.suffix in ('.mrs', '.list')}
-    referenced = {local_path(clash_dir, entry['path']) for entry in config.values()}
-    if actual != referenced:
+    if actual != {p for p in referenced if p.parent == (clash_dir / 'mrs')}:
         raise ValueError('mrs.yaml 未完整引用 MRS 与配套文本')
     return providers
 
@@ -299,7 +333,9 @@ def matches(rule, request, clash=False):
     if typ == 'DOMAIN-WILDCARD':
         return fnmatch.fnmatchcase(host, value)
     if typ in ('IP-CIDR', 'IP-CIDR6') and request.ip:
-        return ipaddress.ip_address(request.ip) in ipaddress.ip_network(value)
+        return _address(request.ip) in _network(value)
+    if typ == 'IP-ASN':
+        return bool(request.asn) and value == request.asn
     if typ in PROCESS_TYPES and request.process:
         candidate = request.process
         if clash:
@@ -319,37 +355,44 @@ def first_match(providers, request, clash=False):
 
 def validate_routes(surge, clash, mrs):
     count = 0
-    # 从真实规则中选跨策略地址，确保能发现 IP provider 抢在域名之前的错误。
-    shared_addresses = ['', '192.0.2.222', '2001:db8::222']
-    representatives = {}
+    for label, providers in (('Surge', surge), ('Clash', clash), ('MRS', mrs)):
+        themes = [p.theme for p in providers]
+        if any(theme not in SERVICE_ORDER for theme in themes):
+            raise ValueError(f'{label}: 未知服务或旧 AI 分文件: {themes}')
+        ranks = [SERVICE_ORDER.index(theme) for theme in themes]
+        if ranks != sorted(ranks):
+            raise ValueError(f'{label}: 服务引用顺序不符合原 Clash 配置')
+        ai = [p for p in providers if p.theme == 'AI']
+        if len(ai) != 1:
+            raise ValueError(f'{label}: AI 必须只有一个完整 provider')
+    # 独立业务预期验证域名归属；共享 IP 场景按已确认的整组优先契约另作差分。
+    for host, theme, policy in SERVICE_CASES:
+        expected_theme = 'AI' if theme.startswith('AI/') else theme
+        expected_policy = 'Google' if expected_theme == 'Proxy/Google' else policy
+        request = Request(host)
+        for label, providers, mode in (('Surge', surge, False), ('Clash', clash, True), ('MRS', mrs, True)):
+            actual = first_match(providers, request, mode)
+            if actual != (expected_theme, expected_policy):
+                raise ValueError(f'服务归属验收失败 {request}: 预期 {(expected_theme, expected_policy)}; {label}={actual}')
+        count += 1
+    addresses = {'192.0.2.222', '2001:db8::222'}
     for provider in clash:
         for typ, value, _ in provider.rules:
             if typ in ('IP-CIDR', 'IP-CIDR6'):
                 network = ipaddress.ip_network(value)
-                key = (provider.policy, network.version)
-                address = network.network_address + (1 if network.num_addresses > 1 else 0)
-                representatives.setdefault(key, str(address))
-    shared_addresses = list(dict.fromkeys(shared_addresses + list(representatives.values())))
-    for host, theme, policy in SERVICE_CASES:
-        # 相同测试 IP 与不同域名仍按服务归属，避免 IP 提前遮盖域名。
-        for address in shared_addresses:
-            request = Request(host, address)
-            source = first_match(surge, request)
-            target = first_match(clash, request, True)
-            binary = first_match(mrs, request, True)
-            if source != (theme, policy) or target != (theme, policy) or binary[1] != policy:
-                raise ValueError(f'服务归属验收失败 {request}: 预期 {(theme, policy)}; '
-                                 f'Surge={source}, Clash={target}, MRS={binary}')
+                addresses.add(str(network.network_address + (1 if network.num_addresses > 1 else 0)))
+                break
+    asns = {}
+    if any(r[0] == 'IP-ASN' for p in clash for r in p.rules):
+        from asn import lookup_asns
+        asns = lookup_asns(sorted(addresses), ROOT / 'inputs/ASN.mmdb', Path(tempfile.mkdtemp(prefix='rules-asn-routes-')))
+    for host in ('google.com', 'gemini.google.com', 'ordinary.example', ''):
+        for address in sorted(addresses):
+            request = Request(host, address, asn=str(asns.get(address, '')))
+            results = [first_match(providers, request, mode) for providers, mode in zip((surge, clash, mrs), (False, True, True))]
+            if len(set(results)) != 1:
+                raise ValueError(f'服务块首匹配不一致: {request}: {results}')
             count += 1
-    for address in shared_addresses:
-        if not address:
-            continue
-        request = Request(ip=address)
-        results = [first_match(providers, request, mode) for providers, mode in
-                   ((surge, False), (clash, True), (mrs, True))]
-        if len({result[1] for result in results}) != 1:
-            raise ValueError(f'纯 IP 三端策略不一致: {request}: {results}')
-        count += 1
     for host in ('notgoogle.com', 'ordinary.example'):
         for process in ('', 'MicrosoftEdge', 'VSCode'):
             request = Request(host, process=process)
@@ -362,6 +405,95 @@ def validate_routes(surge, clash, mrs):
     return count
 
 
+def validate_proxy_overlaps(surge, clash, mrs, directory):
+    """逐个真实 Google/其他代理 CIDR 交集检查独立优先级和三端首匹配。"""
+    intervals = []
+    for provider in clash:
+        if not provider.theme.startswith('Proxy/'):
+            continue
+        for typ, value, _ in provider.rules:
+            if typ in ('IP-CIDR', 'IP-CIDR6'):
+                network = ipaddress.ip_network(value)
+                intervals.append((network.version, int(network.network_address),
+                                  int(network.broadcast_address), provider.theme == 'Proxy/Google'))
+    active, samples = [], []
+    for interval in sorted(intervals):
+        version, start, end, google = interval
+        active = [other for other in active if other[0] == version and other[2] >= start]
+        for other in active:
+            if google != other[3]:
+                address = str((ipaddress.IPv4Address if version == 4 else ipaddress.IPv6Address)(start))
+                samples.append((version, address))
+        active.append(interval)
+    if not samples:
+        return {'overlap_scenarios': 0, 'overlap_ipv4': 0, 'overlap_ipv6': 0}
+    from asn import lookup_asns
+    asns = lookup_asns([address for _, address in samples], ROOT / 'inputs/ASN.mmdb', directory)
+    for version, address in samples:
+        request = Request(ip=address, asn=str(asns.get(address, '')))
+        complete = []
+        for providers, mode in ((surge, False), (clash, True), (mrs, True)):
+            proxy = [p for p in providers if p.theme.startswith('Proxy/')]
+            winner = first_match(proxy, request, mode)
+            if winner != ('Proxy/Google', 'Google'):
+                raise ValueError(f'Google 真实重叠网段优先级错误 {address}: {winner}')
+            complete.append(first_match(providers, request, mode))
+        # 前序 AI/Apple/Game 的合法覆盖以完整源配置为基准，不能硬改成 Google。
+        if len(set(complete)) != 1:
+            raise ValueError(f'真实重叠网段三端首匹配不一致 {address}: {complete}')
+    return {'overlap_scenarios': len(samples),
+            'overlap_ipv4': sum(version == 4 for version, _ in samples),
+            'overlap_ipv6': sum(version == 6 for version, _ in samples)}
+
+
+def validate_asn_compilation(clash, mrs, directory):
+    """只对声明的 Direct ASN 编译段作同快照验证，其他规则仍全量比较。"""
+    compiled = [p for p in mrs if p.name == 'Direct-asn-ip']
+    selected = {value for p in clash if p.theme == 'Direct'
+                for typ, value, _ in p.rules if typ == 'IP-ASN'}
+    if compiled:
+        if len(compiled) != 1 or not selected:
+            raise ValueError('Direct ASN 编译产物没有唯一对应的源 ASN 段')
+        from asn import verify_networks
+        database = ROOT / 'inputs/ASN.mmdb'
+        verify_networks(selected, database, [value for _, value, _ in compiled[0].rules], directory)
+        clash = [replace(p, rules=tuple(r for r in p.rules if r[0] != 'IP-ASN'))
+                 if p.theme == 'Direct' else p for p in clash]
+        mrs = [p for p in mrs if p.name != 'Direct-asn-ip']
+    if coverage(clash) != coverage(mrs):
+        raise ValueError(f'Clash / MRS 全量语义覆盖不一致；反解证据: {directory}')
+    return bool(compiled)
+
+
+def validate_manifest(surge_dir, clash_dir, required=False):
+    path = clash_dir / 'manifest.json'
+    if not path.is_file():
+        if required:
+            raise ValueError('生产产物缺少 manifest.json')
+        return False
+    manifest = json.loads(path.read_text(encoding='utf-8'))
+    if manifest.get('schema') != 1 or manifest.get('update_interval') != 604800:
+        raise ValueError('manifest 版本或更新周期不一致')
+    from convert_clash import MIHOMO_VERSION
+    if manifest.get('mihomo') != MIHOMO_VERSION:
+        raise ValueError('manifest 内核版本与构建契约不一致')
+    expected_sources = {p.relative_to(surge_dir).as_posix() for p in surge_dir.rglob('*.list')}
+    expected_artifacts = {p.relative_to(clash_dir).as_posix() for p in clash_dir.rglob('*')
+                          if p.is_file() and p.suffix in ('.list', '.mrs', '.yaml')}
+    for field, directory, expected in (('sources', surge_dir, expected_sources),
+                                       ('artifacts', clash_dir, expected_artifacts)):
+        hashes = manifest.get(field, {})
+        if set(hashes) != expected:
+            raise ValueError(f'manifest {field} 文件集合不一致')
+        for relative, digest in hashes.items():
+            if hashlib.sha256(local_path(directory, relative).read_bytes()).hexdigest() != digest:
+                raise ValueError(f'manifest SHA-256 不一致: {field}/{relative}')
+    lock = json.loads((ROOT / 'inputs/asn-lock.json').read_text(encoding='utf-8'))
+    if manifest.get('asn_database') != lock or hashlib.sha256((ROOT / 'inputs/ASN.mmdb').read_bytes()).hexdigest() != lock['sha256']:
+        raise ValueError('manifest ASN 快照、锁文件或数据库内容不一致')
+    return True
+
+
 def validate_artifacts(surge_dir, clash_dir, mihomo='mihomo', *, require_surge_config=False):
     """只读验收暂存或仓库产物；失败抛异常，不发布，临时反解证据保留。"""
     surge_dir, clash_dir = Path(surge_dir).resolve(), Path(clash_dir).resolve()
@@ -370,12 +502,13 @@ def validate_artifacts(surge_dir, clash_dir, mihomo='mihomo', *, require_surge_c
         raise ValueError(f'缺少 mihomo: {mihomo}')
     directory = Path(tempfile.mkdtemp(prefix='rules-acceptance-'))
     surge, clash, skipped = load_text(surge_dir, clash_dir, require_surge_config)
+    manifest_checked = validate_manifest(surge_dir, clash_dir, required=require_surge_config)
     mrs = load_mrs(clash_dir, executable, directory)
-    if coverage(clash) != coverage(mrs):
-        raise ValueError(f'Clash / MRS 全量语义覆盖不一致；反解证据: {directory}')
+    asn_compiled = validate_asn_compilation(clash, mrs, directory)
     cases = validate_routes(surge, clash, mrs)
+    overlaps = validate_proxy_overlaps(surge, clash, mrs, directory)
     return {'scenarios': cases, 'text_providers': len(clash), 'mrs_providers': len(mrs),
-            'surge_only': dict(skipped), 'evidence': str(directory)}
+            **overlaps, 'surge_only': dict(skipped), 'manifest_checked': manifest_checked, 'asn_compiled': asn_compiled, 'evidence': str(directory)}
 
 
 def main():
@@ -390,7 +523,7 @@ def main():
         print(f'❌ 分类验收失败: {error}', file=sys.stderr)
         return 1
     print('✓ 分类与三端产物验收通过: ' + json.dumps(result, ensure_ascii=False))
-    print('匹配场景限域名、显式 IP 与进程；ASN/GEOIP、UA、URL 正则的内核行为未模拟。')
+    print('已检查域名、显式 IP、进程及同快照 ASN；真实 DNS、GEOIP、UA 和 URL 正则的内核行为未模拟。')
     return 0
 
 
