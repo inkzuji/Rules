@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 347
+# 规则数: 344
 
 # DOMAIN-KEYWORD
 DOMAIN-KEYWORD,-spotify-com
@@ -305,8 +305,6 @@ IP-ASN,20473,no-resolve
 IP-CIDR,103.5.34.153/32,no-resolve
 IP-CIDR,104.109.129.153/32,no-resolve
 IP-CIDR,110.238.107.47/32,no-resolve
-IP-CIDR,136.22.100.0/22,no-resolve
-IP-CIDR,136.22.110.0/23,no-resolve
 IP-CIDR,136.49.48.0/24,no-resolve
 IP-CIDR,136.50.216.0/21,no-resolve
 IP-CIDR,136.58.136.0/21,no-resolve
@@ -333,7 +331,6 @@ IP-CIDR,213.219.247.0/24,no-resolve
 IP-CIDR,23.211.15.99/32,no-resolve
 IP-CIDR,23.53.32.88/32,no-resolve
 IP-CIDR,45.202.113.0/24,no-resolve
-IP-CIDR,64.9.252.0/22,no-resolve
 IP-CIDR,85.17.73.31/32,no-resolve
 IP-CIDR,91.124.127.0/24,no-resolve
 # IP-CIDR6

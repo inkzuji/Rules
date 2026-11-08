@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 19066
+# 规则数: 19056
 
 # DOMAIN
 DOMAIN,auth.meta.com
@@ -5581,7 +5581,6 @@ DOMAIN-SUFFIX,edgemeplease.com
 DOMAIN-SUFFIX,edgesuite.net
 DOMAIN-SUFFIX,edigest.hk
 DOMAIN-SUFFIX,edisebay.com
-DOMAIN-SUFFIX,editorx.com
 DOMAIN-SUFFIX,edninfo.com
 DOMAIN-SUFFIX,edu.hk
 DOMAIN-SUFFIX,edu.ir
@@ -12480,7 +12479,6 @@ DOMAIN-SUFFIX,paradisehill.cc
 DOMAIN-SUFFIX,paradisehotelquizfox.com
 DOMAIN-SUFFIX,paramount.com
 DOMAIN-SUFFIX,paramountplus.com
-DOMAIN-SUFFIX,parastorage.com
 DOMAIN-SUFFIX,pardot.com
 DOMAIN-SUFFIX,park-now.com
 DOMAIN-SUFFIX,parkansky.com
@@ -17388,6 +17386,7 @@ DOMAIN-SUFFIX,vocus.cc
 DOMAIN-SUFFIX,vod-abematv.akamaized.net
 DOMAIN-SUFFIX,vod.wwe.com
 DOMAIN-SUFFIX,vod360.net
+DOMAIN-SUFFIX,vodafoneziggo.nl
 DOMAIN-SUFFIX,voicettank.org
 DOMAIN-SUFFIX,vokevr.com
 DOMAIN-SUFFIX,vol.moe
@@ -17876,14 +17875,7 @@ DOMAIN-SUFFIX,wispbyte.com
 DOMAIN-SUFFIX,wistia.com
 DOMAIN-SUFFIX,wistia.net
 DOMAIN-SUFFIX,witopia.net
-DOMAIN-SUFFIX,wix-code.com
-DOMAIN-SUFFIX,wix.com
-DOMAIN-SUFFIX,wixanswers.com
-DOMAIN-SUFFIX,wixapps.net
 DOMAIN-SUFFIX,wixipedia.net
-DOMAIN-SUFFIX,wixmp.com
-DOMAIN-SUFFIX,wixsite.com
-DOMAIN-SUFFIX,wixstatic.com
 DOMAIN-SUFFIX,wiz-s.jp
 DOMAIN-SUFFIX,wizcrafts.net
 DOMAIN-SUFFIX,wjbk.org
@@ -18913,6 +18905,7 @@ DOMAIN-SUFFIX,zhuichaguoji.org
 DOMAIN-SUFFIX,zhuzhushipin-app.com
 DOMAIN-SUFFIX,zi.media
 DOMAIN-SUFFIX,zibacity.com
+DOMAIN-SUFFIX,ziggo.nl
 DOMAIN-SUFFIX,zigzag.kr
 DOMAIN-SUFFIX,zillionk.com
 DOMAIN-SUFFIX,zim.vn
@@ -19026,8 +19019,6 @@ IP-ASN,20473,no-resolve
 IP-CIDR,103.5.34.153/32,no-resolve
 IP-CIDR,104.109.129.153/32,no-resolve
 IP-CIDR,110.238.107.47/32,no-resolve
-IP-CIDR,136.22.100.0/22,no-resolve
-IP-CIDR,136.22.110.0/23,no-resolve
 IP-CIDR,136.49.48.0/24,no-resolve
 IP-CIDR,136.50.216.0/21,no-resolve
 IP-CIDR,136.58.136.0/21,no-resolve
@@ -19054,7 +19045,6 @@ IP-CIDR,213.219.247.0/24,no-resolve
 IP-CIDR,23.211.15.99/32,no-resolve
 IP-CIDR,23.53.32.88/32,no-resolve
 IP-CIDR,45.202.113.0/24,no-resolve
-IP-CIDR,64.9.252.0/22,no-resolve
 IP-CIDR,85.17.73.31/32,no-resolve
 IP-CIDR,91.124.127.0/24,no-resolve
 # IP-CIDR6

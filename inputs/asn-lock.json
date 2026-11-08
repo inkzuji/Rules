@@ -1,8 +1,8 @@
 {
-  "source": "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb",
   "sha256": "3f729dfdbca46d6bc83fe084e15e335cef702b46f9d9afb8feaede36180959f4",
   "database_type": "GeoLite2-ASN",
   "build_epoch": 1793780130,
+  "source": "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb",
   "reader": "maxminddb-golang v1.12.0",
   "bytes": 9054248
 }

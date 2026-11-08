@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 872
+# 规则数: 877
 
 # DOMAIN
 DOMAIN,api.imem.app
@@ -749,6 +749,7 @@ IP-CIDR,157.240.136.0/23,no-resolve
 IP-CIDR,157.240.137.0/24,no-resolve
 IP-CIDR,157.240.139.0/24,no-resolve
 IP-CIDR,157.240.140.0/24,no-resolve
+IP-CIDR,157.240.143.0/24,no-resolve
 IP-CIDR,157.240.144.0/24,no-resolve
 IP-CIDR,157.240.156.0/22,no-resolve
 IP-CIDR,157.240.156.0/23,no-resolve
@@ -864,11 +865,15 @@ IP-CIDR6,2a03:2887:ff60::/48,no-resolve
 IP-CIDR6,2a03:2887:ff62::/47,no-resolve
 IP-CIDR6,2a03:2887:ff64::/46,no-resolve
 IP-CIDR6,2a03:2887:ff68::/46,no-resolve
+IP-CIDR6,2a03:2887:ff68::/47,no-resolve
+IP-CIDR6,2a03:2887:ff6a::/48,no-resolve
+IP-CIDR6,2a03:2887:ff6c::/48,no-resolve
 IP-CIDR6,2a03:2887:ff6f::/48,no-resolve
 IP-CIDR6,2a03:2887:ff70::/46,no-resolve
 IP-CIDR6,2a0a:f280::/29,no-resolve
 IP-CIDR6,2a0a:f280::/32,no-resolve
 IP-CIDR6,2c0f:ef78:10::/47,no-resolve
+IP-CIDR6,2c0f:ef78:12::/48,no-resolve
 IP-CIDR6,2c0f:ef78:3::/48,no-resolve
 IP-CIDR6,2c0f:ef78:5::/48,no-resolve
 IP-CIDR6,2c0f:ef78:9::/48,no-resolve
