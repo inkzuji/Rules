@@ -1,5 +1,5 @@
 # 策略: 🚀节点选择
-# 规则数: 492
+# 规则数: 494
 
 # DOMAIN
 DOMAIN,api.statsig.com
@@ -192,6 +192,8 @@ DOMAIN-SUFFIX,gitlab.net
 DOMAIN-SUFFIX,gnome.org
 DOMAIN-SUFFIX,gnu.org
 DOMAIN-SUFFIX,godbolt.org
+DOMAIN-SUFFIX,grafana.com
+DOMAIN-SUFFIX,grafana.net
 DOMAIN-SUFFIX,greenend.org.uk
 DOMAIN-SUFFIX,hacklang.org
 DOMAIN-SUFFIX,hashicorp.com

@@ -1,5 +1,5 @@
 # 策略: 🤖️AI
-# 规则数: 486
+# 规则数: 489
 
 # DOMAIN
 DOMAIN,ai-gateway.vercel.sh
@@ -71,6 +71,7 @@ DOMAIN-SUFFIX,allenai.org
 DOMAIN-SUFFIX,ampcode.ai
 DOMAIN-SUFFIX,ampcode.com
 DOMAIN-SUFFIX,ant.dev
+DOMAIN-SUFFIX,anthropic.ai
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,anthropic.team
 DOMAIN-SUFFIX,antigravity-pa.googleapis.com
@@ -127,6 +128,7 @@ DOMAIN-SUFFIX,claude.com
 DOMAIN-SUFFIX,claude.dev
 DOMAIN-SUFFIX,claude.site
 DOMAIN-SUFFIX,claudeacademy.com
+DOMAIN-SUFFIX,claudeai.com
 DOMAIN-SUFFIX,claudemcpclient.com
 DOMAIN-SUFFIX,claudemcpcontent.com
 DOMAIN-SUFFIX,claudepages.dev
@@ -237,6 +239,7 @@ DOMAIN-SUFFIX,greptile.com
 DOMAIN-SUFFIX,grok-sandbox.com
 DOMAIN-SUFFIX,grok.com
 DOMAIN-SUFFIX,grok.x.com
+DOMAIN-SUFFIX,grokbot.com
 DOMAIN-SUFFIX,grokipedia.com
 DOMAIN-SUFFIX,groksupport.com
 DOMAIN-SUFFIX,groktpcontent.com
